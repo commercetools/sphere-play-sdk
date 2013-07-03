@@ -2,23 +2,38 @@ package io.sphere.client
 package shop
 package model
 
-import TestUtil._
-import io.sphere.client.model._
-import scala.collection.JavaConverters._
-import org.scalatest._
-import org.joda.time.DateTime
 import java.util
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+
+import com.google.common.collect.{ImmutableMap, Maps}
+import io.sphere.client.model._
+import org.joda.time.DateTime
+import org.scalatest._
+import TestUtil._
+
+import util.Locale
+
 
 /** See also [io.sphere.client.shop.ProductServiceSpec]. */
 class ProductSpec extends WordSpec with MustMatchers  {
-  def emptyList[A]= new util.ArrayList[A]
+
   val images = emptyList[Image]
+  val DESC = "Aliens are no more."
+  val NAME = "Alien blaster"
+  val SLUG = "alien-blaster"
+  val ENUM_LABEL = "enumLabel"
+  val ENUM_KEY = "enumKey"
+
+  def emptyList[A]= new util.ArrayList[A]
   def eur(amount: Double) = new Price(new Money(new java.math.BigDecimal(amount), "EUR"), null, null)
+  def localized(s: String) = new LocalizedString(ImmutableMap.of(Locale.ENGLISH, s, Locale.FRENCH, s"le ${s}"))
 
   def createAlienBlaster(withVariants: Boolean = true): Product = {
     val masterVariant = new Variant(1, "standard", lst(eur(250)), images, lst(
       new Attribute("color", "silver"),
       new Attribute("damage", 25),
+      new Attribute("enum", Map("key" -> ENUM_KEY, "label" -> ENUM_LABEL).asJava),
       new Attribute("weight", 2.7)), null)
 
     val sniperScopeVariant = new Variant(2, "sniper", lst(eur(290)), images, lst(
@@ -38,8 +53,8 @@ class ProductSpec extends WordSpec with MustMatchers  {
 
     val variants = if (withVariants) lst(masterHeavyVariant, sniperScopeVariant, plasmaVariant) else emptyList[Variant]
 
-    new Product(VersionedId.create("id", 2), "Alien blaster", "Aliens are no more.", "alien-blaster",
-      "meta1", "meta2", "meta3", masterVariant, variants,
+    new Product(VersionedId.create("id", 2), localized("Alien blaster"), localized(DESC), localized(SLUG),
+      localized("meta1"), localized("meta2"), localized("meta3"), masterVariant, variants,
       emptyList, new util.HashSet[Reference[Catalog]](), EmptyReference.create("alien-catalog"), ReviewRating.empty())
   }
 
@@ -56,6 +71,28 @@ class ProductSpec extends WordSpec with MustMatchers  {
     createAlienBlaster().getDouble(name) must be (0.0)
     createAlienBlaster().getMoney(name) must be (null)
     createAlienBlaster().getDateTime(name) must be (null)
+  }
+
+  "getEnum attribute" in {
+    createAlienBlaster().getEnum("enum").label must be (ENUM_LABEL)
+    createAlienBlaster().getEnum("enum").key must be (ENUM_KEY)
+  }
+
+  "get I18n'd name" in {
+    createAlienBlaster().getName must be(NAME)
+    createAlienBlaster().getName(Locale.GERMAN) must be(NAME)
+  }
+
+  "get i18n'd description" in {
+    createAlienBlaster().getDescription(Locale.ENGLISH) must be(DESC)
+    createAlienBlaster().getDescription(Locale.GERMAN) must be(DESC)
+    createAlienBlaster().getDescription(Locale.FRENCH) must be(s"le ${DESC}")
+  }
+
+  "get i18n'd slug" in {
+    createAlienBlaster().getSlug(Locale.ENGLISH) must be(SLUG)
+    createAlienBlaster().getSlug(Locale.GERMAN) must be(SLUG)
+    createAlienBlaster().getSlug(Locale.FRENCH) must be(s"le ${SLUG}")
   }
 
   "getAttribute (string)" in {
@@ -152,8 +189,8 @@ class ProductSpec extends WordSpec with MustMatchers  {
       new Attribute("color", "schwarz"),
       new Attribute("surface", "pulverbeschichtet")
     ), null)
-    new Product(VersionedId.create("id", 3), "One bin to rule them all", "Kela", "kela-kela",
-      "meta1", "meta2", "meta3", black28, lst(gray32, black32, white28),
+    new Product(VersionedId.create("id", 3), localized("One bin to rule them all"), localized("Kela"), localized("kela-kela"),
+      localized("meta1"), localized("meta2"), localized("meta3"), black28, lst(gray32, black32, white28),
       emptyList, new util.HashSet[Reference[Catalog]](), EmptyReference.create("kela-stuff"), ReviewRating.empty())
   }
 

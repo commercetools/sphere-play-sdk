@@ -1,20 +1,24 @@
 package io.sphere.client
 package shop
 
-import io.sphere.client.shop.model._
-import org.scalatest._
-import JsonResponses._
-import org.joda.time.format.ISODateTimeFormat
-import org.joda.time.DateTimeZone
-import io.sphere.internal.request._
-import TestUtil._
-import io.sphere.client.FakeResponse
+import java.util.Locale
 import scala.collection.JavaConverters._
+
+import io.sphere.client.FakeResponse
 import io.sphere.client.filters.FilterExpr
+import io.sphere.client.shop.model._
+import io.sphere.internal.request._
+import JsonResponses._
+import org.joda.time.DateTimeZone
+import org.joda.time.format.ISODateTimeFormat
+import org.scalatest._
+import TestUtil._
 
 class ProductServiceSpec extends WordSpec with MustMatchers {
 
   val noProductsClient = MockSphereClient.create(productsResponse = FakeResponse("{}"))
+
+  val EN = Locale.ENGLISH
 
   val oneProductClient: SphereClient = {
     val productsJson = """{
@@ -44,44 +48,44 @@ class ProductServiceSpec extends WordSpec with MustMatchers {
   }
 
   "Parse zero products" in {
-    val searchResult = noProductsClient.products.all.fetch
+    val searchResult = noProductsClient.products.all(EN).fetch
     searchResult.getCount must be(0)
     searchResult.getOffset must be(0)
     searchResult.getResults.size must be(0)
   }
 
   "Parse price" in {
-    val prod = oneProductClient.products.all.fetch.getResults.get(0)
+    val prod = oneProductClient.products.all(EN).fetch.getResults.get(0)
     prod.getPrice.getValue must be (eur(17000))
     prod.getMasterVariant.getPrice.getValue must be (eur(17000))
   }
 
   "Parse string attributes" in {
-    val prod = twoProductsClient.products.all.fetch.getResults.get(0)
+    val prod = twoProductsClient.products.all(EN).fetch.getResults.get(0)
     prod.getAttribute("tags") must be (new Attribute("tags", "convertible"))
     prod.getString("tags") must be ("convertible")
   }
 
   "Parse number attributes" in {
-    val prod = twoProductsClient.products.all.fetch.getResults.get(0)
+    val prod = twoProductsClient.products.all(EN).fetch.getResults.get(0)
     prod.getInt("numberAttributeWhole") must be (1)
     prod.getDouble("numberAttributeFractional") must be (1.2)
   }
 
   "Parse money attributes" in {
-    val prod = twoProductsClient.products.all.fetch.getResults.get(0)
+    val prod = twoProductsClient.products.all(EN).fetch.getResults.get(0)
     prod.getMoney("cost") must be (eur(16500))
     //prod.getMoney("cost").getCurrencyCode must be ("EUR")
     //prod.getMoney("cost").getAmount must  be (new java.math.BigDecimal(16500.0))
   }
 
   "Parse date/time attributes" in {
-    val prod = twoProductsClient.products.all.fetch.getResults.get(0)
+    val prod = twoProductsClient.products.all(EN).fetch.getResults.get(0)
     prod.getDateTime("dateTimeAttribute").withZone(DateTimeZone.UTC).toString(ISODateTimeFormat.dateTime) must be ("2013-06-24T16:54:10.000Z")
   }
 
   "Parse variants" in {
-    val prod = oneProductClient.products.all.fetch.getResults.get(0)
+    val prod = oneProductClient.products.all(EN).fetch.getResults.get(0)
     prod.getVariants.size must be (2)
     val variant = prod.getVariants.asList.get(1)
     variant.getPrice.getValue must be (eur(19500))
@@ -93,7 +97,7 @@ class ProductServiceSpec extends WordSpec with MustMatchers {
   }
 
   "Parse two products and resolve categories" in {
-    val searchResult = twoProductsClient.products.all.fetch
+    val searchResult = twoProductsClient.products.all(EN).fetch
     searchResult.getCount must be (2)
     searchResult.getOffset must be (0)
     searchResult.getResults.size must be (2)
@@ -104,7 +108,7 @@ class ProductServiceSpec extends WordSpec with MustMatchers {
   }
 
   "Parse images" in {
-    val prod = oneProductClient.products.all.fetch.getResults.get(0)
+    val prod = oneProductClient.products.all(EN).fetch.getResults.get(0)
     prod.getMasterVariant.getImages.size must be (2)
     prod.getMasterVariant.getFeaturedImage.getLabel must be ("Snowboard")
     prod.getImages.size must be (2)
@@ -117,62 +121,66 @@ class ProductServiceSpec extends WordSpec with MustMatchers {
   }
 
   "Parse product by slug" in {
-    val optionalProduct = oneProductClient.products.bySlug("bmw_116_convertible_4_door").fetch
+    val optionalProduct = oneProductClient.products.bySlug("bmw_116_convertible_4_door", EN).fetch
     optionalProduct.isPresent must be (true)
     optionalProduct.get.getSlug must be ("bmw_116_convertible_4_door")
   }
 
   "Parse empty result" in {
-    val optionalProduct = noProductsClient.products.bySlug("bmw_116").fetch
+    val optionalProduct = noProductsClient.products.bySlug("bmw_116", EN).fetch
     optionalProduct.isPresent must be (false)
   }
 
   "Get multiple products by slug" in {
-    val optionalProduct = twoProductsClient.products.bySlug("bmw_116_convertible_4_door").fetch
+    val optionalProduct = twoProductsClient.products.bySlug("bmw_116_convertible_4_door", EN).fetch
     // if there are multiple products with the same slug (should normally not happen), return the first one
     optionalProduct.isPresent must be (true)
     optionalProduct.get.getSlug must be ("bmw_116_convertible_4_door")
   }
 
   "Set currentPage and totalPages" in {
-    val searchResult = twoProductsClient.products.all.fetch
+    val searchResult = twoProductsClient.products.all(EN).fetch
     searchResult.getCurrentPage must be (0)
     searchResult.getTotalPages must be (1)
   }
 
   "Get product by slug" in {
-    val reqBySlug = MockSphereClient.create(apiMode = ApiMode.Staged).products.bySlug("slug-123")
-    params(asFetchReqImpl(reqBySlug)) must be (Map("where" -> "slug%3D%22slug-123%22", "staged" -> "true"))
+    val expected = "slug%28en%3D%22slug-123%22%29"
+    val slug = "slug-123"
+    val reqBySlug = MockSphereClient.create(apiMode = ApiMode.Staged).products.bySlug(slug, EN)
+    params(asFetchReqImpl(reqBySlug)) must be (Map("where" -> expected, "staged" -> "true"))
+    val defaultLangBySlug = MockSphereClient.create(apiMode = ApiMode.Staged).products.bySlug(slug)
+    params(asFetchReqImpl(defaultLangBySlug)) must be (Map("where" -> expected, "staged" -> "true"))
   }
 
   "Set search API query params" in {
-    val searchRequestAsc = noProductsClient.products.all.sort(ProductSort.price.asc)
+    val searchRequestAsc = noProductsClient.products.all(EN).sort(ProductSort.price.asc)
     asImpl(searchRequestAsc).getUrl must startWith ("/product-projections/search")
     params(asImpl(searchRequestAsc)) must be (Map("sort" -> "price+asc", "staged" -> "true"))
 
-    val searchRequestDesc = noProductsClient.products.all.sort(ProductSort.price.desc)
+    val searchRequestDesc = noProductsClient.products.all(EN).sort(ProductSort.price.desc)
     asImpl(searchRequestDesc).getUrl must startWith ("/product-projections/search")
     params(asImpl(searchRequestDesc)) must be (Map("sort" -> "price+desc", "staged" -> "true"))
 
-    val searchRequestRelevance = noProductsClient.products.all.sort(ProductSort.relevance)
+    val searchRequestRelevance = noProductsClient.products.all(EN).sort(ProductSort.relevance)
     asImpl(searchRequestRelevance).getUrl must startWith ("/product-projections/search")
     params(asImpl(searchRequestRelevance)) must be (Map("staged" -> "true"))
   }
 
   "Set filter params" in {
     val searchRequestPrice = noProductsClient.products.
-      filter(FilterExpr.price.atLeast(new java.math.BigDecimal(25.5))).
+      filter(EN, FilterExpr.price.atLeast(new java.math.BigDecimal(25.5))).
       sort(ProductSort.price.asc)
     params(asImpl(searchRequestPrice)) must be (Map(
       "filter.query" -> "variants.price.centAmount%3Arange%282550+to+*%29", "sort" -> "price+asc", "staged" -> "true"))
   }
 
   "Set API mode" in {
-    val reqStagingSearch = MockSphereClient.create(apiMode = ApiMode.Staged).products.all
+    val reqStagingSearch = MockSphereClient.create(apiMode = ApiMode.Staged).products.all(EN)
     asImpl(reqStagingSearch).getUrl must startWith ("/product-projections")
     params(asImpl(reqStagingSearch)) must be (Map("staged" -> "true"))
 
-    val reqLiveSearch = MockSphereClient.create(apiMode = ApiMode.Published).products.all
+    val reqLiveSearch = MockSphereClient.create(apiMode = ApiMode.Published).products.all(EN)
     params(asImpl(reqLiveSearch)) must be (Map("staged" -> "false"))
 
     val reqStagingById = MockSphereClient.create(apiMode = ApiMode.Staged).products.byId("123")
@@ -182,12 +190,15 @@ class ProductServiceSpec extends WordSpec with MustMatchers {
     val reqLiveById = MockSphereClient.create(apiMode = ApiMode.Published).products.byId("123")
     params(asImpl(reqLiveById)) must be (Map("staged" -> "false"))
 
-    val reqStagingBySlug = MockSphereClient.create(apiMode = ApiMode.Staged).products.bySlug("slug-123")
+    val reqStagingBySlug = MockSphereClient.create(apiMode = ApiMode.Staged).products.bySlug("slug-123", EN)
     asFetchReqImpl(reqStagingBySlug).getUrl must startWith ("/product-projections")
-    params(asFetchReqImpl(reqStagingBySlug)) must be (Map("where" -> "slug%3D%22slug-123%22", "staged" -> "true"))
+    params(asFetchReqImpl(reqStagingBySlug)) must be (Map("where" -> "slug%28en%3D%22slug-123%22%29", "staged" -> "true"))
 
-    val reqLiveBySlug = MockSphereClient.create(apiMode = ApiMode.Published).products.bySlug("slug-123")
-    params(asFetchReqImpl(reqLiveBySlug)) must be (Map("where" -> "slug%3D%22slug-123%22", "staged" -> "false"))
+    val defaultLangBySlug = MockSphereClient.create(apiMode = ApiMode.Staged).products.bySlug("slug-123")
+    params(asFetchReqImpl(defaultLangBySlug)) must be (Map("where" -> "slug%28en%3D%22slug-123%22%29", "staged" -> "true"))
+
+    val reqLiveBySlug = MockSphereClient.create(apiMode = ApiMode.Published).products.bySlug("slug-123", EN)
+    params(asFetchReqImpl(reqLiveBySlug)) must be (Map("where" -> "slug%28en%3D%22slug-123%22%29", "staged" -> "false"))
   }
 
   // ------------------------

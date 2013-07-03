@@ -13,6 +13,7 @@ import io.sphere.internal.request.RequestFactoryImpl;
 import io.sphere.internal.util.Log;
 import com.ning.http.client.AsyncHttpClient;
 import net.jcip.annotations.Immutable;
+import java.util.Locale;
 
 /** The main access point to Sphere HTTP APIs.
  *  It is essentially just a configured set of services. */
@@ -77,13 +78,14 @@ final public class SphereClient {
                 httpClient,
                 clientCredentials));
         CategoryTree categoryTree = CategoryTreeImpl.createAndBeginBuildInBackground(
-                new CategoriesImpl(requestFactory, projectEndpoints));
+                new CategoriesImpl(requestFactory, projectEndpoints), config.getDefaultLocale());
         return new SphereClient(
             config,
             httpClient,
             clientCredentials,
             new ProductServiceImpl(
-                    new ProductRequestFactoryImpl(requestFactory, categoryTree), config.getApiMode(), projectEndpoints),
+                    new ProductRequestFactoryImpl(requestFactory, categoryTree), config.getApiMode(), projectEndpoints,
+                                                  config.getDefaultLocale()),
             categoryTree,
             new CartServiceImpl(requestFactory, projectEndpoints),
             new OrderServiceImpl(requestFactory, projectEndpoints),
@@ -92,7 +94,8 @@ final public class SphereClient {
             new ReviewServiceImpl(requestFactory, projectEndpoints),
             new InventoryServiceImpl(requestFactory, projectEndpoints),
             new ShippingMethodServiceImpl(requestFactory, projectEndpoints),
-            new TaxCategoryServiceImpl(requestFactory, projectEndpoints));
+            new TaxCategoryServiceImpl(requestFactory, projectEndpoints)
+        );
     }
 
     /** Closes HTTP connections and shuts down internal thread pools.

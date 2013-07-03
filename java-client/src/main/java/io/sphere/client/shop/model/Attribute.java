@@ -1,6 +1,9 @@
 package io.sphere.client.shop.model;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableMap;
+import io.sphere.client.model.LocalizedString;
 import io.sphere.internal.util.Log;
 import io.sphere.client.model.Money;
 import net.jcip.annotations.Immutable;
@@ -12,6 +15,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
 import javax.annotation.Nonnull;
+import java.util.Locale;
 import java.util.Map;
 
 /** Custom attribute of a {@link io.sphere.client.shop.model.Product}. */
@@ -37,11 +41,13 @@ public class Attribute {
     // Defaults
     // ------------------------------
 
-    static String defaultString = "";
-    static int defaultInt = 0;
-    static double defaultDouble = 0.0;
-    static Money defaultMoney = null;
-    static DateTime defaultDateTime = null;
+    static String                   defaultString           = "";
+    static int                      defaultInt              = 0;
+    static double                   defaultDouble           = 0.0;
+    static Money                    defaultMoney            = null;
+    static DateTime                 defaultDateTime         = null;
+    static Enum                     defaultEnum             = new Enum("", "");
+    public static LocalizedString   defaultLocalizedString  = new LocalizedString(ImmutableMap.<Locale, String>of());
 
     // ------------------------------
     // Typed value getters
@@ -53,6 +59,14 @@ public class Attribute {
         Object v = getValue();
         if (v == null || !(v instanceof String)) return defaultString;
         return (String)v;
+    }
+
+    /** If this is a string attribute, returns the string value.
+     *  @return The value or empty string if the value is not a string. */
+    public LocalizedString getLocalizedString() {
+        Object v = getValue();
+        if (v == null || !(v instanceof LocalizedString)) return defaultLocalizedString;
+        return (LocalizedString)v;
     }
 
     /** If this is a number attribute, returns the integer value.
@@ -81,6 +95,21 @@ public class Attribute {
         Object v = getValue();
         if (!(v instanceof Map)) return defaultMoney;
         return new ObjectMapper().convertValue(v, Money.class);
+    }
+
+    /** If this is an enum attribute, returns the value.
+     *  @return The value or the empty string if the value is not an enum instance. */
+    public Enum getEnum() {
+        Object v = getValue();
+        if (!(v instanceof Map)) return defaultEnum;
+        else {
+            Map map = (Map) v;
+            String label = (String) map.get("label");
+            if (Strings.isNullOrEmpty(label)){
+                return defaultEnum;
+            }
+            else return new Enum((String) map.get("key"), label);
+        }
     }
 
     private static DateTimeFormatter dateTimeFormat = ISODateTimeFormat.dateTimeParser();
@@ -123,5 +152,29 @@ public class Attribute {
         int result = name.hashCode();
         result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;
+    }
+
+    /**
+     * The value of a custom enum attribute.
+     */
+    public static class Enum {
+        /**
+         * The unique and machine-readable value for this enum value.
+         */
+        public final String key;
+        /**
+         * The human-readable, and translated label for this value.
+         */
+        public final String label;
+
+        public Enum(String key, String label) {
+            this.key = key;
+            this.label = label;
+        }
+
+        @Override
+        public String toString() {
+            return "[Enum key='" + key + "' value='" + label +"']";
+        }
     }
 }

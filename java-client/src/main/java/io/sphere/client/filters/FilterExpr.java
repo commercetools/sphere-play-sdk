@@ -4,6 +4,8 @@ import io.sphere.client.shop.model.Category;
 
 import com.google.common.collect.Range;
 import java.math.BigDecimal;
+import java.util.Locale;
+
 import org.joda.time.DateTime;
 
 import static io.sphere.client.filters.expressions.FilterExpressions.*;

@@ -6,11 +6,14 @@ import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
 import com.google.common.collect.Range;
@@ -51,6 +54,41 @@ public class Util {
         } catch (UnsupportedEncodingException e) {
             throw new IllegalArgumentException("Could not encode url: " + s);
         }
+    }
+
+    /**
+     * Encodes a Locale to a BCP-47-conformant language tag. Emulates Java 7's Locale#toLanguageTag.
+     * Note that the separator is the hyphen (-) not the underscore.
+     * @see http://docs.oracle.com/javase/7/docs/api/java/util/Locale.html#toLanguageTag()
+     */
+    public static String toLanguageTag(Locale l){
+        StringBuffer buf = new StringBuffer();
+        String lang = l.getLanguage();
+        if (Strings.isNullOrEmpty(lang)){
+            throw new IllegalArgumentException("The locale must have a language in order to be converted to a language tag.");
+        }
+        else{
+            buf.append(lang);
+            String country = l.getCountry();
+            if (!Strings.isNullOrEmpty(country)){
+                buf.append('-');
+                buf.append(country);
+            }
+        }
+        return buf.toString();
+    }
+
+    public static Locale fromLanguageTag(@Nonnull String s){
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(s));
+        String[] parts = s.split("-");
+        if (parts.length == 1) {
+            return new Locale(parts[0]);
+        }
+        else{
+            return new Locale(parts[0], parts[1]);
+        }
+        //We ignore tags
+
     }
 
     // ---------------------------

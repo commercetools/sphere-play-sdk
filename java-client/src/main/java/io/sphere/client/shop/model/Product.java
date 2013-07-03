@@ -1,9 +1,11 @@
 package io.sphere.client.shop.model;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import com.google.common.base.Strings;
+import io.sphere.client.model.LocalizedString;
 import io.sphere.client.model.Money;
 import io.sphere.client.model.Reference;
 import static io.sphere.internal.util.ListUtil.list;
@@ -39,12 +41,12 @@ import javax.annotation.Nonnull;
 public class Product {
     @Nonnull private final String id;
     private final int version;
-    private final String name;
-    private final String description;
-    private final String slug;
-    private final String metaTitle;
-    private final String metaDescription;
-    private final String metaKeywords;
+    private final LocalizedString name;
+    private final LocalizedString description;
+    private final LocalizedString slug;
+    private final LocalizedString metaTitle;
+    private final LocalizedString metaDescription;
+    private final LocalizedString metaKeywords;
     @Nonnull private final Variant masterVariant;
     @Nonnull private final VariantList variants;
     @Nonnull private final List<Category> categories;
@@ -52,8 +54,8 @@ public class Product {
     @Nonnull private final Reference<Catalog> catalog;
     @Nonnull private final ReviewRating rating;
 
-    public Product(VersionedId idAndVersion, String name, String description,
-                   String slug, String metaTitle, String metaDescription, String metaKeywords,
+    public Product(VersionedId idAndVersion, LocalizedString name, LocalizedString description,
+                   LocalizedString slug, LocalizedString metaTitle, LocalizedString metaDescription, LocalizedString metaKeywords,
                    Variant masterVariant, List<Variant> variants, List<Category> categories,
                    Set<Reference<Catalog>> catalogs, Reference<Catalog> catalog, ReviewRating reviewRating) {
         if (idAndVersion == null) throw new NullPointerException("idAndVersion");
@@ -90,22 +92,28 @@ public class Product {
     @Nonnull public VersionedId getIdAndVersion() { return VersionedId.create(id, version); }
 
     /** Name of this product. */
-    public String getName() { return name; }
+    public String getName() { return name.get(); }
+    public String getName(Locale locale) { return name.get(locale); }
 
     /** Description of this product. */
-    public String getDescription() { return description; }
+    public String getDescription() { return description.get(); }
+    public String getDescription(Locale locale) { return description.get(locale); }
 
     /** URL friendly name of this product. */
-    public String getSlug() { return slug; }
+    public String getSlug() { return slug.get(); }
+    public String getSlug(Locale locale) { return slug.get(locale); }
 
     /** HTML title for product page. */
-    public String getMetaTitle() { return metaTitle; }
+    public String getMetaTitle() { return metaTitle.get(); }
+    public String getMetaTitle(Locale locale) { return metaTitle.get(locale); }
 
     /** HTML meta description for product page. */
-    public String getMetaDescription() { return metaDescription; }
+    public String getMetaDescription() { return metaDescription.get(); }
+    public String getMetaDescription(Locale locale) { return metaDescription.get(locale); }
 
     /** HTML meta keywords for product page. */
-    public String getMetaKeywords() { return metaKeywords; }
+    public String getMetaKeywords() { return metaKeywords.get(); }
+    public String getMetaKeywords(Locale locale) { return metaKeywords.get(locale); }
 
     /** Master variant of this product. */
     @Nonnull public Variant getMasterVariant() { return masterVariant;}
@@ -159,6 +167,11 @@ public class Product {
     /** Returns the value of a custom DateTime attribute. Delegates to master variant.
      *  @return Returns null if no such attribute is present or if it is not a DateTime. */
     public DateTime getDateTime(String attributeName) { return masterVariant.getDateTime(attributeName); }
+
+    /** Returns the value of a custom Enum attribute. Delegates to master variant.
+     *  @return Returns the empty String if no such attribute is present or if it is not an Enum. */
+    public Attribute.Enum getEnum(String attributeName) { return masterVariant.getEnum(attributeName); }
+
 
     // --------------------------------------------------------
     // Delegation to master variant

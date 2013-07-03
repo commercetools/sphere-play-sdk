@@ -5,10 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import io.sphere.client.model.EmptyReference;
-import io.sphere.client.model.Money;
-import io.sphere.client.model.Reference;
-import io.sphere.client.model.VersionedId;
+import io.sphere.client.model.*;
 import io.sphere.client.shop.model.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -22,12 +19,12 @@ import javax.annotation.Nonnull;
 public class BackendProduct {
     @Nonnull private String id;
     @JsonProperty("version") private int version;
-    private String name;
-    private String description;
-    private String slug;
-    private String metaTitle;
-    private String metaDescription;
-    private String metaKeywords;
+    private LocalizedString name;
+    private LocalizedString description;
+    private LocalizedString slug;
+    private LocalizedString metaTitle;
+    private LocalizedString metaDescription;
+    private LocalizedString metaKeywords;
     @Nonnull private Variant masterVariant;
     @Nonnull private List<Variant> variants = new ArrayList<Variant>();
     @Nonnull private List<Reference<BackendCategory>> categories = new ArrayList<Reference<BackendCategory>>(); // initialize to prevent NPEs
@@ -49,22 +46,22 @@ public class BackendProduct {
     @Nonnull public VersionedId getIdAndVersion() { return VersionedId.create(id, version); }
 
     /** Name of this product. */
-    public String getName() { return name; }
+    public LocalizedString getName() { return name; }
 
     /** Description of this product. */
-    public String getDescription() { return description; }
+    public LocalizedString getDescription() { return description; }
 
     /** URL friendly name of this product. */
-    public String getSlug() { return slug; }
+    public LocalizedString getSlug() { return slug; }
 
     /** HTML title for product page. */
-    public String getMetaTitle() { return metaTitle; }
+    public LocalizedString getMetaTitle() { return metaTitle; }
 
     /** HTML meta description for product page. */
-    public String getMetaDescription() { return metaDescription; }
+    public LocalizedString getMetaDescription() { return metaDescription; }
 
     /** HTML meta keywords for product page. */
-    public String getMetaKeywords() { return metaKeywords; }
+    public LocalizedString getMetaKeywords() { return metaKeywords; }
 
     /** Categories this product is in. */
     @Nonnull public List<Reference<BackendCategory>> getCategories() { return categories; }

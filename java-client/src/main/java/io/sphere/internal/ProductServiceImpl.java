@@ -13,35 +13,53 @@ import static io.sphere.internal.util.ListUtil.list;
 import com.google.common.collect.ImmutableList;
 import net.jcip.annotations.Immutable;
 
+import java.util.Locale;
+
 @Immutable
 public final class ProductServiceImpl extends ProjectScopedAPI implements ProductService {
     private final ProductRequestFactory requestFactory;
     private ApiMode apiMode;
+    private final Locale defaultLocale;
 
-    public ProductServiceImpl(ProductRequestFactory requestFactory, ApiMode apiMode, ProjectEndpoints endpoints) {
+    public ProductServiceImpl(ProductRequestFactory requestFactory, ApiMode apiMode, ProjectEndpoints endpoints, Locale defaultLocale) {
         super(endpoints);
         this.requestFactory = requestFactory;
         this.apiMode = apiMode;
+        this.defaultLocale = defaultLocale;
     }
 
     @Override public FetchRequest<Product> byId(String id) {
         return requestFactory.createFetchRequest(endpoints.products.byId(id), this.apiMode);
     }
 
+    @Override public FetchRequest<Product> bySlug(String slug, Locale locale) {
+        return requestFactory.createFetchRequestBasedOnQuery(endpoints.products.bySlug(slug, locale), this.apiMode);
+    }
+
     @Override public FetchRequest<Product> bySlug(String slug) {
-        return requestFactory.createFetchRequestBasedOnQuery(endpoints.products.bySlug(slug), this.apiMode);
+        return bySlug(slug, defaultLocale);
     }
 
     private static final ImmutableList<FilterExpression> noFilters = ImmutableList.of();
-    @Override public SearchRequest<Product> all() {
-        return filter(noFilters);
+    @Override public SearchRequest<Product> all(Locale locale) {
+        return filter(locale, noFilters);
     }
 
-    @Override public SearchRequest<Product> filter(FilterExpression filter, FilterExpression... filters) {
-        return filter(list(filter, filters));
+    @Override
+    public SearchRequest<Product> all() {
+        return all(defaultLocale);
     }
 
-    @Override public SearchRequest<Product> filter(Iterable<FilterExpression> filters) {
-        return requestFactory.createSearchRequest(endpoints.products.search(), this.apiMode, filters);
+    @Override public SearchRequest<Product> filter(Locale locale, FilterExpression filter, FilterExpression... filters) {
+        return filter(locale, list(filter, filters));
+    }
+
+    @Override
+    public SearchRequest<Product> filter(FilterExpression filter, FilterExpression... filters) {
+        return filter(defaultLocale, filter, filters);
+    }
+
+    @Override public SearchRequest<Product> filter(Locale locale, Iterable<FilterExpression> filters) {
+        return requestFactory.createSearchRequest(endpoints.products.search(), this.apiMode, filters, locale);
     }
 }
