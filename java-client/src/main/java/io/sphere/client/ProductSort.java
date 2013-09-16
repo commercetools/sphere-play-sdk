@@ -38,4 +38,27 @@ public abstract class ProductSort {
             return direction == SortDirection.DESC ? "[Price DESC]" : "[Price ASC]";
         }
     }
+    // ---------------------------
+    // Name
+    // ---------------------------
+    /** Specifies sorting by name, ascending or descending. */
+    public static final NameSorts name = new NameSorts();
+    /** Specifies sorting by name, ascending or descending. */
+    public static class NameSorts {
+        /** Specifies sorting by name, descending. */
+        public final Name desc = new Name(SortDirection.DESC);
+        /** Specifies sorting by name, ascending. */
+        public final Name asc = new Name(SortDirection.ASC);
+    }
+    /** Specifies sorting by name. */
+    public static class Name extends ProductSort {
+        private final SortDirection direction;
+        private Name(SortDirection direction) {
+            this.direction = direction;
+        }
+        public SortDirection getDirection() { return direction; }
+        @Override public String toString() {
+            return direction == SortDirection.DESC ? "[Name DESC]" : "[Name ASC]";
+        }
+    }
 }

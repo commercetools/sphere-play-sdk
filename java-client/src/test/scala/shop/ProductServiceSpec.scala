@@ -154,17 +154,25 @@ class ProductServiceSpec extends WordSpec with MustMatchers {
   }
 
   "Set search API query params" in {
-    val searchRequestAsc = noProductsClient.products.all(EN).sort(ProductSort.price.asc)
-    asImpl(searchRequestAsc).getUrl must startWith ("/product-projections/search")
-    params(asImpl(searchRequestAsc)) must be (Map("sort" -> "price+asc", "staged" -> "true"))
-
-    val searchRequestDesc = noProductsClient.products.all(EN).sort(ProductSort.price.desc)
-    asImpl(searchRequestDesc).getUrl must startWith ("/product-projections/search")
-    params(asImpl(searchRequestDesc)) must be (Map("sort" -> "price+desc", "staged" -> "true"))
-
     val searchRequestRelevance = noProductsClient.products.all(EN).sort(ProductSort.relevance)
     asImpl(searchRequestRelevance).getUrl must startWith ("/product-projections/search")
     params(asImpl(searchRequestRelevance)) must be (Map("staged" -> "true"))
+
+    val searchRequestPriceAsc = noProductsClient.products.all(EN).sort(ProductSort.price.asc)
+    asImpl(searchRequestPriceAsc).getUrl must startWith ("/product-projections/search")
+    params(asImpl(searchRequestPriceAsc)) must be (Map("sort" -> "price+asc", "staged" -> "true"))
+
+    val searchRequestPriceDesc = noProductsClient.products.all(EN).sort(ProductSort.price.desc)
+    asImpl(searchRequestPriceDesc).getUrl must startWith ("/product-projections/search")
+    params(asImpl(searchRequestPriceDesc)) must be (Map("sort" -> "price+desc", "staged" -> "true"))
+
+    val searchRequestNameAsc = noProductsClient.products.all(EN).sort(ProductSort.name.asc)
+    asImpl(searchRequestNameAsc).getUrl must startWith ("/product-projections/search")
+    params(asImpl(searchRequestNameAsc)) must be (Map("sort" -> "name+asc", "staged" -> "true"))
+
+    val searchRequestNameDesc = noProductsClient.products.all(EN).sort(ProductSort.name.desc)
+    asImpl(searchRequestNameDesc).getUrl must startWith ("/product-projections/search")
+    params(asImpl(searchRequestNameDesc)) must be (Map("sort" -> "name+desc", "staged" -> "true"))
   }
 
   "Set filter params" in {
