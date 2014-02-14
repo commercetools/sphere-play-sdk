@@ -54,7 +54,7 @@ class CustomerServiceSpec extends WordSpec with MustMatchers {
 
   "Create customer" in {
     val customerShopClient = MockSphereClient.create(customersResponse = FakeResponse(loginResultJson))
-    val req = customerShopClient.customers.signUp("em@ail.com", "secret", new CustomerName("sir", "hans", "don", "wurst"), cartId)
+    val req = customerShopClient.customers.signUp("em@ail.com", "secret", new CustomerName("sir", "hans", "don", "wurst"))
       .asInstanceOf[CommandRequestImpl[SignInResult]]
     req.getRequestHolder.getUrl must be("/customers")
     val cmd = req.getCommand.asInstanceOf[CustomerCommands.CreateCustomer]
