@@ -1,3 +1,8 @@
+## v0.53.0
+
+* Add field customerNumber for customers.
+* Add field orderNumber for orders.
+
 ## v0.52.1
 
 *  Products do not throw NullPointerExceptions if description, metaTitle, metaDescription and metaKeywords are not set.
