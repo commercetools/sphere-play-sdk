@@ -1,11 +1,17 @@
 language: scala
 scala:
 - 2.10.0
-script: sbt clean test
+script:
+- sbt clean test
+- sbt clean compile unidoc
+- ./publish-doc.sh
 jdk:
 - oraclejdk7
 env:
-- SBT_OPTS="-XX:PermSize=512M -XX:MaxPermSize=1024M"
+  matrix:
+  - SBT_OPTS="-XX:PermSize=512M -XX:MaxPermSize=1024M"
+  global:
+    secure: R1Q60LRdnUCqfPZr06ScUnFWdcdTx1ecwHc72V38qL63neG6LzqwwlQluACBrwQNyRK4am17R8ytt2RoY456+x0hELNNo/KLNRSwcQbpcx+IaGpmTqyCcIVS0Hi8/+1wmXnTClZvx/Nyh0s6CJEMi5sHUmLiFbLsqFS0GY4kM6Y=
 notifications:
   email:
     on_success: never
@@ -14,7 +20,8 @@ notifications:
     rooms:
       secure: mnqbGUoVeck37BoxFHHL95hEx0vynSbBhLYnftyyPhe6it+xPBzeh0oW/AEste9OG+JiF7ee1E0rDN/R+SxCm7/czm+kSlh4ERb9mFk1k7njUCjk2rfqk+8/o10eAwUj2ksQ69zl7RelMtY5riFyjOpg7ilCAjUEq1z1A5xwCmE=
     template:
-    - '%{repository}#%{build_number} (%{author}): %{message} (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Compare</a>)'
+    - ! '%{repository}#%{build_number} (%{author}): %{message} (<a href="%{build_url}">Details</a>/<a
+      href="%{compare_url}">Compare</a>)'
     format: html
     on_success: change
     on_failure: change
