@@ -25,3 +25,6 @@ notifications:
     format: html
     on_success: change
     on_failure: change
+cache:
+  directories:
+  - $HOME/.ivy2
