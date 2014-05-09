@@ -1,3 +1,4 @@
+
 # Sphere Play SDK
 
 [![Build Status](https://travis-ci.org/commercetools/sphere-play-sdk.png)](https://travis-ci.org/commercetools/sphere-play-sdk)
