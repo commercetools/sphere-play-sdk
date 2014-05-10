@@ -5,4 +5,4 @@ git config user.name "TravisCI"
 git config user.email "build@commercetools.com"
 git add .
 git commit -m "Deploy to Github Pages."
-git push --force "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+git push --force "https://${GH_TOKEN}@github.com/commercetools/sphere-play-sdk" master:gh-pages
