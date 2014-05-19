@@ -8,7 +8,6 @@ script:
 - du -sh $HOME/.ivy2
 - sbt clean test
 - sbt clean compile unidoc
-- ./publish-doc.sh
 jdk:
 - oraclejdk7
 env:
