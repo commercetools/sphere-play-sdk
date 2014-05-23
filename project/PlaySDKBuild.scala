@@ -15,7 +15,7 @@ object PlaySDKBuild extends Build {
                   settings(standardSettings:_*).
                   settings(javadocSettings:_*).
                   settings(javaUnidocSettings:_*).
-                  settings(libraryDependencies += Libs.junitDep).
+                  settings(libraryDependencies += Libs.junitDep, playPlugin := true).
                   aggregate(spherePlaySDK)
 
   // ----------------------
@@ -117,7 +117,7 @@ public final class Version {
   )
 
   lazy val scalaSettings = Seq[Setting[_]](
-    scalaVersion := "2.10.0",
+    scalaVersion := "2.10.4",
     // Emit warnings for deprecated APIs, emit erasure warnings
     scalacOptions ++= Seq("-deprecation", "-unchecked")
   )
@@ -163,7 +163,7 @@ public final class Version {
     lazy val logbackClassic  = "ch.qos.logback" % "logback-classic" % "1.0.13" % "it"
     lazy val logbackCore     = "ch.qos.logback" % "logback-core" % "1.0.13" % "it"
     lazy val junitDep        = "junit" % "junit-dep" % "4.11" % "test"
-    lazy val playTest        = "play" % "play-test_2.10" % "2.1.1" % "it"
+    lazy val playTest        = javaCore.organization %% "play-test" % javaCore.revision % "it"
     lazy val play            = javaCore % "it"
   }
 

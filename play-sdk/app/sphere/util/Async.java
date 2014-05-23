@@ -6,10 +6,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import io.sphere.client.SphereResult;
 import io.sphere.internal.util.Util;
 import play.api.libs.concurrent.Promise;
-import play.libs.Akka;
 import play.libs.F;
 import play.mvc.Result;
-import play.mvc.Results;
 import scala.concurrent.Future;
 import sphere.DeleteRequest;
 import sphere.internal.DeleteRequestAdapter;
@@ -22,18 +20,18 @@ public final class Async {
     private Async() {}
 
     /** Creates Play's AsyncResult based on Guava's ListenableFuture. */
-    public static Results.AsyncResult asyncResult(ListenableFuture<Result> resultFuture) {
-        return Results.async(asPlayPromise(resultFuture));
+    public static F.Promise<Result> asyncResult(ListenableFuture<Result> resultFuture) {
+        return asPlayPromise(resultFuture);
     }
 
     /** Converts Guava's ListenableFuture to play.libs.F.Promise. */
     public static <T> F.Promise<T> asPlayPromise(ListenableFuture<T> future) {
-        return Akka.asPromise(asScalaFuture(future));
+        return F.Promise.wrap(asScalaFuture(future));
     }
 
     /** Converts Guava's ListenableFuture to scala.concurrent.Future. */
     private static <T> Future<T> asScalaFuture(ListenableFuture<T> future) {
-        final scala.concurrent.Promise<T> promise = Promise.apply();
+        final scala.concurrent.Promise<T> promise = Promise.<T>apply();
         Futures.addCallback(future, new FutureCallback<T>() {
             @Override public void onSuccess(T result) {
                 promise.success(result);
