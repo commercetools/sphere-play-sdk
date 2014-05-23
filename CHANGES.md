@@ -1,3 +1,7 @@
+## v0.57.1
+
+* Add order state cancelled.
+
 ## v0.57.0
 * Migration to Play 2.2. For backward compatibility the Jackson JSON library 1.9.x is still used, but Play uses since 2.2 Jackson 2.x. (see http://www.playframework.com/documentation/2.2.x/Migration22).
 
