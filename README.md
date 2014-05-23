@@ -44,6 +44,8 @@ If you want to use just the Java client, the Maven dependency is:
 
 These artifacts are deployed to Maven Central.
 
+If you use Play 2.1 use version [0.56.0](https://github.com/commercetools/sphere-play-sdk/tree/v0.56.0).
+
 ### Snapshots
 
 Snapshots are published on sonatype including the first characters of the git commit hash. On [sonatype](http://oss.sonatype.org/content/repositories/snapshots/io/sphere/sphere-play-sdk_2.10/) you can look up the desired snapshot version number.
