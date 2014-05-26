@@ -10,7 +10,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * {@link #isOnStock() isOnStock} is true if and only if
  * {@link io.sphere.client.shop.model.InventoryEntry#getQuantityOnStock() InventoryEntry.quantityOnStock} is greater than 0.
  *
- * <p><i>Note:<i/>The corresponding InventoryEntry is the immediate source of truth. The information in VariantAvailability
+ * <p><i>Note:</i>The corresponding InventoryEntry is the immediate source of truth. The information in VariantAvailability
  * is updated asynchronously when inventory entries are modified, and is therefore eventually consistent.
  * */
 public class VariantAvailability {

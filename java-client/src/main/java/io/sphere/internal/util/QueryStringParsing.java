@@ -11,7 +11,7 @@ import static io.sphere.internal.util.QueryStringFormat.*;
 import java.math.BigDecimal;
 import java.util.*;
 
-/** Application-level query string helper (for filters & facets). */
+/** Application-level query string helper (for filters &amp; facets). */
 public class QueryStringParsing {
     // ----------------------------------------------------------------
     // String

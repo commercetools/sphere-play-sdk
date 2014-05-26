@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.*;
 
-/** Application-level query string helper (for filters & facets). */
+/** Application-level query string helper (for filters &amp; facets). */
 public class QueryStringConstruction {
 
     //-------------------------------------------------------
