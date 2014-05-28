@@ -1,3 +1,7 @@
+## v0.58.0
+
+* implement io.sphere.client.shop.model.Attribute#getLocalizableEnum()
+
 ## v0.57.2
 
 * Fix JavaDoc bugs (internal).

@@ -1,11 +1,12 @@
 package io.sphere.client.shop.model;
 
-import com.google.common.base.Objects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import io.sphere.client.model.LocalizedString;
 import io.sphere.internal.util.Log;
 import io.sphere.client.model.Money;
+import io.sphere.internal.util.Util;
 import net.jcip.annotations.Immutable;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -110,6 +111,22 @@ public class Attribute {
             }
             else return new Enum((String) map.get("key"), label);
         }
+    }
+
+    @SuppressWarnings("unchecked")//since object has no type information it needs to be casted
+    public LocalizableEnum getLocalizableEnum() {
+        LocalizableEnum result = new LocalizableEnum("", defaultLocalizedString);
+        if (getValue() instanceof Map) {
+            final Map data = (Map) getValue();
+            final String key = data.get("key").toString();
+            final Map<String, String> labelsStringMap = (Map<String, String>) data.get("label");
+            final Map<Locale, String> labelsLocaleMap = Maps.newHashMap();
+            for (Map.Entry<String, String> entry : labelsStringMap.entrySet()) {
+                labelsLocaleMap.put(Util.fromLanguageTag(entry.getKey()), entry.getValue());
+            }
+            result = new LocalizableEnum(key, new LocalizedString(labelsLocaleMap));
+        }
+        return result;
     }
 
     private static DateTimeFormatter dateTimeFormat = ISODateTimeFormat.dateTimeParser();
