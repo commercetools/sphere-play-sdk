@@ -27,9 +27,7 @@ class ProductSearchSpec extends WordSpec with MustMatchers {
     }
     
     "set and remove attribute" in {
-      val queryResult = client.products().query().fetch()
-      queryResult.getCount must be >= (1)
-      val Some(product) = queryResult.getResults.headOption
+      val product = client.products().byId("e44b3743-9e8d-4ce9-be57-b34ea9ec53e5").fetch().get()
       val attribute = new Attribute("custom-attribute", "value1")
       
       info("set attribute")
