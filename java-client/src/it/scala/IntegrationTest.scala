@@ -4,6 +4,11 @@ import com.google.common.collect.ImmutableMap
 import io.sphere.client.model.{Money, LocalizedString}
 import java.util.{UUID, Currency, Locale}
 import org.scalatest.matchers.{MatchResult, Matcher}
+import scala.collection.JavaConverters._
+import scala.collection.JavaConversions._
+import java.lang.{Double => JDouble}
+import java.math.{BigDecimal => JBigDecimal, BigInteger}
+import org.joda.time.format.ISODateTimeFormat
 
 object IntegrationTest {
   object Implicits {
@@ -11,10 +16,20 @@ object IntegrationTest {
     implicit def string2localizedString(s: String): LocalizedString =
       new LocalizedString(ImmutableMap.of(Locale.ENGLISH, s, Locale.FRENCH, s"le ${s}"))
 
+    implicit class RichString(val s: String) extends AnyVal {
+      def toEnLoc = new LocalizedString(Locale.ENGLISH, s)
+      def EUR = new Money(new JBigDecimal(s), "EUR")
+      def toDateTime = ISODateTimeFormat.dateTimeParser.parseDateTime(s)
+    }
+
+    implicit class RichSet(val set: java.util.Set[String]) extends AnyVal {
+      def toEnLocSet = set.map(_.toEnLoc).asJava
+    }
+
     implicit val locale = Locale.ENGLISH
 
     implicit final class MoneyNotation(val currency: Currency) extends AnyVal {
-      def apply(amount: String): Money = new Money(new java.math.BigDecimal(amount), currency.getCurrencyCode)
+      def apply(amount: String): Money = new Money(new JBigDecimal(amount), currency.getCurrencyCode)
     }
   }
 
