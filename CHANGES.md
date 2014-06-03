@@ -1,3 +1,7 @@
+## v0.59.0
+
+* Implement Attribute type set
+
 ## v0.58.0
 
 * implement io.sphere.client.shop.model.Attribute#getLocalizableEnum()
