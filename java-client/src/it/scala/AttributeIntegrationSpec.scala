@@ -78,7 +78,7 @@ class AttributeIntegrationSpec extends WordSpec with MustMatchers {
       }
 
       "read DateTime from date time" in {
-        val expected = ImmutableSet.of("2014-06-02T15:47:16.000+02:00", "2014-06-03T15:47:24.000+02:00").map(_.toDateTime)
+        val expected = ImmutableSet.of("2014-06-02T15:47:16", "2014-06-03T15:47:24").map(_.toDateTime)
         attributeMustBe(expected, "setattributedatetim")
       }
     }
