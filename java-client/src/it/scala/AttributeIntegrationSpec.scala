@@ -11,7 +11,7 @@ import scala.collection.JavaConverters._
 import scala.collection.JavaConversions._
 import java.lang.{Double => JDouble}
 import java.math.{BigDecimal => JBigDecimal, BigInteger}
-import org.joda.time.DateTime
+import org.joda.time.{LocalTime, DateTime}
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import scala.reflect.ClassTag
 
@@ -67,24 +67,18 @@ class AttributeIntegrationSpec extends WordSpec with MustMatchers {
         attributeMustBe(expected, "SETATTRIBUTEMONEY")
       }
 
-      "read DateTime from date" in {
-        val expected = ImmutableSet.of("2014-06-02T00:00:00.000+02:00" toDateTime, "2014-06-03T00:00:00.000+02:00" toDateTime)
+      "read LocalDate from date" in {
+        val expected = ImmutableSet.of("2014-06-02", "2014-06-03").map(_.toDate)
         attributeMustBe(expected, "setattributedate")
       }
 
-      "read DateTime from time" in {
-        def formatted(dateTime: DateTime): String = {
-            val dateTimeFormatter: DateTimeFormatter = DateTimeFormat.forPattern("HH:mm:ss")
-            dateTimeFormatter.print(dateTime)
-        }
-        val expected = ImmutableSet.of("15:47:16", "15:47:33")
-        val attribute: Attribute = product.getAttribute("setattributetime")
-        val actual = attribute.getSet(classOf[DateTime]).map(formatted).asJava
-        actual must be(expected)
+      "read LocalTime from time" in {
+        val expected = ImmutableSet.of("15:47:16", "15:47:33").map(_.toTime)
+        attributeMustBe(expected, "setattributetime")
       }
 
       "read DateTime from date time" in {
-        val expected = ImmutableSet.of("2014-06-02T15:47:16.000+02:00" toDateTime, "2014-06-03T15:47:24.000+02:00" toDateTime)
+        val expected = ImmutableSet.of("2014-06-02T15:47:16.000+02:00", "2014-06-03T15:47:24.000+02:00").map(_.toDateTime)
         attributeMustBe(expected, "setattributedatetim")
       }
     }

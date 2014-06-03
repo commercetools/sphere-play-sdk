@@ -8,7 +8,7 @@ import scala.collection.JavaConverters._
 import scala.collection.JavaConversions._
 import java.lang.{Double => JDouble}
 import java.math.{BigDecimal => JBigDecimal, BigInteger}
-import org.joda.time.format.ISODateTimeFormat
+import org.joda.time.format.{DateTimeFormat, ISODateTimeFormat}
 
 object IntegrationTest {
   object Implicits {
@@ -20,6 +20,8 @@ object IntegrationTest {
       def toEnLoc = new LocalizedString(Locale.ENGLISH, s)
       def EUR = new Money(new JBigDecimal(s), "EUR")
       def toDateTime = ISODateTimeFormat.dateTimeParser.parseDateTime(s)
+      def toDate = DateTimeFormat.forPattern("yyyy-MM-dd").parseLocalDate(s)
+      def toTime = DateTimeFormat.forPattern("HH:mm:ss").parseLocalTime(s)
     }
 
     implicit class RichSet(val set: java.util.Set[String]) extends AnyVal {

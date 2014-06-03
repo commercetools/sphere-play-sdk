@@ -12,6 +12,8 @@ import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
@@ -193,18 +195,19 @@ public class Attribute {
         mappers.put(DateTime.class, new Function<Object, Object>() {
             @Override
             public Object apply(final Object input) {
-                final String dateTimeAsString = input.toString();
-                DateTime result;
-                final String timePattern = "HH:mm:ss";
-                final String datePattern = "yyyy-MM-dd";
-                if (dateTimeAsString.length() == timePattern.length()) {
-                    result = DateTimeFormat.forPattern(timePattern).parseDateTime(dateTimeAsString);
-                } else if (dateTimeAsString.length() == datePattern.length()) {
-                    result = DateTimeFormat.forPattern(datePattern).parseDateTime(dateTimeAsString);
-                } else {
-                    result = dateTimeFormat.parseDateTime(dateTimeAsString);
-                }
-                return result;
+                return dateTimeFormat.parseDateTime(input.toString());
+            }
+        });
+        mappers.put(LocalDate.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return DateTimeFormat.forPattern("yyyy-MM-dd").parseLocalDate(input.toString());
+            }
+        });
+        mappers.put(LocalTime.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return DateTimeFormat.forPattern("HH:mm:ss").parseLocalTime(input.toString());
             }
         });
         if (getValue() instanceof List) {
