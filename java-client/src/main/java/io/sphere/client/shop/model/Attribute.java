@@ -1,8 +1,8 @@
 package io.sphere.client.shop.model;
 
+import com.google.common.base.Function;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.*;
 import io.sphere.client.model.LocalizedString;
 import io.sphere.internal.util.Log;
 import io.sphere.client.model.Money;
@@ -12,12 +12,12 @@ import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
 import javax.annotation.Nonnull;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /** Custom attribute of a {@link io.sphere.client.shop.model.Product}. */
 @Immutable
@@ -95,6 +95,10 @@ public class Attribute {
         // It sees a json object {'currencyCode':'EUR','centAmount':1200} and parses it as LinkedHashMap.
         Object v = getValue();
         if (!(v instanceof Map)) return defaultMoney;
+        return convertToMoney(v);
+    }
+
+    private Money convertToMoney(final Object v) {
         return new ObjectMapper().convertValue(v, Money.class);
     }
 
@@ -104,13 +108,16 @@ public class Attribute {
         Object v = getValue();
         if (!(v instanceof Map)) return defaultEnum;
         else {
-            Map map = (Map) v;
-            String label = (String) map.get("label");
-            if (Strings.isNullOrEmpty(label)){
-                return defaultEnum;
-            }
-            else return new Enum((String) map.get("key"), label);
+            return extractEnum((Map) v);
         }
+    }
+
+    private Enum extractEnum(Map map) {
+        String label = (String) map.get("label");
+        if (Strings.isNullOrEmpty(label)){
+            return defaultEnum;
+        }
+        else return new Enum((String) map.get("key"), label);
     }
 
     @SuppressWarnings("unchecked")//since object has no type information it needs to be casted
@@ -118,13 +125,102 @@ public class Attribute {
         LocalizableEnum result = new LocalizableEnum("", defaultLocalizedString);
         if (getValue() instanceof Map) {
             final Map data = (Map) getValue();
-            final String key = data.get("key").toString();
-            final Map<String, String> labelsStringMap = (Map<String, String>) data.get("label");
-            final Map<Locale, String> labelsLocaleMap = Maps.newHashMap();
-            for (Map.Entry<String, String> entry : labelsStringMap.entrySet()) {
-                labelsLocaleMap.put(Util.fromLanguageTag(entry.getKey()), entry.getValue());
+            result = extractLocalizableEnum(data);
+        }
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")//since object has no type information it needs to be casted
+    private LocalizableEnum extractLocalizableEnum(Map data) {
+        final String key = data.get("key").toString();
+        final Map<String, String> labelsStringMap = (Map<String, String>) data.get("label");
+        final Map<Locale, String> labelsLocaleMap = Maps.newHashMap();
+        for (Map.Entry<String, String> entry : labelsStringMap.entrySet()) {
+            labelsLocaleMap.put(Util.fromLanguageTag(entry.getKey()), entry.getValue());
+        }
+        return new LocalizableEnum(key, new LocalizedString(labelsLocaleMap));
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> ImmutableSet<T> getSet(final Class<T> clazz) {
+        ImmutableSet<T> result = ImmutableSet.of();
+
+
+        //TODO make static
+        final Map<Class, Function<Object, Object>> mappers = Maps.newHashMap();
+        mappers.put(LocalizableEnum.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return extractLocalizableEnum((Map) input);
             }
-            result = new LocalizableEnum(key, new LocalizedString(labelsLocaleMap));
+        });
+        mappers.put(LocalizedString.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return LocalizedStringUtils.fromStringStringMap((Map<String, String>) input);
+            }
+        });
+        final Function<Object, Object> primitive = new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return input;
+            }
+        };
+        mappers.put(String.class, primitive);
+        mappers.put(Enum.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return extractEnum((Map) input);
+            }
+        });
+        mappers.put(Integer.class, primitive);
+        mappers.put(Double.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                Object result = input;
+                if (result.getClass().equals(Integer.class)) {
+                    result = ((Integer)input).doubleValue();
+                }
+                return result;
+            }
+        });
+        mappers.put(Money.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                return convertToMoney(input);
+            }
+        });
+        mappers.put(DateTime.class, new Function<Object, Object>() {
+            @Override
+            public Object apply(final Object input) {
+                final String dateTimeAsString = input.toString();
+                DateTime result;
+                final String timePattern = "HH:mm:ss";
+                final String datePattern = "yyyy-MM-dd";
+                if (dateTimeAsString.length() == timePattern.length()) {
+                    result = DateTimeFormat.forPattern(timePattern).parseDateTime(dateTimeAsString);
+                } else if (dateTimeAsString.length() == datePattern.length()) {
+                    result = DateTimeFormat.forPattern(datePattern).parseDateTime(dateTimeAsString);
+                } else {
+                    result = dateTimeFormat.parseDateTime(dateTimeAsString);
+                }
+                return result;
+            }
+        });
+        if (getValue() instanceof List) {
+            if (mappers.containsKey(clazz)) {
+                final List data = (List) getValue();
+                result = ImmutableSet.copyOf(Iterables.transform(data, new Function() {
+                    @Override
+                    public T apply(final Object value) {
+                        return (T) mappers.get(clazz).apply(value);
+                    }
+                }));
+            } else {
+                Log.warn("mapper not present for " + clazz);
+            }
+        } else {
+            Log.warn("unexpected class " + getValue() + " " + getValue().getClass());
         }
         return result;
     }
@@ -192,6 +288,26 @@ public class Attribute {
         @Override
         public String toString() {
             return "[Enum key='" + key + "' value='" + label +"']";
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Enum anEnum = (Enum) o;
+
+            if (!key.equals(anEnum.key)) return false;
+            if (!label.equals(anEnum.label)) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = key.hashCode();
+            result = 31 * result + label.hashCode();
+            return result;
         }
     }
 }
