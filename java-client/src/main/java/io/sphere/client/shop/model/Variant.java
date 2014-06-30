@@ -41,6 +41,10 @@ public class Variant {
         this.availability = availability;
     }
 
+    public static Variant create(final int id, final String sku, final List<Price> prices, final List<Image> images, final List<Attribute> attributes, final VariantAvailability availability) {
+        return new Variant(id, sku, prices, images, attributes, availability);
+    }
+
     /** The main image for this variant - the first image in the {@link #getImages() images} list.
      *  @return The image or null if this variant has no images. */
     public Image getFeaturedImage() {

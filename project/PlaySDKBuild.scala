@@ -49,7 +49,7 @@ object PlaySDKBuild extends Build {
     base = file("java-client"),
     settings =
       Defaults.defaultSettings ++ standardSettings ++ scalaSettings ++ java6Settings ++ Defaults.itSettings ++
-        testSettings(Libs.scalaTest, Libs.logbackClassic, Libs.logbackCore, Libs.junitDep) ++ Seq(
+        testSettings(Libs.scalaTest, Libs.logbackClassic, Libs.logbackCore, Libs.junitDep, Libs.junitInterface, Libs.festAssert) ++ Seq(
         autoScalaLibrary := false, // no dependency on Scala standard library (just for tests)
         crossPaths := false,
         libraryDependencies ++= Seq(
@@ -163,6 +163,8 @@ public final class Version {
     lazy val logbackClassic  = "ch.qos.logback" % "logback-classic" % "1.0.13" % "it"
     lazy val logbackCore     = "ch.qos.logback" % "logback-core" % "1.0.13" % "it"
     lazy val junitDep        = "junit" % "junit-dep" % "4.11" % "test"
+    lazy val junitInterface = "com.novocode" % "junit-interface" % "0.10" % "test"
+    lazy val festAssert = "org.easytesting" % "fest-assert" % "1.4" % "test"
     lazy val playTest        = javaCore.organization %% "play-test" % javaCore.revision % "it"
     lazy val play            = javaCore % "it"
   }

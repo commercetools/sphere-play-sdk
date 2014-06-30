@@ -17,6 +17,18 @@ public class TaxCategory {
     // for JSON deserializer
     protected TaxCategory() {}
 
+    private TaxCategory(final String id, final int version, final String name, final String description, final List<TaxRate> rates) {
+        this.id = id;
+        this.version = version;
+        this.name = name;
+        this.description = description;
+        this.rates = rates;
+    }
+
+    public static TaxCategory create(final String id, final int version, final String name, final String description, final List<TaxRate> rates) {
+        return new TaxCategory(id, version, name, description, rates);
+    }
+
     /** The unique id. */
     @Nonnull public String getId() { return id; }
 
