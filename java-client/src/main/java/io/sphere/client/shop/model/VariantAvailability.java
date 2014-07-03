@@ -20,6 +20,15 @@ public class VariantAvailability {
     // for JSON deserializer
     private VariantAvailability() { }
 
+    private VariantAvailability(boolean isOnStock, int restockableInDays) {
+        this.isOnStock = isOnStock;
+        this.restockableInDays = restockableInDays;
+    }
+
+    public static VariantAvailability create(final boolean isOnStock, final int restockableInDays) {
+        return new VariantAvailability(isOnStock, restockableInDays);
+    }
+
     /** True if the quantity on stock for the product variant is greater than 0. */
     public boolean isOnStock() { return isOnStock; }
 

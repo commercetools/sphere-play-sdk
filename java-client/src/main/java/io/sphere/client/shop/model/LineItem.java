@@ -24,6 +24,24 @@ public class LineItem {
     // for JSON deserializer
     private LineItem() {}
 
+    private LineItem(final String id, final String productId, final LocalizedString productName, final Variant variant,
+                    final int quantity, final Price price, final TaxRate taxRate, final Reference<Channel> supplyChannel) {
+        this.id = id;
+        this.productId = productId;
+        this.productName = productName;
+        this.variant = variant;
+        this.quantity = quantity;
+        this.price = price;
+        this.taxRate = taxRate;
+        this.supplyChannel = supplyChannel;
+    }
+
+    public static LineItem create(final String id, final String productId, final LocalizedString productName,
+                                  final Variant variant, final int quantity, final Price price, final TaxRate taxRate,
+                                  final Reference<Channel> supplyChannel) {
+        return new LineItem(id, productId, productName, variant, quantity, price, taxRate, supplyChannel);
+    }
+
     /** Unique id of this line item. */
     @Nonnull public String getId() { return id; }
 

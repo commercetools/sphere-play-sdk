@@ -33,6 +33,10 @@ public class Money {
         this.currencyCode = currencyCode;
     }
 
+    public static Money createFromCentAmount(final long centAmount, final String currencyCode) {
+        return new Money(centAmount, currencyCode);
+    }
+
     /** Creates a new Money instance.
      *  Money can't represent cent fractions. The value will be rounded to nearest cent value using RoundingMode.HALF_EVEN. */
     public Money(BigDecimal amount, String currencyCode) {

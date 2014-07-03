@@ -18,6 +18,18 @@ public class TaxRate {
     //for JSON deserializer
     private TaxRate() {}
 
+    private TaxRate(final String name, final double amount, final boolean isIncludedInPrice, final CountryCode country, final String state) {
+        this.name = name;
+        this.amount = amount;
+        this.isIncludedInPrice = isIncludedInPrice;
+        this.country = country;
+        this.state = state;
+    }
+
+    public static TaxRate create(final String name, final double amount, final boolean isIncludedInPrice, final CountryCode country, final String state) {
+        return new TaxRate(name, amount, isIncludedInPrice, country, state);
+    }
+
     /** The name of the tax rate, such as 'General tax (19%)'. */
     @Nonnull public String getName() { return name; }
 

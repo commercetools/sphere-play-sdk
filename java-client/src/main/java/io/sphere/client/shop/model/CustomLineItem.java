@@ -22,6 +22,21 @@ public class CustomLineItem {
     // for JSON deserializer
     private CustomLineItem() {}
 
+    private CustomLineItem(final String id, final LocalizedString name, final Money money, final String slug,
+                          final int quantity, final TaxRate taxRate) {
+        this.id = id;
+        this.name = name;
+        this.money = money;
+        this.slug = slug;
+        this.quantity = quantity;
+        this.taxRate = taxRate;
+    }
+
+    public static CustomLineItem create(final String id, final LocalizedString name, final Money money,
+                                        final String slug, final int quantity, final TaxRate taxRate) {
+        return new CustomLineItem(id, name, money, slug, quantity, taxRate);
+    }
+
     /** Unique id of this line item. */
     @Nonnull public String getId() { return id; }
 
