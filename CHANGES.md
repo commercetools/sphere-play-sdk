@@ -1,3 +1,15 @@
+## v0.60.0
+
+* open model classes for instantiation (for tests):
+    * Money
+    * CustomLineItem
+    * LineItem
+    * TaxCategory
+    * TaxRate
+    * Variant
+    * VariantAvailability
+* Fix Customer/Cart/Product raise exception when not found
+
 ## v0.59.0
 
 * Implement Attribute type set

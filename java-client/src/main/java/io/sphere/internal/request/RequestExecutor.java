@@ -78,7 +78,11 @@ public class RequestExecutor {
                     if (status / 100 != 2) {
                         SphereErrorResponse errorResponse = null;
                         try {
-                            errorResponse = jsonParser.readValue(body, errorResponseJsonTypeRef);
+                            if (Strings.isNullOrEmpty(body)) {//the /customers/id endpoint does not return JSON on 404
+                                errorResponse = SphereErrorResponse.of(status);
+                            } else {
+                                errorResponse = jsonParser.readValue(body, errorResponseJsonTypeRef);
+                            }
                         } catch (Exception e) {
                             // This can only happen when the backend and SDK don't match.
                             Log.error(

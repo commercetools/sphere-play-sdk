@@ -1,5 +1,6 @@
 package sphere
 
+import com.google.common.base.Optional
 import io.sphere.client.shop.model._
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
@@ -26,7 +27,7 @@ class CustomerServiceIntegrationSpec extends WordSpec with MustMatchers {
        val updatedCustomer = client.customers().update(customer.getIdAndVersion, new CustomerUpdate().addAddress(GermanAddress)).execute()
        updatedCustomer.getAddresses.asScala.toList(0).getCountry must be(GermanAddress.getCountry)
      }
-    
+
      "change one customer address of many" in {
        val customer = client.customers().update(newCustomer.getIdAndVersion, new CustomerUpdate().addAddress(GermanAddress).addAddress(FrenchAddress)).execute()
        customer.getAddresses.map(_.getCountry).toSet must be(Set(GermanAddress.getCountry, FrenchAddress.getCountry))
@@ -91,6 +92,10 @@ class CustomerServiceIntegrationSpec extends WordSpec with MustMatchers {
       val externalId = Fixtures.randomString()
       client.customers.update(signInResult.getCustomer.getIdAndVersion, new CustomerUpdate().setExternalId(externalId)).execute()
       client.customers.byId(signInResult.getCustomer.getId).fetch.get.getExternalId must be (externalId)
+    }
+
+    "return Optional.absent() if a customer cannot be found by id" in {
+      client.customers().byId("not-present").fetch() must be (Optional.absent())
     }
   }
 }

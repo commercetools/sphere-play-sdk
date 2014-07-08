@@ -17,6 +17,10 @@ public class SphereErrorResponse {
     // for JSON deserializer
     private SphereErrorResponse() {}
 
+    private SphereErrorResponse(final int statusCode) {
+        this.statusCode = statusCode;
+    }
+
     /** The HTTP status code. */
     public int getStatusCode() { return statusCode; }
 
@@ -28,5 +32,9 @@ public class SphereErrorResponse {
 
     @Override public String toString() {
         return String.format("[" + getStatusCode() + "]" + "\n  " + Joiner.on("\n  ").join(getErrors()));
+    }
+
+    public static SphereErrorResponse of(final int statusCode) {
+        return new SphereErrorResponse(statusCode);
     }
 }
