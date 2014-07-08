@@ -17,6 +17,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
+import com.google.common.base.Optional;
 
 import javax.annotation.Nonnull;
 import java.util.*;
@@ -55,6 +56,16 @@ public class Attribute {
     // ------------------------------
     // Typed value getters
     // ------------------------------
+
+    public Optional<Boolean> getBoolean() {
+        final Optional<Boolean> result;
+        if (value != null && value instanceof Boolean) {
+            result = Optional.of((Boolean) value);
+        } else {
+            result = Optional.absent();
+        }
+        return result;
+    }
 
     /** If this is a string attribute, returns the string value.
      *  @return The value or empty string if the value is not a string. */
@@ -168,6 +179,7 @@ public class Attribute {
                 return input;
             }
         };
+        mappers.put(Boolean.class, primitive);
         mappers.put(String.class, primitive);
         mappers.put(Enum.class, new Function<Object, Object>() {
             @Override
