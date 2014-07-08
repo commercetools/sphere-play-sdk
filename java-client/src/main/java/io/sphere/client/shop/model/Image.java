@@ -95,7 +95,9 @@ public class Image {
         float ratio = ((float)current.getHeight() / (float)current.getWidth());
         int targetWidth = squareSize;
         int targetHeight = squareSize;
-        if (ratio <= 1) {
+        if (Float.isNaN(ratio)) {
+            // use the predefined sizes.
+        } else if (ratio <= 1) {
             // landscape
             if (targetWidth == current.getWidth()) return current;
             targetHeight = Math.round(targetWidth * ratio);
