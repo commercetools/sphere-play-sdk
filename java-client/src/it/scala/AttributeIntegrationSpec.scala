@@ -14,6 +14,7 @@ import java.math.{BigDecimal => JBigDecimal, BigInteger}
 import org.joda.time.{LocalTime, DateTime}
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import scala.reflect.ClassTag
+import com.google.common.base.Optional
 
 class AttributeIntegrationSpec extends WordSpec with MustMatchers {
   implicit lazy val client: SphereClient = IntegrationTestClient()
@@ -27,6 +28,13 @@ class AttributeIntegrationSpec extends WordSpec with MustMatchers {
       attribute must not be(null)
       attribute.getLocalizableEnum must be(new LocalizableEnum("third", new LocalizedString(locale, "third key")))
       attribute.getLocalizableEnum.getLabel.get(locale) must be("third key")
+    }
+
+    "read attributes which are booleans" in {
+      val product = client.products.bySlug(locale, "product-with-boolean-2").fetch.get
+      val attribute = product.getMasterVariant.getAttribute("boolean-attribute")
+      attribute must not be(null)
+      attribute.getBoolean must be(Optional.of(true))
     }
 
     "read attributes which are sets" must {
@@ -45,6 +53,14 @@ class AttributeIntegrationSpec extends WordSpec with MustMatchers {
       "read text" in {
         val expected = ImmutableSet.of("text content 1", "text content 2")
         attributeMustBe(expected, "SETATTRIBUTETEXT")
+      }
+
+      "read boolean" in {
+        val product = client.products.bySlug(locale, "product-with-boolean-set").fetch.get
+        val expected = ImmutableSet.of(true, false)
+        val attribute: Attribute = product.getAttribute("setattributebool")
+        val actual = attribute.getSet(classOf[java.lang.Boolean])
+        actual must be(expected)
       }
 
       "read enum" in {

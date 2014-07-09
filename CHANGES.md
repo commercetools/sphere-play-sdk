@@ -1,3 +1,7 @@
+## v0.61.0
+
+* product attribute boolean added
+
 ## v0.60.0
 
 * open model classes for instantiation (for tests):
