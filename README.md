@@ -42,7 +42,11 @@ If you want to use just the Java client, the Maven dependency is:
 </dependency>
 ````
 
-These artifacts are deployed to Maven Central.
+These artifacts are deployed to Maven Central. The synchronization takes after the release two hours. With this additional resolver you can retrieve the artifacts earlier:
+
+```
+resolvers += Resolver.sonatypeRepo("releases")
+```
 
 If you use Play 2.1 use version [0.56.0](https://github.com/commercetools/sphere-play-sdk/tree/v0.56.0).
 
