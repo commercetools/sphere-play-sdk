@@ -1,6 +1,7 @@
 ## v0.61.0
 
 * product attribute boolean added
+* fix bug with image of width 0
 
 ## v0.60.0
 
