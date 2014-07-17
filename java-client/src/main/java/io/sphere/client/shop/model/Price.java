@@ -71,6 +71,10 @@ public class Price {
                     !this.customerGroup.isEmpty() && this.customerGroup.getId().equals(customerGroup.getId()));
     }
 
+    public Optional<DiscountedPrice> getDiscounted() {
+        return discounted;
+    }
+
     // package private
     static final Predicate<Price> matchesP(final String currencyCode, final CountryCode country, final Reference<CustomerGroup> customerGroup) {
         return new Predicate<Price>() {
