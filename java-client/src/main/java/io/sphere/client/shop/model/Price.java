@@ -32,11 +32,15 @@ public class Price {
     @Nonnull private Reference<CustomerGroup> customerGroup = EmptyReference.create("customerGroup");
     private final Optional<DiscountedPrice> discounted;
 
-    @JsonCreator public Price(
-            @Nonnull @JsonProperty("value") Money value,
-            @JsonProperty("country") CountryCode country,
-            @JsonProperty("customerGroup") Reference<CustomerGroup> customerGroup,
-            @JsonProperty("discounted") Optional<DiscountedPrice> discounted) {
+    @JsonCreator
+    Price(@Nonnull @JsonProperty("value") Money value, @JsonProperty("country") CountryCode country,
+          @JsonProperty("customerGroup") Reference<CustomerGroup> customerGroup, @JsonProperty("discounted") DiscountedPrice discounted) {
+        this(value, country, customerGroup, Optional.fromNullable(discounted));
+    }
+
+    @JsonIgnore
+    public Price(final Money value, final CountryCode country, final Reference<CustomerGroup> customerGroup,
+                 final Optional<DiscountedPrice> discounted) {
         this.value = value;
         this.country = country;
         this.discounted = discounted;

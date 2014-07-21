@@ -1,3 +1,7 @@
+## v0.62.0
+
+* introduce getter for discounted price
+
 ## v0.61.0
 
 * product attribute boolean added
