@@ -2,6 +2,7 @@ package io.sphere.client.shop.model;
 
 import javax.annotation.Nonnull;
 
+import com.google.common.base.Optional;
 import io.sphere.client.model.EmptyReference;
 import io.sphere.client.model.Money;
 import io.sphere.client.model.Reference;
@@ -9,6 +10,7 @@ import io.sphere.client.model.Reference;
 import com.google.common.base.Predicate;
 import com.neovisionaries.i18n.CountryCode;
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /** Price of a product variant.
@@ -28,14 +30,26 @@ public class Price {
     @Nonnull private Money value;
     private CountryCode country = null;
     @Nonnull private Reference<CustomerGroup> customerGroup = EmptyReference.create("customerGroup");
+    private final Optional<DiscountedPrice> discounted;
 
-    @JsonCreator public Price(
-            @Nonnull @JsonProperty("value") Money value,
-            @JsonProperty("country") CountryCode country,
-            @JsonProperty("customerGroup") Reference<CustomerGroup> customerGroup) {
+    @JsonCreator
+    Price(@Nonnull @JsonProperty("value") Money value, @JsonProperty("country") CountryCode country,
+          @JsonProperty("customerGroup") Reference<CustomerGroup> customerGroup, @JsonProperty("discounted") DiscountedPrice discounted) {
+        this(value, country, customerGroup, Optional.fromNullable(discounted));
+    }
+
+    @JsonIgnore
+    public Price(final Money value, final CountryCode country, final Reference<CustomerGroup> customerGroup,
+                 final Optional<DiscountedPrice> discounted) {
         this.value = value;
         this.country = country;
+        this.discounted = discounted;
         this.customerGroup = customerGroup != null ? customerGroup : EmptyReference.<CustomerGroup>create("customerGroup");
+    }
+
+    @JsonIgnore
+    public Price(Money value, CountryCode country, Reference<CustomerGroup> customerGroup) {
+        this(value, country, customerGroup, Optional.<DiscountedPrice>absent());
     }
 
     /** The monetary value of the price. */
@@ -59,6 +73,10 @@ public class Price {
                ((customerGroup == null || customerGroup.isEmpty()) ?
                     this.customerGroup.isEmpty() :
                     !this.customerGroup.isEmpty() && this.customerGroup.getId().equals(customerGroup.getId()));
+    }
+
+    public Optional<DiscountedPrice> getDiscounted() {
+        return discounted;
     }
 
     // package private
