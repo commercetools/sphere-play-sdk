@@ -1,6 +1,10 @@
-## v0.62.0
+## v0.63.0
 
 * introduce getter for discounted price
+
+## v0.62.0
+
+* no feature was added (release infrastructure test)
 
 ## v0.61.0
 
