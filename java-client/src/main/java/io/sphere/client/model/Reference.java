@@ -57,8 +57,13 @@ public class Reference<T> {
     /** Type id of the object this reference represents, e.g. "customer". */
     @Nonnull public String getTypeId() { return typeId; }
 
-    @Override public String toString() {
-        return "[Reference " + getTypeId() + " " + getId() + "]";
+    @Override
+    public String toString() {
+        return "Reference{" +
+                "id='" + id + '\'' +
+                ", typeId='" + typeId + '\'' +
+                ", obj=" + obj +
+                '}';
     }
 
     public ReferenceId<T> toReferenceIdOrNull() {
