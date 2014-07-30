@@ -7,11 +7,11 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 public class DiscountedPrice {
     private final Money value;
-    private final Reference<Discount> discount;
+    private final Reference<ProductDiscount> discount;
 
     @JsonCreator
     DiscountedPrice(@JsonProperty("value") Money value,
-                    @JsonProperty("discount") Reference<Discount> discount) {
+                    @JsonProperty("discount") Reference<ProductDiscount> discount) {
         this.value = value;
         this.discount = discount;
     }
@@ -20,7 +20,7 @@ public class DiscountedPrice {
         return value;
     }
 
-    public Reference<Discount> getDiscount() {
+    public Reference<ProductDiscount> getDiscount() {
         return discount;
     }
 
