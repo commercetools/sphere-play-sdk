@@ -12,9 +12,10 @@ class DiscountSpec extends WordSpec with MustMatchers {
   val client = IntegrationTestClient()
 
   "sphere client" must {
+    val referencePath = "masterVariant.prices[*].discounted.discount"
     "retrieve relative product discounts" in {
       val productWithDiscount = client.products.
-        bySlug("girls-hartbreak-crew1381415075541").expand("masterVariant.prices[*].discounted.discount").fetch.get
+        bySlug("girls-hartbreak-crew1381415075541").expand(referencePath).fetch.get
       val price: Price = productWithDiscount.getPrice
       price.getValue must be ("34.00" EUR)
       val discounted: DiscountedPrice = price.getDiscounted.get
@@ -30,7 +31,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
 
     "retrieve relative abs discounts" in {
       val productWithDiscount = client.products.
-        bySlug("gmb-premium-tech-t1381415075704").expand("masterVariant.prices[*].discounted.discount").fetch.get
+        bySlug("mb-premium-tech-t1381415075704").expand(referencePath).fetch.get
       val productDiscount = productWithDiscount.getPrice.getDiscounted.get.getDiscount.get
       val value = productDiscount.getValue
       value.getPermyriad must be (Optional.absent)
