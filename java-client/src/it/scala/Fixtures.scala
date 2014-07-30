@@ -23,7 +23,10 @@ object Fixtures {
 
   def newCartWithLineItems(implicit client: SphereClient) = {
     val cart = newCart
-    val update = allProducts(client).take(4).foldLeft(new CartUpdate().setShippingAddress(GermanAddress)) { (update, product) =>
+    val update = allProducts(client).filter { product =>
+      Set("aa8a73b9-c7db-4808-8213-5118f82ec8f6", "4e5b5fc3-7b40-42ac-b15e-b7d731e924ff",
+        "63ee2fc4-fc9b-43f1-a37d-802040c81416", "721d8d28-8747-48ea-b255-c0d9750be755") contains product.getId
+    }.foldLeft(new CartUpdate().setShippingAddress(GermanAddress)) { (update, product) =>
       update.addLineItem(1, product.getId)
     }
     client.carts.updateCart(cart.getIdAndVersion, update).execute()
