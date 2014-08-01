@@ -23,7 +23,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
       discount.isActive must be (true)
       val productDiscountValue = discount.getValue.asInstanceOf[RelativeProductDiscount]
       productDiscountValue.getPermyriad must be (1000)
-      productDiscountValue.getPermyriad must be (productDiscountValue.getPermyriad)
+      productDiscountValue.getPermyriad must be (productDiscountValue.getBasisPoint)
     }
 
     "retrieve relative abs discounts" in {
