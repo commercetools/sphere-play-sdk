@@ -1,3 +1,11 @@
+## v0.65.0
+
+* reference expansion for product discounts added
+
+## v0.64.0
+
+* no feature was added (release infrastructure test)
+
 ## v0.63.0
 
 * introduce getter for discounted price
