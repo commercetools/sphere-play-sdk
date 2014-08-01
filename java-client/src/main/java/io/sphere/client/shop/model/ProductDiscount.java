@@ -18,7 +18,7 @@ public class ProductDiscount {
     private final boolean isActive;
 
     @JsonCreator
-    private ProductDiscount(@JsonProperty("id") String id, @JsonProperty("version") int version,
+    public ProductDiscount(@JsonProperty("id") String id, @JsonProperty("version") int version,
                             @JsonProperty("lastModifiedAt") DateTime lastModifiedAt,
                             @JsonProperty("createdAt") DateTime createdAt,
                             @JsonProperty("description") LocalizedString description,
@@ -56,6 +56,10 @@ public class ProductDiscount {
         return description;
     }
 
+    /**
+     * Defines discount type with the corresponding value. The type can be relative or absolute.
+     * @return value of the discount
+     */
     public ProductDiscountValue getValue() {
         return value;
     }
