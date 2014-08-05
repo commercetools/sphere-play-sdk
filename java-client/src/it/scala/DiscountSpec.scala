@@ -26,7 +26,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
       productDiscountValue.getPermyriad must be (productDiscountValue.getBasisPoint)
     }
 
-    "retrieve relative abs discounts" in {
+    "retrieve absolute product discounts" in {
       val productWithDiscount = client.products.
         bySlug("mb-premium-tech-t1381415075704").expand(referencePath).fetch.get
       val productDiscount = productWithDiscount.getPrice.getDiscounted.get.getDiscount.get
