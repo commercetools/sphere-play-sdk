@@ -22,6 +22,8 @@ import com.google.common.base.Optional;
 import javax.annotation.Nonnull;
 import java.util.*;
 
+import static io.sphere.client.shop.model.LocalizedStringUtils.fromStringStringMap;
+
 /** Custom attribute of a {@link io.sphere.client.shop.model.Product}. */
 @Immutable
 public class Attribute {
@@ -75,14 +77,6 @@ public class Attribute {
         return (String)v;
     }
 
-    /** If this is a string attribute, returns the string value.
-     *  @return The value or empty string if the value is not a string. */
-    public LocalizedString getLocalizedString() {
-        Object v = getValue();
-        if (v == null || !(v instanceof LocalizedString)) return defaultLocalizedString;
-        return (LocalizedString)v;
-    }
-
     /** If this is a number attribute, returns the integer value.
      *  @return The value or 0 if the value is not an integer. */
     public int getInt() {
@@ -133,7 +127,19 @@ public class Attribute {
         else return new Enum((String) map.get("key"), label);
     }
 
-    @SuppressWarnings("unchecked")//since object has no type information it needs to be casted
+    /** If this is a localized string attribute, returns the localized string value.
+     *  @return The localized string or empty localized string if the value is not a localized string. */
+    public LocalizedString getLocalizedString() {
+        LocalizedString result = Attribute.defaultLocalizedString;
+        if (getValue() instanceof Map) {
+            final Map data = (Map) getValue();
+            result = extractLocalizedString(data);
+        }
+        return result;
+    }
+
+    /** If this is a localized enum attribute, returns the localized enum value.
+     *  @return The localized enum or empty localized enum if the value is not a localized enum. */
     public LocalizableEnum getLocalizableEnum() {
         LocalizableEnum result = new LocalizableEnum("", defaultLocalizedString);
         if (getValue() instanceof Map) {
@@ -144,14 +150,17 @@ public class Attribute {
     }
 
     @SuppressWarnings("unchecked")//since object has no type information it needs to be casted
+    private LocalizedString extractLocalizedString(Map data) {
+        Map<String, String> localeMap = (Map<String, String>)data;
+        return fromStringStringMap(localeMap);
+    }
+
+    @SuppressWarnings("unchecked")//since object has no type information it needs to be casted
     private LocalizableEnum extractLocalizableEnum(Map data) {
         final String key = data.get("key").toString();
         final Map<String, String> labelsStringMap = (Map<String, String>) data.get("label");
-        final Map<Locale, String> labelsLocaleMap = Maps.newHashMap();
-        for (Map.Entry<String, String> entry : labelsStringMap.entrySet()) {
-            labelsLocaleMap.put(Util.fromLanguageTag(entry.getKey()), entry.getValue());
-        }
-        return new LocalizableEnum(key, new LocalizedString(labelsLocaleMap));
+        final LocalizedString labelsLocalizedString = fromStringStringMap(labelsStringMap);
+        return new LocalizableEnum(key, labelsLocalizedString);
     }
 
     @SuppressWarnings("unchecked")
@@ -170,7 +179,7 @@ public class Attribute {
         mappers.put(LocalizedString.class, new Function<Object, Object>() {
             @Override
             public Object apply(final Object input) {
-                return LocalizedStringUtils.fromStringStringMap((Map<String, String>) input);
+                return fromStringStringMap((Map<String, String>) input);
             }
         });
         final Function<Object, Object> primitive = new Function<Object, Object>() {
