@@ -23,6 +23,14 @@ class AttributeIntegrationSpec extends WordSpec with MustMatchers {
 
   "sphere client" must {
     "read attributes which are localized strings" in {
+      val product = client.products.bySlug(locale, "product-with-localized-string-1401098281104").fetch.get
+      val attribute = product.getAttribute("locstring")
+      attribute must not be(null)
+      attribute.getLocalizedString must be(new LocalizedString(locale, "string"))
+      attribute.getLocalizedString.get(locale) must be("string")
+    }
+
+    "read attributes which are localized enums" in {
       val product = client.products.bySlug(locale, "product-with-localized-enum-1401098281104").fetch.get
       val attribute = product.getAttribute("locen")
       attribute must not be(null)
