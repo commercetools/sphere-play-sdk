@@ -68,13 +68,13 @@ public class LineItem {
      *  The total price of this line item, that is price value times quantity.
      *  When line item is discounted, the total price is calculated based on this discounted price. */
     @Nonnull public Money getTotalPrice() {
-        return getBasePrice().multiply(quantity);
+        return getUnitPrice().multiply(quantity);
     }
 
     /**
      * The base price of this line item, for single unit.
      * When the line item is discounted, the base price is this discounted price. */
-    @Nonnull public Money getBasePrice() {
+    @Nonnull public Money getUnitPrice() {
         if (price.getDiscounted().isPresent()) {
             return price.getDiscounted().get().getValue();
         } else {

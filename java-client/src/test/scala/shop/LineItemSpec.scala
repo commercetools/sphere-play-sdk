@@ -14,7 +14,7 @@ class LineItemSpec extends WordSpec with MustMatchers  {
   "Price uses original price when is not discounted" in {
     val p = new Price(originalMoney, null, null, Optional.absent())
     val li = LineItem.create(null, null, null, null, 2, p, null, null)
-    li.getBasePrice must be (p.getValue)
+    li.getUnitPrice must be (p.getValue)
     li.getTotalPrice must be (p.getValue.multiply(2))
   }
 
@@ -22,7 +22,7 @@ class LineItemSpec extends WordSpec with MustMatchers  {
     val dp = DiscountedPrice.create(discountedMoney, null)
     val p = new Price(originalMoney, null, null, Optional.of(dp))
     val li = LineItem.create(null, null, null, null, 2, p, null, null)
-    li.getBasePrice must be (p.getDiscounted.get().getValue)
+    li.getUnitPrice must be (p.getDiscounted.get().getValue)
     li.getTotalPrice must be (p.getDiscounted.get().getValue.multiply(2))
   }
 }
