@@ -82,6 +82,18 @@ public class LineItem {
         }
     }
 
+    /**
+     *  The total price of this line item before discount, that is price value times quantity. */
+    @Nonnull public Money getTotalPriceBeforeDiscount() {
+        return getUnitPriceBeforeDiscount().multiply(quantity);
+    }
+
+    /**
+     * The base price of this line item before discount, for single unit. */
+    @Nonnull public Money getUnitPriceBeforeDiscount() {
+        return price.getValue();
+    }
+
     /** The price. */
     @Nonnull public Price getPrice() { return price; }
 
