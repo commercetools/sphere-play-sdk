@@ -14,7 +14,12 @@ env:
   matrix:
   - SBT_OPTS="-XX:PermSize=512M -XX:MaxPermSize=1024M"
   global:
-    secure: gSJRjCBI/UYA+KUnY9Pnu8WgxXZPTQ9kVVu2a1HLPkVA3gHOSatwI0ZqAawbBvEanEhEoeSrUN4+kfkGIiPVnCByUitj6My+wB9IKluvmUNN/xL+TcWWvcre+3q9uaMU7IVqfPhkdW/eGUtUT3jq4hP4OK4V6Q2h22jwBl9UzWY=
+  - secure: gSJRjCBI/UYA+KUnY9Pnu8WgxXZPTQ9kVVu2a1HLPkVA3gHOSatwI0ZqAawbBvEanEhEoeSrUN4+kfkGIiPVnCByUitj6My+wB9IKluvmUNN/xL+TcWWvcre+3q9uaMU7IVqfPhkdW/eGUtUT3jq4hP4OK4V6Q2h22jwBl9UzWY=
+  - secure: OCj9FSpr8/tZIJa+Euy9Yig94onJPD6vbz8SDkHLmLMNh1j5WU+w9F980qIwDkeYz8tWrKEeLak5q2+D1idpzeNhbyjhL4pRbRJ5YhW/M1KzNjo9b0vaV1fVDFeIPjO5Z85l101bRg2B8iJp/UaX7XKxsC1v1gpKRvx6TKdEoHo=
+  - secure: bqqSIvXpzZVNxpI3FqZgkwnz++WpxUt9N69K56QpLPEUw8j+etGEmV0Z3ylVwosIG5IlMbr87bsf45U+aKin34RqCJaMFEF1RAQ0Vv+ip6afSz2v8JlGnC1EGq/qB3UZkjscg9ZRBt29oQbr9gkfzVVEqwt3jRyTAxNyGWOQwbs=
+  - secure: cF5PSNN5l8YbBroU4vuTgIUTnVxexLebiD4pSP23/KeocOO3XTlLDUmuUpuuDTjE8bWiAQ79j2RsVr2IRCRvAyX5kLp9LQDJrYNE/NDTrcVGXOC2B4XcUP3nfByhwiwXHkiHlAsVa5bu0l61j9eCl8xnzneqKvWpMBatpeYL3vE=
+  - secure: X7bOETrXPDS+pdzTuO8erKavoR4BLjoovtsi5FCIEJpdr1NCkMB6GN+CtyVWkJaaR9hFAT6lb+UpqfIWHFnYNaR5P1v1q3czVZ9L+WDab5m+QyaPNB1y8RnXOCnxf3jMSaYn+BjSDwqcmM4oBAhT4QXuof/QGj7iGyL/1I2T3hc=
+  - secure: FavkCDJtZrVFOPJqgknLKFdKD6+C4Ymo/oyZpCmsypBo3V/o+HSdS4L46pzNw+GMrAo6VIgK3QSW5zuIBRp0AqtqER+SOsR9MHgbk9sdZAR8uQl6LHwGKuSoN1yS98vxE8gr05+0KhTM1wzWIIH9CZowSDRUUTi+UVOD6tUcOZw=
 notifications:
   email:
     on_success: never
