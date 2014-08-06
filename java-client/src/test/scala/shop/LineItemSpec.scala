@@ -23,6 +23,6 @@ class LineItemSpec extends WordSpec with MustMatchers  {
     val p = new Price(originalMoney, null, null, Optional.of(dp))
     val li = LineItem.create(null, null, null, null, 2, p, null, null)
     li.getBasePrice must be (p.getDiscounted.get().getValue)
-    li.getBasePrice.multiply(2) must be (p.getDiscounted.get().getValue.multiply(2))
+    li.getTotalPrice must be (p.getDiscounted.get().getValue.multiply(2))
   }
 }
