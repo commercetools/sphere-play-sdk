@@ -1,3 +1,8 @@
+## v0.66.0
+
+* provide methods to manipulate discounts in line items
+* fix custom product attribute localization parsing.
+
 ## v0.65.0
 
 * reference expansion for product discounts added
