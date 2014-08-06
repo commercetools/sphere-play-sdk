@@ -64,8 +64,35 @@ public class LineItem {
     /** Number of items ordered. */
     public int getQuantity() { return quantity; }
 
-    /** The total price of this line item, that is price value times quantity. */
-    @Nonnull public Money getTotalPrice() { return price.getValue().multiply(quantity); }
+    /**
+     *  The total price of this line item, that is price value times quantity.
+     *  When line item is discounted, the total price is calculated based on this discounted price. */
+    @Nonnull public Money getTotalPrice() {
+        return getUnitPrice().multiply(quantity);
+    }
+
+    /**
+     * The base price of this line item, for single unit.
+     * When the line item is discounted, the base price is this discounted price. */
+    @Nonnull public Money getUnitPrice() {
+        if (price.getDiscounted().isPresent()) {
+            return price.getDiscounted().get().getValue();
+        } else {
+            return price.getValue();
+        }
+    }
+
+    /**
+     *  The total price of this line item before discount, that is price value times quantity. */
+    @Nonnull public Money getTotalPriceBeforeDiscount() {
+        return getUnitPriceBeforeDiscount().multiply(quantity);
+    }
+
+    /**
+     * The base price of this line item before discount, for single unit. */
+    @Nonnull public Money getUnitPriceBeforeDiscount() {
+        return price.getValue();
+    }
 
     /** The price. */
     @Nonnull public Price getPrice() { return price; }

@@ -16,6 +16,10 @@ public class DiscountedPrice {
         this.discount = discount;
     }
 
+    public static DiscountedPrice create(final Money value, final Reference<ProductDiscount> discount) {
+        return new DiscountedPrice(value, discount);
+    }
+
     public Money getValue() {
         return value;
     }
