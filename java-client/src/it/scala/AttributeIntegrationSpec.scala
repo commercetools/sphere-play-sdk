@@ -5,7 +5,7 @@ import io.sphere.client.shop.model._
 import io.sphere.client.shop._
 import java.util.Locale
 import io.sphere.client.model.{Money, LocalizedString}
-import com.google.common.collect.{Sets, Maps, ImmutableSet}
+import com.google.common.collect.{ImmutableMap, Sets, Maps, ImmutableSet}
 import sphere.IntegrationTest.Implicits._
 import scala.collection.JavaConverters._
 import scala.collection.JavaConversions._
@@ -19,83 +19,86 @@ import com.google.common.base.Optional
 class AttributeIntegrationSpec extends WordSpec with MustMatchers {
   implicit lazy val client: SphereClient = IntegrationTestClient()
   val locale = Locale.ENGLISH
-  def lEnum(key: String, label: String) = new LocalizableEnum(key, label.toEnLoc)
+  def lEnum(key: String, label: LocalizedString) = new LocalizableEnum(key, label)
 
   "sphere client" must {
-    "read attributes which are localized strings" in {
-      val product = client.products.bySlug(locale, "product-with-localized-enum-1401098281104").fetch.get
-      val attribute = product.getAttribute("locen")
-      attribute must not be(null)
-      attribute.getLocalizableEnum must be(new LocalizableEnum("third", new LocalizedString(locale, "third key")))
-      attribute.getLocalizableEnum.getLabel.get(locale) must be("third key")
+    implicit val product = client.products.bySlug(locale, "attribute-integration-spec-1407335245768").fetch.get
+
+    "read attributes which are localized enums" in {
+      val attribute = product.getAttribute("loc-enum-attribute")
+      attribute must not be null
+      val localizedString = new LocalizedString(Locale.ENGLISH, "two-label-en", Locale.GERMAN, "two-label-de")
+      attribute.getLocalizableEnum must be(new LocalizableEnum("two-key", localizedString))
+      attribute.getLocalizableEnum.getLabel.get(locale) must be("two-label-en")
     }
 
     "read attributes which are booleans" in {
-      val product = client.products.bySlug(locale, "product-with-boolean-2").fetch.get
-      val attribute = product.getMasterVariant.getAttribute("boolean-attribute")
-      attribute must not be(null)
+      val attribute = product.getAttribute("boolean-attribute")
+      attribute must not be null
       attribute.getBoolean must be(Optional.of(true))
     }
 
+    "read attributes which are numbers" in {
+      val attribute = product.getAttribute("number-attribute")
+      attribute must not be null
+      attribute.getDouble must be(new JDouble(2.5))
+    }
+
     "read attributes which are sets" must {
-      implicit val product = client.products.bySlug(locale, "product-with-set-attribute-localized-enum-1401275197495").fetch.get
 
       "read LocalizableEnum" in {
-        val expected = ImmutableSet.of(lEnum("first", "first label en"), lEnum("second", "second label en"))
-        attributeMustBe(expected, "setattributelocenum")
+        val localizedString1 = new LocalizedString(Locale.ENGLISH, "two-label-en", Locale.GERMAN, "two-label-de")
+        val localizedString2 = new LocalizedString(Locale.ENGLISH, "three-label-en", Locale.GERMAN, "three-label-de")
+        val expected = ImmutableSet.of(lEnum("two-key", localizedString1), lEnum("three-key", localizedString2))
+        attributeMustBe(expected, "set-loc-enum-attribute")
       }
 
       "read LocalizedString" in {
-        val expected = ImmutableSet.of("foo bar localized string", "second loc string", "third loc string").toEnLocSet
-        attributeMustBe(expected, "setattributelocstring")
+        val localizedString1 = new LocalizedString(Locale.ENGLISH, "two-set-string-en", Locale.GERMAN, "two-set-string-de")
+        val localizedString2 = new LocalizedString(Locale.ENGLISH, "three-set-string-en", Locale.GERMAN, "three-set-string-de")
+        val expected = ImmutableSet.of(localizedString1, localizedString2)
+        attributeMustBe(expected, "set-loc-string-attribute")
       }
 
       "read text" in {
-        val expected = ImmutableSet.of("text content 1", "text content 2")
-        attributeMustBe(expected, "SETATTRIBUTETEXT")
+        val expected = ImmutableSet.of("two-set-string", "three-set-string")
+        attributeMustBe(expected, "set-string-attribute")
       }
 
       "read boolean" in {
-        val product = client.products.bySlug(locale, "product-with-boolean-set").fetch.get
         val expected = ImmutableSet.of(true, false)
-        val attribute: Attribute = product.getAttribute("setattributebool")
-        val actual = attribute.getSet(classOf[java.lang.Boolean])
+        val actual = product.getAttribute("set-boolean-attribute").getSet(classOf[java.lang.Boolean])
         actual must be(expected)
       }
 
       "read enum" in {
-        val expected = ImmutableSet.of(new Attribute.Enum("f1", "f1"), new Attribute.Enum("f2", "f2"))
-        attributeMustBe(expected, "setattributeenum")
+        val expected = ImmutableSet.of(new Attribute.Enum("one-key", "one-label"), new Attribute.Enum("two-key", "two-label"))
+        attributeMustBe(expected, "set-enum-attribute")
       }
 
-      "read Integer" in {
-        val expected = ImmutableSet.of(new Integer(21), new Integer(42))
-        attributeMustBe(expected, "SETATTRIBUTENUMBER")
-      }
-
-      "read Double" in {
-        val expected = ImmutableSet.of(new JDouble(5), new JDouble(11.2))
-        attributeMustBe(expected, "SETATTRIBUTENUMBERDOUBLE")
+      "read Number" in {
+        val expected = ImmutableSet.of(new JDouble(2.5), new JDouble(3.75), new JDouble(4))
+        attributeMustBe(expected, "set-number-attribute")
       }
 
       "read Money" in {
-        val expected = ImmutableSet.of("500.55" EUR, "2.23" EUR)
-        attributeMustBe(expected, "SETATTRIBUTEMONEY")
+        val expected = ImmutableSet.of("2.50" EUR, "3.75" EUR, "4.00" EUR)
+        attributeMustBe(expected, "set-money-attribute")
       }
 
       "read LocalDate from date" in {
-        val expected = ImmutableSet.of("2014-06-02", "2014-06-03").map(_.toDate)
-        attributeMustBe(expected, "setattributedate")
+        val expected = ImmutableSet.of("2014-08-06", "2014-08-07").map(_.toDate)
+        attributeMustBe(expected, "set-date-attribute")
       }
 
       "read LocalTime from time" in {
-        val expected = ImmutableSet.of("15:47:16", "15:47:33").map(_.toTime)
-        attributeMustBe(expected, "setattributetime")
+        val expected = ImmutableSet.of("18:20:49", "17:24:31").map(_.toTime)
+        attributeMustBe(expected, "set-time-attribute")
       }
 
       "read DateTime from date time" in {
-        val expected = ImmutableSet.of("2014-06-02T15:47:16", "2014-06-03T15:47:24").map(_.toDateTime)
-        attributeMustBe(expected, "setattributedatetim")
+        val expected = ImmutableSet.of("2014-08-06T16:27:05", "2014-08-06T16:38:59").map(_.toDateTime)
+        attributeMustBe(expected, "set-date-time-attribute")
       }
     }
   }
