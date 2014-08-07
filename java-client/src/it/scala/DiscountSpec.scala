@@ -13,7 +13,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
     val referencePath = "masterVariant.prices[*].discounted.discount"
     "retrieve relative product discounts" in {
       val productWithDiscount = client.products.
-        bySlug("girls-hartbreak-crew1381415075541").expand(referencePath).fetch.get
+        bySlug("girls-hartbreak-crew1381160835432").expand(referencePath).fetch.get
       val price: Price = productWithDiscount.getPrice
       price.getValue must be ("34.00" EUR)
       val discounted: DiscountedPrice = price.getDiscounted.get
@@ -28,7 +28,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
 
     "retrieve absolute product discounts" in {
       val productWithDiscount = client.products.
-        bySlug("mb-premium-tech-t1381415075704").expand(referencePath).fetch.get
+        bySlug("wb-athletic-tank1381160835459").expand(referencePath).fetch.get
       val productDiscount = productWithDiscount.getPrice.getDiscounted.get.getDiscount.get
       val value = productDiscount.getValue.asInstanceOf[AbsoluteProductDiscount]
       value.getMoney must be (Arrays.asList("43.21" EUR))

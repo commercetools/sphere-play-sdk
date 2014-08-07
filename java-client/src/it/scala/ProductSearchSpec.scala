@@ -29,7 +29,7 @@ class ProductSearchSpec extends WordSpec with MustMatchers {
     }
     
     "set and remove attribute" in {
-      def fetchProduct = client.products.byId("e44b3743-9e8d-4ce9-be57-b34ea9ec53e5").fetch.get
+      def fetchProduct = client.products.byId("8dab3562-1778-44f9-b4f9-548184081bc3").fetch.get
 
       val attributeName = "custom-attribute"
       val attribute = new Attribute(attributeName, "value1")
