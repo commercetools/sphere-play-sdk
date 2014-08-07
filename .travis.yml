@@ -6,7 +6,7 @@ cache:
   - $HOME/.ivy2
 script:
 - du -sh $HOME/.ivy2
-- sbt clean test
+- sbt clean test it:test
 - sbt clean compile unidoc
 jdk:
 - oraclejdk7
