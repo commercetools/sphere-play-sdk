@@ -26,7 +26,7 @@ To use the Play SDK in your Play application, add the following to your build fi
 Play 2.2.x:
 
 ````scala
-libraryDependencies += "io.sphere" %% "sphere-play-sdk" % "0.66.0" withSources()
+libraryDependencies += "io.sphere" %% "sphere-play-sdk" % "0.67.0" withSources()
 ````
 
 To get started quickly, check out our [tutorial](http://dev.sphere.io/Play_SDK.html), which includes creation of a fully functional sample shop.
@@ -38,7 +38,7 @@ If you want to use just the Java client, the Maven dependency is:
 <dependency>
   <groupId>io.sphere</groupId>
   <artifactId>sphere-java-client</artifactId>
-  <version>0.66.0</version>
+  <version>0.67.0</version>
 </dependency>
 ````
 
@@ -60,7 +60,7 @@ To resolve the jar, you need an additional resolver [(https://oss.sonatype.org/c
 //project/Build.scala
 lazy val main = play.Project(appName, appVersion, appDependencies).settings(
     resolvers += Resolver.sonatypeRepo("snapshots"),
-    libraryDependencies += "io.sphere" %% "sphere-play-sdk" % "0.66.0" withSources()
+    libraryDependencies += "io.sphere" %% "sphere-play-sdk" % "0.67.0" withSources()
 )
 
 ```
