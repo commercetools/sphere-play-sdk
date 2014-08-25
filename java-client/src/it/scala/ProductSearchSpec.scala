@@ -40,12 +40,16 @@ class ProductSearchSpec extends WordSpec with MustMatchers {
         client.products().updateProduct(product.getIdAndVersion, cmd).execute
       }
 
+      def setAttribute() = {
+        val product = fetchProduct
+        val cmd = new ProductUpdate().setAttribute(product.getMasterVariant.getId, attribute, false)
+        client.products().updateProduct(product.getIdAndVersion, cmd).execute()
+      }
+
       Try(deleteAttribute())
-      val product = fetchProduct
 
       info("set attribute")
-      val setAttribute = new ProductUpdate().setAttribute(product.getMasterVariant.getId, attribute, false)
-      val attributeSet = client.products().updateProduct(product.getIdAndVersion, setAttribute).execute()
+      val attributeSet = setAttribute()
       attributeSet.getAttribute(attributeName) must be (attribute)
 
       info("remove attribute")
