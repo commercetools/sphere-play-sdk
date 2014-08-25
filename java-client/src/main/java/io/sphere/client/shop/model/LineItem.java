@@ -56,7 +56,7 @@ public class LineItem {
      * @param locale
      * @return The product name in the requested locale. It it doesn't exist will return the empty string.
      */
-    @Nonnull public String getProductName(Locale locale) { return productName.get(); }
+    @Nonnull public String getProductName(Locale locale) { return productName.get(locale); }
 
     /** Copy of the product variant from the time when time line item was created. */
     @Nonnull public Variant getVariant() { return variant; }

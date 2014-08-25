@@ -1,8 +1,12 @@
 package shop
 
+import java.util.Locale
+
+import com.google.common.collect.ImmutableMap
 import io.sphere.client.TestUtil
 import TestUtil.eur
 import com.google.common.base.Optional
+import io.sphere.client.model.LocalizedString
 import io.sphere.client.shop.model.{DiscountedPrice, LineItem, Price}
 import org.scalatest._
 
@@ -32,5 +36,13 @@ class LineItemSpec extends WordSpec with MustMatchers  {
     val li = LineItem.create(null, null, null, null, 2, p, null, null)
     li.getUnitPriceBeforeDiscount must be (p.getValue)
     li.getTotalPriceBeforeDiscount must be (p.getValue.multiply(2))
+  }
+
+  "Gets localized name" in {
+    val ls = new LocalizedString(ImmutableMap.of(Locale.ENGLISH, "english-name", Locale.GERMAN, "german-name"))
+    val li = LineItem.create(null, null, ls, null, 1, null, null, null)
+    li.getProductName(Locale.ENGLISH) must be("english-name")
+    li.getProductName(Locale.GERMAN) must be("german-name")
+    li.getProductName(Locale.FRENCH) must be("")
   }
 }

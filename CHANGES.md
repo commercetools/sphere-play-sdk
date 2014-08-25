@@ -1,3 +1,7 @@
+## v0.67.0
+
+* fix line item localized name.
+
 ## v0.66.0
 
 * provide methods to manipulate discounts in line items
