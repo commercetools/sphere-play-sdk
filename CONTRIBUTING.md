@@ -10,7 +10,7 @@ When you open a new bug ticket please provide us with the following information:
 * a test case would be ultimate
 
 
-== Things that help often ==
+## Things that help often
 
 * call `sbt clean` or `play clean`
 * restart SBT
