@@ -7,3 +7,4 @@ When you open a new bug ticket please provide us with the following information:
      * this is important to understand if it is SPHERE.IO problem or of the SDK
 * the steps to reproduce the problem for noobs
 * what is the expected output and what is current output?
+* a test case would be ultimate
