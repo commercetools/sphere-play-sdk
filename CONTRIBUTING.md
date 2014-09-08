@@ -13,3 +13,8 @@ When you open a new bug ticket please provide us with the following information:
 == Things that help often ==
 
 * call `sbt clean` or `play clean`
+* restart SBT
+* Refresh Product Search, see Merchant Center | Developers | Danger Zone
+* use [SBT](http://www.scala-sbt.org) directly instead of the Play launcher, sometimes there is a version mismatch
+* update to the latest SDK version
+* take a break and drink water/tee/coffee/juice
