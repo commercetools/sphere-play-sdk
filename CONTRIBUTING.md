@@ -23,3 +23,4 @@ When you open a new bug ticket please provide us with the following information:
     * need to be published
     * have current and staged representations
     * have multiple variants
+    * may be out of stock and therefore something does not work (e.g., add to cart, discount)
