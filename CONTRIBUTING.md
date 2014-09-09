@@ -19,4 +19,7 @@ When you open a new bug ticket please provide us with the following information:
 * update to the latest SDK version
 * take a break and drink water/tee/coffee/juice
 * [regenerate the IDE files](https://www.playframework.com/documentation/2.2.x/IDE)
-* take in mind that products need to be published and have current and staged representations
+* take in mind that products 
+    * need to be published
+    * have current and staged representations
+    * have multiple variants
