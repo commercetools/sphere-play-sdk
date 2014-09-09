@@ -18,3 +18,5 @@ When you open a new bug ticket please provide us with the following information:
 * use [SBT](http://www.scala-sbt.org) directly instead of the Play launcher, sometimes there is a version mismatch
 * update to the latest SDK version
 * take a break and drink water/tee/coffee/juice
+* [regenerate the IDE files](https://www.playframework.com/documentation/2.2.x/IDE)
+* take in mind that products need to be published and have current and staged representations
