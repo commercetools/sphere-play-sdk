@@ -24,3 +24,4 @@ When you open a new bug ticket please provide us with the following information:
     * have current and staged representations
     * have multiple variants
     * may be out of stock and therefore something does not work (e.g., add to cart, discount)
+* keep in mind that SEO settings are mostly optional, for example you may have a slug for the English locale, but may not one for the German locale, so if you search for a missing German slug you will not find a product or you use the English slug for the German locale then you will also not find a product
