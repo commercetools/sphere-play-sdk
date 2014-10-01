@@ -7,6 +7,8 @@ import io.sphere.internal.command.CartCommands;
 import io.sphere.internal.command.Update;
 import com.neovisionaries.i18n.CountryCode;
 
+import java.util.List;
+
 /**
  * CartUpdate is object used to update a {@link Cart} in the backend.
  */
@@ -117,5 +119,10 @@ public class CartUpdate extends Update<CartCommands.CartUpdateAction> {
 
     private void assertNotNegative(int quantity) {
         if (quantity < 0) throw new IllegalArgumentException("Negative quantity not allowed.");
+    }
+
+    @Override
+    public List<CartCommands.CartUpdateAction> getActions() {
+        return super.getActions();
     }
 }

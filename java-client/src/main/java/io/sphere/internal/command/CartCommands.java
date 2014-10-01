@@ -33,6 +33,40 @@ public class CartCommands {
         public String getCustomerId() { return customerId; }
         public Cart.InventoryMode getInventoryMode() { return inventoryMode; }
         public CountryCode getCountry() { return country; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            CreateCart that = (CreateCart) o;
+
+            if (country != that.country) return false;
+            if (currency != null ? !currency.equals(that.currency) : that.currency != null) return false;
+            if (customerId != null ? !customerId.equals(that.customerId) : that.customerId != null) return false;
+            if (inventoryMode != that.inventoryMode) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = currency != null ? currency.hashCode() : 0;
+            result = 31 * result + (customerId != null ? customerId.hashCode() : 0);
+            result = 31 * result + (country != null ? country.hashCode() : 0);
+            result = 31 * result + (inventoryMode != null ? inventoryMode.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "CreateCart{" +
+                    "currency=" + currency +
+                    ", customerId='" + customerId + '\'' +
+                    ", country=" + country +
+                    ", inventoryMode=" + inventoryMode +
+                    '}';
+        }
     }
 
     @Immutable
@@ -53,6 +87,34 @@ public class CartCommands {
         public String getPassword() {
             return password;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            LoginWithAnonymousCart that = (LoginWithAnonymousCart) o;
+
+            if (email != null ? !email.equals(that.email) : that.email != null) return false;
+            if (password != null ? !password.equals(that.password) : that.password != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = email != null ? email.hashCode() : 0;
+            result = 31 * result + (password != null ? password.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "LoginWithAnonymousCart{" +
+                    "email='" + email + '\'' +
+                    ", password='" + password + '\'' +
+                    '}';
+        }
     }
 
     @Immutable
@@ -69,6 +131,35 @@ public class CartCommands {
 
         public PaymentState getPaymentState() { return paymentState; }
         public String getOrderNumber() { return customerNumber; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            OrderCart orderCart = (OrderCart) o;
+
+            if (customerNumber != null ? !customerNumber.equals(orderCart.customerNumber) : orderCart.customerNumber != null)
+                return false;
+            if (paymentState != orderCart.paymentState) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = paymentState != null ? paymentState.hashCode() : 0;
+            result = 31 * result + (customerNumber != null ? customerNumber.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "OrderCart{" +
+                    "paymentState=" + paymentState +
+                    ", customerNumber='" + customerNumber + '\'' +
+                    '}';
+        }
     }
 
     public static abstract class CartUpdateAction extends UpdateAction {
@@ -96,6 +187,38 @@ public class CartCommands {
         public ReferenceId<Channel> getSupplyChannel() {
             return supplyChannel;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            AddLineItemFromMasterVariant that = (AddLineItemFromMasterVariant) o;
+
+            if (quantity != that.quantity) return false;
+            if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
+            if (supplyChannel != null ? !supplyChannel.equals(that.supplyChannel) : that.supplyChannel != null)
+                return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = productId != null ? productId.hashCode() : 0;
+            result = 31 * result + quantity;
+            result = 31 * result + (supplyChannel != null ? supplyChannel.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "AddLineItemFromMasterVariant{" +
+                    "productId='" + productId + '\'' +
+                    ", quantity=" + quantity +
+                    ", supplyChannel=" + supplyChannel +
+                    '}';
+        }
     }
 
     @Immutable
@@ -112,6 +235,33 @@ public class CartCommands {
         }
 
         public int getVariantId() { return variantId; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            if (!super.equals(o)) return false;
+
+            AddLineItem that = (AddLineItem) o;
+
+            if (variantId != that.variantId) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = super.hashCode();
+            result = 31 * result + variantId;
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "AddLineItem{" +
+                    "variantId=" + variantId +
+                    '}';
+        }
     }
 
     @Immutable
@@ -124,6 +274,30 @@ public class CartCommands {
         }
 
         public String getLineItemId() { return lineItemId; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            RemoveLineItem that = (RemoveLineItem) o;
+
+            if (lineItemId != null ? !lineItemId.equals(that.lineItemId) : that.lineItemId != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return lineItemId != null ? lineItemId.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "RemoveLineItem{" +
+                    "lineItemId='" + lineItemId + '\'' +
+                    '}';
+        }
     }
 
     @Immutable
@@ -152,6 +326,43 @@ public class CartCommands {
         public int getQuantity() { return quantity; }
 
         public ReferenceId<TaxCategory> getTaxCategory() { return taxCategory; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            AddCustomLineItem that = (AddCustomLineItem) o;
+
+            if (quantity != that.quantity) return false;
+            if (money != null ? !money.equals(that.money) : that.money != null) return false;
+            if (name != null ? !name.equals(that.name) : that.name != null) return false;
+            if (slug != null ? !slug.equals(that.slug) : that.slug != null) return false;
+            if (taxCategory != null ? !taxCategory.equals(that.taxCategory) : that.taxCategory != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = name != null ? name.hashCode() : 0;
+            result = 31 * result + (money != null ? money.hashCode() : 0);
+            result = 31 * result + (slug != null ? slug.hashCode() : 0);
+            result = 31 * result + quantity;
+            result = 31 * result + (taxCategory != null ? taxCategory.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "AddCustomLineItem{" +
+                    "name=" + name +
+                    ", money=" + money +
+                    ", slug='" + slug + '\'' +
+                    ", quantity=" + quantity +
+                    ", taxCategory=" + taxCategory +
+                    '}';
+        }
     }
 
     @Immutable
@@ -164,6 +375,31 @@ public class CartCommands {
         }
 
         public String getCustomLineItemId() { return customLineItemId; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            RemoveCustomLineItem that = (RemoveCustomLineItem) o;
+
+            if (customLineItemId != null ? !customLineItemId.equals(that.customLineItemId) : that.customLineItemId != null)
+                return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return customLineItemId != null ? customLineItemId.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "RemoveCustomLineItem{" +
+                    "customLineItemId='" + customLineItemId + '\'' +
+                    '}';
+        }
     }
 
     @Immutable
@@ -180,6 +416,34 @@ public class CartCommands {
         public String getLineItemId() { return lineItemId; }
 
         public int getQuantity() { return quantity; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            ChangeLineItemQuantity that = (ChangeLineItemQuantity) o;
+
+            if (quantity != that.quantity) return false;
+            if (lineItemId != null ? !lineItemId.equals(that.lineItemId) : that.lineItemId != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = lineItemId != null ? lineItemId.hashCode() : 0;
+            result = 31 * result + quantity;
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "ChangeLineItemQuantity{" +
+                    "lineItemId='" + lineItemId + '\'' +
+                    ", quantity=" + quantity +
+                    '}';
+        }
     }
 
     @Immutable
@@ -192,6 +456,33 @@ public class CartCommands {
         }
 
         public int getQuantity() { return quantity; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            if (!super.equals(o)) return false;
+
+            DecreaseLineItemQuantity that = (DecreaseLineItemQuantity) o;
+
+            if (quantity != that.quantity) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = super.hashCode();
+            result = 31 * result + quantity;
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "DecreaseLineItemQuantity{" +
+                    "quantity=" + quantity +
+                    '}';
+        }
     }
 
     @Immutable
@@ -204,6 +495,30 @@ public class CartCommands {
         }
 
         public String getEmail() { return email; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetCustomerEmail that = (SetCustomerEmail) o;
+
+            if (email != null ? !email.equals(that.email) : that.email != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return email != null ? email.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "SetCustomerEmail{" +
+                    "email='" + email + '\'' +
+                    '}';
+        }
     }
 
     @Immutable
@@ -216,6 +531,30 @@ public class CartCommands {
         }
 
         public Address getAddress() { return address; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetBillingAddress that = (SetBillingAddress) o;
+
+            if (address != null ? !address.equals(that.address) : that.address != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return address != null ? address.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "SetBillingAddress{" +
+                    "address=" + address +
+                    '}';
+        }
     }
 
     @Immutable
@@ -228,6 +567,30 @@ public class CartCommands {
         }
 
         public Address getAddress() { return address; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetShippingAddress that = (SetShippingAddress) o;
+
+            if (address != null ? !address.equals(that.address) : that.address != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return address != null ? address.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "SetShippingAddress{" +
+                    "address=" + address +
+                    '}';
+        }
     }
 
     @Immutable
@@ -240,6 +603,30 @@ public class CartCommands {
         }
 
         public CountryCode getCountry() { return country; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetCountry that = (SetCountry) o;
+
+            if (country != that.country) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return country != null ? country.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "SetCountry{" +
+                    "country=" + country +
+                    '}';
+        }
     }
 
     @Immutable
@@ -252,7 +639,32 @@ public class CartCommands {
         }
 
         public ReferenceId<ShippingMethod> getShippingMethod() { return shippingMethod; }
-    }    
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetShippingMethod that = (SetShippingMethod) o;
+
+            if (shippingMethod != null ? !shippingMethod.equals(that.shippingMethod) : that.shippingMethod != null)
+                return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return shippingMethod != null ? shippingMethod.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "SetShippingMethod{" +
+                    "shippingMethod=" + shippingMethod +
+                    '}';
+        }
+    }
     
     @Immutable
     public static final class SetCustomShippingMethod extends CartUpdateAction {
@@ -272,6 +684,39 @@ public class CartCommands {
         public ShippingRate getShippingRate() { return shippingRate; }
 
         public ReferenceId<TaxCategory> getTaxCategory() { return taxCategory; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetCustomShippingMethod that = (SetCustomShippingMethod) o;
+
+            if (shippingMethodName != null ? !shippingMethodName.equals(that.shippingMethodName) : that.shippingMethodName != null)
+                return false;
+            if (shippingRate != null ? !shippingRate.equals(that.shippingRate) : that.shippingRate != null)
+                return false;
+            if (taxCategory != null ? !taxCategory.equals(that.taxCategory) : that.taxCategory != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = shippingMethodName != null ? shippingMethodName.hashCode() : 0;
+            result = 31 * result + (shippingRate != null ? shippingRate.hashCode() : 0);
+            result = 31 * result + (taxCategory != null ? taxCategory.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "SetCustomShippingMethod{" +
+                    "shippingMethodName='" + shippingMethodName + '\'' +
+                    ", shippingRate=" + shippingRate +
+                    ", taxCategory=" + taxCategory +
+                    '}';
+        }
     }
 
     @Immutable
@@ -279,6 +724,21 @@ public class CartCommands {
 
         public RecalculateCartPrices() {
             super("recalculate");
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return obj instanceof RecalculateCartPrices;
+        }
+
+        @Override
+        public int hashCode() {
+            return 5;
+        }
+
+        @Override
+        public String toString() {
+            return "RecalculateCartPrices";
         }
     }
 }
