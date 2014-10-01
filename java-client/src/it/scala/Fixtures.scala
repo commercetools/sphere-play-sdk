@@ -13,7 +13,7 @@ import org.joda.time.DateTime
 
 object Fixtures {
   def allProducts(implicit client: SphereClient): List[Product] = client.products().all().fetch().getResults
-  def oneProduct(implicit client: SphereClient) = allProducts(client)(0)
+  def oneProduct(implicit client: SphereClient) = client.products.byId("8dab3562-1778-44f9-b4f9-548184081bc3").fetch.get
   def newCart(implicit client: SphereClient) = client.carts().createCart(EUR).execute()
   def newCartWithProduct(implicit client: SphereClient) = {
     val cart = newCart
