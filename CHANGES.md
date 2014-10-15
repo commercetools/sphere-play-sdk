@@ -1,3 +1,7 @@
+## v0.68.0
+
+* expose methods to better test the update actions for a cart.
+
 ## v0.67.0
 
 * fix line item localized name.
