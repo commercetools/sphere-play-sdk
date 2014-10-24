@@ -17,7 +17,7 @@ When you open a new bug ticket please provide us with the following information:
 * Refresh Product Search, see Merchant Center | Developers | Danger Zone
 * use [SBT](http://www.scala-sbt.org) directly instead of the Play launcher, sometimes there is a version mismatch
 * update to the latest SDK version
-* take a break and drink water/tee/coffee/juice
+* take a break and drink water/tea/coffee/juice
 * [regenerate the IDE files](https://www.playframework.com/documentation/2.2.x/IDE)
 * take in mind that products 
     * need to be published
