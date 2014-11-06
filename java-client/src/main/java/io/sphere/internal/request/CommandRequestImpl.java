@@ -7,6 +7,7 @@ import io.sphere.client.exceptions.SphereException;
 import io.sphere.client.SphereResult;
 import io.sphere.internal.command.Command;
 import io.sphere.internal.util.Iso8601JsonSerializer;
+import io.sphere.internal.util.LocalDateJsonSerializer;
 import io.sphere.internal.util.Util;
 import io.sphere.client.CommandRequest;
 
@@ -52,8 +53,9 @@ public class CommandRequestImpl<T> implements CommandRequest<T>, TestableRequest
         ObjectMapper mapper = new ObjectMapper();
         FilterProvider filters = new SimpleFilterProvider().addFilter("changeAddressIdFilter",
                 SimpleBeanPropertyFilter.SerializeExceptFilter.serializeAllExcept("id"));
-        SimpleModule testModule = new SimpleModule("Iso8601JsonSerializerModule", new Version(1, 0, 0, null));
+        SimpleModule testModule = new SimpleModule("DateJsonSerializerModule", new Version(1, 0, 0, null));
         testModule.addSerializer(new Iso8601JsonSerializer());
+        testModule.addSerializer(new LocalDateJsonSerializer());
         mapper.registerModule(testModule);
         ObjectWriter jsonWriter = mapper.writer(filters);
         try {

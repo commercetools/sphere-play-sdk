@@ -9,6 +9,7 @@ import net.jcip.annotations.Immutable;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonFilter;
+import org.joda.time.LocalDate;
 
 /** Commands sent to HTTP endpoints for working with customers. */
 public class CustomerCommands {
@@ -26,6 +27,12 @@ public class CustomerCommands {
         private final String customerNumber;
         @Nullable
         private final String externalId;
+        @Nullable
+        private final String companyName;
+        @Nullable
+        private final String vatId;
+        @Nullable
+        private final LocalDate dateOfBirth;
         
         public String getEmail() { return email; }
         public String getPassword() { return password; }
@@ -36,6 +43,9 @@ public class CustomerCommands {
         public String getAnonymousCartId() { return anonymousCartId; }
         public String getCustomerNumber() { return customerNumber; }
         public String getExternalId() { return externalId; }
+        public String getCompanyName() { return companyName; }
+        public String getVatId() { return vatId; }
+        public LocalDate getDateOfBirth() { return dateOfBirth; }
 
         public CreateCustomer(String email, String password, String firstName, String lastName, String middleName,
                               String title, Optional<String> anonymousCartId, Optional<String> customerNumber, Optional<String> externalId) {
@@ -48,6 +58,9 @@ public class CustomerCommands {
             this.anonymousCartId = anonymousCartId.orNull();
             this.customerNumber = customerNumber.orNull();
             this.externalId = externalId.orNull();
+            this.companyName = null;
+            this.vatId = null;
+            this.dateOfBirth = null;
         }
 
         public CreateCustomer(String email, String password, String firstName, String lastName, String middleName,
@@ -260,6 +273,39 @@ public class CustomerCommands {
 
         public String getExternalId() {
             return externalId;
+        }
+    }
+
+    @Immutable
+    public static final class SetCompanyName extends CustomerUpdateAction {
+        private final String companyName;
+        public String getCompanyName() { return companyName; }
+
+        public SetCompanyName(@Nullable String companyName) {
+            super("setCompanyName");
+            this.companyName = companyName;
+        }
+    }
+
+    @Immutable
+    public static final class SetVatId extends CustomerUpdateAction {
+        private final String vatId;
+        public String getVatId() { return vatId; }
+
+        public SetVatId(@Nullable String vatId) {
+            super("setVatId");
+            this.vatId = vatId;
+        }
+    }
+
+    @Immutable
+    public static final class SetDateOfBirth extends CustomerUpdateAction {
+        private final LocalDate dateOfBirth;
+        public LocalDate getDateOfBirth() { return dateOfBirth; }
+
+        public SetDateOfBirth(@Nullable LocalDate dateOfBirth) {
+            super("setDateOfBirth");
+            this.dateOfBirth = dateOfBirth;
         }
     }
 }

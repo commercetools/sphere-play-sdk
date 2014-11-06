@@ -13,6 +13,7 @@ import io.sphere.client.exceptions.{InvalidCredentialsException, EmailAlreadyInU
 import com.neovisionaries.i18n.CountryCode._
 import org.scalatest._
 import com.google.common.base.Optional
+import org.joda.time.LocalDate;
 
 class CustomerServiceSpec extends WordSpec with MustMatchers {
 
@@ -138,12 +139,16 @@ class CustomerServiceSpec extends WordSpec with MustMatchers {
     update.setDefaultBillingAddress("defaultBillingIndex")
     update.clearDefaultShippingAddress()
     update.clearDefaultBillingAddress()
+    update.setCompanyName("companyName");
+    update.setVatId("vatId");
+    val dateOfBirth = new LocalDate();
+    update.setDateOfBirth(dateOfBirth);
     val req = asImpl(sphere.customers.update(v1(customerId), update))
     req.getRequestHolder.getUrl must be("/customers/" + customerId)
     val cmd = req.getCommand.asInstanceOf[UpdateCommand[CartUpdateAction]]
     cmd.getVersion must be (1)
     val actions = scala.collection.JavaConversions.asScalaBuffer((cmd.getActions)).toList
-    actions.length must be (10)
+    actions.length must be (13)
     actions(0).asInstanceOf[ChangeEmail].getEmail must be ("new@mail.com")
     actions(1).asInstanceOf[ChangeName].getFirstName must be ("updatedFirst")
     actions(1).asInstanceOf[ChangeName].getLastName must be ("updatedLast")
@@ -156,6 +161,9 @@ class CustomerServiceSpec extends WordSpec with MustMatchers {
     actions(7).asInstanceOf[SetDefaultBillingAddress].getAddressId must be ("defaultBillingIndex")
     actions(8).asInstanceOf[SetDefaultShippingAddress].getAddressId must be (null)
     actions(9).asInstanceOf[SetDefaultBillingAddress].getAddressId must be (null)
+    actions(10).asInstanceOf[SetCompanyName].getCompanyName must be ("companyName")
+    actions(11).asInstanceOf[SetVatId].getVatId must be ("vatId")
+    actions(12).asInstanceOf[SetDateOfBirth].getDateOfBirth must be (dateOfBirth)
     val customer: Customer = req.execute()
     customer.getId must be(customerId)
   }

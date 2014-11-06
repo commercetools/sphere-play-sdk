@@ -3,6 +3,7 @@ package io.sphere.client.shop.model;
 import com.google.common.base.Strings;
 import io.sphere.internal.command.CustomerCommands;
 import io.sphere.internal.command.Update;
+import org.joda.time.LocalDate;
 
 /** CustomerUpdate is used to update a customer in the backend. */
 public class CustomerUpdate extends Update<CustomerCommands.CustomerUpdateAction> {
@@ -68,6 +69,21 @@ public class CustomerUpdate extends Update<CustomerCommands.CustomerUpdateAction
 
     public CustomerUpdate setExternalId(final String externalId) {
         add(new CustomerCommands.SetExternalId(externalId));
+        return this;
+    }
+
+    public CustomerUpdate setCompanyName(final String companyName) {
+        add(new CustomerCommands.SetCompanyName(companyName));
+        return this;
+    }
+
+    public CustomerUpdate setVatId(final String vatId) {
+        add(new CustomerCommands.SetVatId(vatId));
+        return this;
+    }
+
+    public CustomerUpdate setDateOfBirth(final LocalDate dateOfBirth) {
+        add(new CustomerCommands.SetDateOfBirth(dateOfBirth));
         return this;
     }
 }
