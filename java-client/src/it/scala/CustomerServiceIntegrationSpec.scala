@@ -116,10 +116,10 @@ class CustomerServiceIntegrationSpec extends WordSpec with MustMatchers {
     "update the dateOfBirth of a customer" in {
       val builder = new SignUpBuilder(Fixtures.randomEmail(), Password, CustomerName)
       val signInResult = testSignup(builder)
-      signInResult.getCustomer.getDateOfBirth must be (null)
+      signInResult.getCustomer.getDateOfBirth must be (Optional.absent())
       val dateOfBirth = new LocalDate()
       client.customers.update(signInResult.getCustomer.getIdAndVersion, new CustomerUpdate().setDateOfBirth(dateOfBirth)).execute()
-      client.customers.byId(signInResult.getCustomer.getId).fetch.get.getDateOfBirth must be (dateOfBirth)
+      client.customers.byId(signInResult.getCustomer.getId).fetch.get.getDateOfBirth.get must be (dateOfBirth)
     }
 
     "return Optional.absent() if a customer cannot be found by id" in {

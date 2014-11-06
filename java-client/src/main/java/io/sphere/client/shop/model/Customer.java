@@ -3,6 +3,7 @@ package io.sphere.client.shop.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import io.sphere.client.model.EmptyReference;
 import io.sphere.client.model.Reference;
@@ -96,7 +97,7 @@ public class Customer {
 
     public String getVatId() { return vatId; }
 
-    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public Optional<LocalDate> getDateOfBirth() { return Optional.fromNullable(dateOfBirth); }
 
     @Override
     public String toString() {
