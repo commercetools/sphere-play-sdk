@@ -27,12 +27,6 @@ public class CustomerCommands {
         private final String customerNumber;
         @Nullable
         private final String externalId;
-        @Nullable
-        private final String companyName;
-        @Nullable
-        private final String vatId;
-        @Nullable
-        private final LocalDate dateOfBirth;
         
         public String getEmail() { return email; }
         public String getPassword() { return password; }
@@ -43,9 +37,6 @@ public class CustomerCommands {
         public String getAnonymousCartId() { return anonymousCartId; }
         public String getCustomerNumber() { return customerNumber; }
         public String getExternalId() { return externalId; }
-        public String getCompanyName() { return companyName; }
-        public String getVatId() { return vatId; }
-        public LocalDate getDateOfBirth() { return dateOfBirth; }
 
         public CreateCustomer(String email, String password, String firstName, String lastName, String middleName,
                               String title, Optional<String> anonymousCartId, Optional<String> customerNumber, Optional<String> externalId) {
@@ -58,9 +49,6 @@ public class CustomerCommands {
             this.anonymousCartId = anonymousCartId.orNull();
             this.customerNumber = customerNumber.orNull();
             this.externalId = externalId.orNull();
-            this.companyName = null;
-            this.vatId = null;
-            this.dateOfBirth = null;
         }
 
         public CreateCustomer(String email, String password, String firstName, String lastName, String middleName,
