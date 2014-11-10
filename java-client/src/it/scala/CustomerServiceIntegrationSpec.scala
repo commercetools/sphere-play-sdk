@@ -8,6 +8,7 @@ import Fixtures._
 import org.scalatest._
 import io.sphere.client.shop.{SignUpBuilder, SphereClient}
 import io.sphere.client.exceptions.EmailAlreadyInUseException
+import org.joda.time.LocalDate;
 
 
 class CustomerServiceIntegrationSpec extends WordSpec with MustMatchers {
@@ -92,6 +93,33 @@ class CustomerServiceIntegrationSpec extends WordSpec with MustMatchers {
       val externalId = Fixtures.randomString()
       client.customers.update(signInResult.getCustomer.getIdAndVersion, new CustomerUpdate().setExternalId(externalId)).execute()
       client.customers.byId(signInResult.getCustomer.getId).fetch.get.getExternalId must be (externalId)
+    }
+
+    "update the companyName of a customer" in {
+      val builder = new SignUpBuilder(Fixtures.randomEmail(), Password, CustomerName)
+      val signInResult = testSignup(builder)
+      signInResult.getCustomer.getCompanyName must be ("")
+      val companyName = Fixtures.randomString()
+      client.customers.update(signInResult.getCustomer.getIdAndVersion, new CustomerUpdate().setCompanyName(companyName)).execute()
+      client.customers.byId(signInResult.getCustomer.getId).fetch.get.getCompanyName must be (companyName)
+    }
+
+    "update the vatlId of a customer" in {
+      val builder = new SignUpBuilder(Fixtures.randomEmail(), Password, CustomerName)
+      val signInResult = testSignup(builder)
+      signInResult.getCustomer.getVatId must be ("")
+      val vatId = Fixtures.randomString()
+      client.customers.update(signInResult.getCustomer.getIdAndVersion, new CustomerUpdate().setVatId(vatId)).execute()
+      client.customers.byId(signInResult.getCustomer.getId).fetch.get.getVatId must be (vatId)
+    }
+
+    "update the dateOfBirth of a customer" in {
+      val builder = new SignUpBuilder(Fixtures.randomEmail(), Password, CustomerName)
+      val signInResult = testSignup(builder)
+      signInResult.getCustomer.getDateOfBirth must be (Optional.absent())
+      val dateOfBirth = new LocalDate()
+      client.customers.update(signInResult.getCustomer.getIdAndVersion, new CustomerUpdate().setDateOfBirth(dateOfBirth)).execute()
+      client.customers.byId(signInResult.getCustomer.getId).fetch.get.getDateOfBirth.get must be (dateOfBirth)
     }
 
     "return Optional.absent() if a customer cannot be found by id" in {

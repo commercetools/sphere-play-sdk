@@ -3,6 +3,7 @@ package io.sphere.client.shop.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import io.sphere.client.model.EmptyReference;
 import io.sphere.client.model.Reference;
@@ -13,6 +14,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.joda.time.LocalDate;
 
 /** A customer that exists in the backend. */
 @JsonIgnoreProperties({"type", "password"})
@@ -31,6 +34,9 @@ public class Customer {
     @JsonProperty("isEmailVerified") private boolean isEmailVerified;
     @Nonnull private Reference<CustomerGroup> customerGroup = EmptyReference.create("customerGroup");
     @JsonProperty("externalId") private String externalId = "";
+    @JsonProperty("companyName") private String companyName = "";
+    @JsonProperty("vatId") private String vatId = "";
+    @JsonProperty("dateOfBirth") private LocalDate dateOfBirth;
 
     // for JSON deserializer
     private Customer() {}
@@ -87,6 +93,12 @@ public class Customer {
 
     public String getExternalId() { return externalId; }
 
+    public String getCompanyName() { return companyName; }
+
+    public String getVatId() { return vatId; }
+
+    public Optional<LocalDate> getDateOfBirth() { return Optional.fromNullable(dateOfBirth); }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -104,6 +116,9 @@ public class Customer {
                 ", isEmailVerified=" + isEmailVerified +
                 ", customerGroup=" + customerGroup +
                 ", externalId='" + externalId + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", vatId='" + vatId + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
                 '}';
     }
 }
