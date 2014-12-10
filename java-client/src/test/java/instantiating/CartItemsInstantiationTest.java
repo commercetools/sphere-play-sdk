@@ -1,5 +1,6 @@
 package instantiating;
 
+import com.google.common.base.Optional;
 import com.neovisionaries.i18n.CountryCode;
 import io.sphere.client.model.EmptyReference;
 import io.sphere.client.model.LocalizedString;
@@ -26,7 +27,7 @@ public class CartItemsInstantiationTest {
     public void lineItem() throws Exception {
         final Price price = new Price(MONEY, CountryCode.DE, EmptyReference.<CustomerGroup>create("customerGroup"));
         final Variant masterVariant = Variant.create(1, "sku", Arrays.asList(price), Collections.<Image>emptyList(), Collections.<Attribute>emptyList(), VariantAvailability.create(true, 0));
-        final LineItem lineItem = LineItem.create(ID, PRODUCT_ID, LOCALIZED_STRING, masterVariant, 5, price, TAX_RATE, Channel.emptyReference());
+        final LineItem lineItem = LineItem.create(ID, PRODUCT_ID, LOCALIZED_STRING, masterVariant, 5, price, Optional.<DiscountedLineItemPrice>absent(), TAX_RATE, Channel.emptyReference());
         assertThat(lineItem.getId()).isEqualTo(ID);
     }
 

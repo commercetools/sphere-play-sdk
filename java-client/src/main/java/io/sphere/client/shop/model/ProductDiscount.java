@@ -12,7 +12,7 @@ public class ProductDiscount {
     private final DateTime lastModifiedAt;
     private final DateTime createdAt;
     private final Optional<LocalizedString> description;
-    private final ProductDiscountValue value;
+    private final DiscountValue value;
     private final String predicate;
     private final String sortOrder;
     private final boolean isActive;
@@ -22,7 +22,7 @@ public class ProductDiscount {
                             @JsonProperty("lastModifiedAt") DateTime lastModifiedAt,
                             @JsonProperty("createdAt") DateTime createdAt,
                             @JsonProperty("description") LocalizedString description,
-                            @JsonProperty("value") ProductDiscountValue value,
+                            @JsonProperty("value") DiscountValue value,
                             @JsonProperty("predicate") String predicate, @JsonProperty("sortOrder") String sortOrder,
                             @JsonProperty("isActive") boolean isActive) {
         this.id = id;
@@ -60,7 +60,7 @@ public class ProductDiscount {
      * Defines discount type with the corresponding value. The type can be relative or absolute.
      * @return value of the discount
      */
-    public ProductDiscountValue getValue() {
+    public DiscountValue getValue() {
         return value;
     }
 

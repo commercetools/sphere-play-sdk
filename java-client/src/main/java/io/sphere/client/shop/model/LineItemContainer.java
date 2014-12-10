@@ -37,6 +37,7 @@ public abstract class LineItemContainer {
     private CountryCode country;
     @Nonnull private Reference<CustomerGroup> customerGroup = EmptyReference.create("customerGroup");
     private ShippingInfo shippingInfo;
+    private List<Reference<DiscountCodeWithState>> discountCodes = new ArrayList<Reference<DiscountCodeWithState>>();
     
     protected LineItemContainer() {}
 
@@ -137,6 +138,13 @@ public abstract class LineItemContainer {
     /** The shipping information. Set once cart the shipping method is set. */
     public ShippingInfo getShippingInfo() { return shippingInfo; }
 
+    /**
+     * The references to the discount codes applied to this cart.
+     */
+    public List<Reference<DiscountCodeWithState>> getDiscountCodes() {
+        return discountCodes;
+    }
+
     @Override
     public String toString() {
         return "LineItemContainer{" +
@@ -155,6 +163,7 @@ public abstract class LineItemContainer {
                 ", country=" + country +
                 ", customerGroup=" + customerGroup +
                 ", shippingInfo=" + shippingInfo +
+                ", discountCodes=" + discountCodes +
                 '}';
     }
 }
