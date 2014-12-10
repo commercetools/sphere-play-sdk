@@ -28,8 +28,8 @@ public class DiscountCode {
     DiscountCode(@JsonProperty("id") String id, @JsonProperty("value") int version, @JsonProperty("version") String code,
                  @JsonProperty("name") LocalizedString name, @JsonProperty("description") LocalizedString description,
                  @JsonProperty("cartDiscounts") List<Reference<CartDiscount>> cartDiscounts, @JsonProperty("isActive") boolean isActive,
-                 @JsonProperty("maxNrOfApplications") Long maxApplications,
-                 @JsonProperty("maxApplicationsBySingleCustomer") Long maxApplicationsPerCustomer,
+                 @JsonProperty("maxApplications") Long maxApplications,
+                 @JsonProperty("maxApplicationsPerCustomer") Long maxApplicationsPerCustomer,
                  @JsonProperty("cartPredicate") String cartPredicate, @JsonProperty("createdAt") DateTime createdAt,
                  @JsonProperty("lastModifiedAt") DateTime lastModifiedAt) {
         this(id, version, code, Optional.fromNullable(name), Optional.fromNullable(description), cartDiscounts, isActive,
