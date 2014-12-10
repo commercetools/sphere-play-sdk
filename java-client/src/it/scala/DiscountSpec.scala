@@ -21,7 +21,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
       val discount: ProductDiscount = discounted.getDiscount.get
       discount.getDescription.get must be ("descr" toEnLoc)
       discount.isActive must be (true)
-      val productDiscountValue = discount.getValue.asInstanceOf[RelativeProductDiscount]
+      val productDiscountValue = discount.getValue.asInstanceOf[RelativeDiscount]
       productDiscountValue.getPermyriad must be (1000)
       productDiscountValue.getPermyriad must be (productDiscountValue.getBasisPoint)
     }
@@ -30,7 +30,7 @@ class DiscountSpec extends WordSpec with MustMatchers {
       val productWithDiscount = client.products.
         bySlug("wb-athletic-tank1381160835459").expand(referencePath).fetch.get
       val productDiscount = productWithDiscount.getPrice.getDiscounted.get.getDiscount.get
-      val value = productDiscount.getValue.asInstanceOf[AbsoluteProductDiscount]
+      val value = productDiscount.getValue.asInstanceOf[AbsoluteDiscount]
       value.getMoney must be (Arrays.asList("43.21" EUR))
     }
   }

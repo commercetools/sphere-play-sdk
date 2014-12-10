@@ -3,12 +3,12 @@ package io.sphere.client.shop.model;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
- * A relative product discount with the corresponding basis point value.
+ * A relative discount with the corresponding basis point value.
  */
-public class RelativeProductDiscount extends ProductDiscountValue {
+public class RelativeDiscount extends DiscountValue {
     private final int permyriad;
 
-    public RelativeProductDiscount(@JsonProperty("permyriad") final int permyriad) {
+    public RelativeDiscount(@JsonProperty("permyriad") final int permyriad) {
         this.permyriad = permyriad;
     }
 
@@ -21,7 +21,7 @@ public class RelativeProductDiscount extends ProductDiscountValue {
     }
 
     /**
-     * Alias for {@link RelativeProductDiscount#getPermyriad()}
+     * Alias for {@link RelativeDiscount#getPermyriad()}
      * @return permyriad
      */
     public int getBasisPoint() {
@@ -34,7 +34,7 @@ public class RelativeProductDiscount extends ProductDiscountValue {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        RelativeProductDiscount that = (RelativeProductDiscount) o;
+        RelativeDiscount that = (RelativeDiscount) o;
 
         if (permyriad != that.permyriad) return false;
 
@@ -50,7 +50,7 @@ public class RelativeProductDiscount extends ProductDiscountValue {
 
     @Override
     public String toString() {
-        return "RelativeProductDiscount{" +
+        return "RelativeDiscount{" +
                 "permyriad=" + permyriad +
                 '}';
     }
