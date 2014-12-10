@@ -19,7 +19,7 @@ public class DiscountCode {
     private final List<Reference<CartDiscount>> cartDiscounts;
     private final boolean isActive;
     private final Optional<Long> maxApplications;
-    private final Optional<Long> maxApplicationsByCustomer;
+    private final Optional<Long> maxApplicationsPerCustomer;
     private final Optional<String> cartPredicate;
     private final DateTime createdAt;
     private final DateTime lastModifiedAt;
@@ -29,18 +29,18 @@ public class DiscountCode {
                  @JsonProperty("name") LocalizedString name, @JsonProperty("description") LocalizedString description,
                  @JsonProperty("cartDiscounts") List<Reference<CartDiscount>> cartDiscounts, @JsonProperty("isActive") boolean isActive,
                  @JsonProperty("maxNrOfApplications") Long maxApplications,
-                 @JsonProperty("maxApplicationsBySingleCustomer") Long maxApplicationsByCustomer,
+                 @JsonProperty("maxApplicationsBySingleCustomer") Long maxApplicationsPerCustomer,
                  @JsonProperty("cartPredicate") String cartPredicate, @JsonProperty("createdAt") DateTime createdAt,
                  @JsonProperty("lastModifiedAt") DateTime lastModifiedAt) {
         this(id, version, code, Optional.fromNullable(name), Optional.fromNullable(description), cartDiscounts, isActive,
-                Optional.fromNullable(maxApplications), Optional.fromNullable(maxApplicationsByCustomer),
+                Optional.fromNullable(maxApplications), Optional.fromNullable(maxApplicationsPerCustomer),
                 Optional.fromNullable(cartPredicate), createdAt, lastModifiedAt);
     }
 
     @JsonIgnore
     public DiscountCode(final String id, final int version, final String code, final Optional<LocalizedString> name,
                         final Optional<LocalizedString> description, final List<Reference<CartDiscount>> cartDiscounts,
-                        final boolean isActive, final Optional<Long> maxApplications, final Optional<Long> maxApplicationsByCustomer,
+                        final boolean isActive, final Optional<Long> maxApplications, final Optional<Long> maxApplicationsPerCustomer,
                         final Optional<String> cartPredicate, final DateTime createdAt, final DateTime lastModifiedAt) {
         this.id = id;
         this.version = version;
@@ -50,7 +50,7 @@ public class DiscountCode {
         this.cartDiscounts = cartDiscounts;
         this.isActive = isActive;
         this.maxApplications = maxApplications;
-        this.maxApplicationsByCustomer = maxApplicationsByCustomer;
+        this.maxApplicationsPerCustomer = maxApplicationsPerCustomer;
         this.cartPredicate = cartPredicate;
         this.createdAt = createdAt;
         this.lastModifiedAt = lastModifiedAt;
@@ -88,8 +88,8 @@ public class DiscountCode {
         return maxApplications;
     }
 
-    public Optional<Long> getMaxApplicationsByCustomer() {
-        return maxApplicationsByCustomer;
+    public Optional<Long> getMaxApplicationsPerCustomer() {
+        return maxApplicationsPerCustomer;
     }
 
     public Optional<String> getCartPredicate() {
@@ -125,7 +125,7 @@ public class DiscountCode {
             return false;
         if (maxApplications != null ? !maxApplications.equals(that.maxApplications) : that.maxApplications != null)
             return false;
-        if (maxApplicationsByCustomer != null ? !maxApplicationsByCustomer.equals(that.maxApplicationsByCustomer) : that.maxApplicationsByCustomer != null)
+        if (maxApplicationsPerCustomer != null ? !maxApplicationsPerCustomer.equals(that.maxApplicationsPerCustomer) : that.maxApplicationsPerCustomer != null)
             return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
@@ -142,7 +142,7 @@ public class DiscountCode {
         result = 31 * result + (cartDiscounts != null ? cartDiscounts.hashCode() : 0);
         result = 31 * result + (isActive ? 1 : 0);
         result = 31 * result + (maxApplications != null ? maxApplications.hashCode() : 0);
-        result = 31 * result + (maxApplicationsByCustomer != null ? maxApplicationsByCustomer.hashCode() : 0);
+        result = 31 * result + (maxApplicationsPerCustomer != null ? maxApplicationsPerCustomer.hashCode() : 0);
         result = 31 * result + (cartPredicate != null ? cartPredicate.hashCode() : 0);
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (lastModifiedAt != null ? lastModifiedAt.hashCode() : 0);
@@ -160,7 +160,7 @@ public class DiscountCode {
                 ", cartDiscounts=" + cartDiscounts +
                 ", isActive=" + isActive +
                 ", maxApplications=" + maxApplications +
-                ", maxApplicationsByCustomer=" + maxApplicationsByCustomer +
+                ", maxApplicationsPerCustomer=" + maxApplicationsPerCustomer +
                 ", cartPredicate=" + cartPredicate +
                 ", createdAt=" + createdAt +
                 ", lastModifiedAt=" + lastModifiedAt +
