@@ -1,10 +1,13 @@
 package io.sphere.client.shop.model;
 
+import com.google.common.base.Optional;
 import io.sphere.client.model.LocalizedString;
 import io.sphere.client.model.Money;
 import java.util.Locale;
 
 import io.sphere.client.model.Reference;
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.annotation.Nonnull;
@@ -14,32 +17,50 @@ import javax.annotation.Nullable;
 public class LineItem {
     @Nonnull private String id;
     @Nonnull private String productId;
-    @Nonnull @JsonProperty("name") private LocalizedString productName = Attribute.defaultLocalizedString;
-    @Nonnull @JsonProperty("variant") private Variant variant;
+    @Nonnull private LocalizedString productName = Attribute.defaultLocalizedString;
+    @Nonnull private Variant variant;
     private int quantity;
     @Nonnull private Price price;
+    private Optional<DiscountedLineItemPrice> discountedPrice;
     private TaxRate taxRate;
     private Reference<Channel> supplyChannel = Channel.emptyReference();
 
     // for JSON deserializer
     private LineItem() {}
 
-    private LineItem(final String id, final String productId, final LocalizedString productName, final Variant variant,
-                    final int quantity, final Price price, final TaxRate taxRate, final Reference<Channel> supplyChannel) {
+    @JsonCreator
+    LineItem(@JsonProperty("id") String id, @JsonProperty("productId") String productId, @JsonProperty("name") LocalizedString productName,
+             @JsonProperty("variant") Variant variant, @JsonProperty("quantity") int quantity, @JsonProperty("price") Price price,
+             @JsonProperty("discountedPrice") DiscountedLineItemPrice discountedPrice, @JsonProperty("taxRate") TaxRate taxRate,
+             @JsonProperty("supplyChannel") Reference<Channel> supplyChannel) {
+        this(id, productId, productName, variant, quantity, price, Optional.fromNullable(discountedPrice), taxRate, supplyChannel);
+    }
+
+    @JsonIgnore
+    LineItem(final String id, final String productId, final LocalizedString productName, final Variant variant,
+             final int quantity, final Price price, final Optional<DiscountedLineItemPrice> discountedPrice,
+             final TaxRate taxRate, final Reference<Channel> supplyChannel) {
         this.id = id;
         this.productId = productId;
         this.productName = productName;
         this.variant = variant;
         this.quantity = quantity;
         this.price = price;
+        this.discountedPrice = discountedPrice;
         this.taxRate = taxRate;
         this.supplyChannel = supplyChannel;
     }
 
     public static LineItem create(final String id, final String productId, final LocalizedString productName,
-                                  final Variant variant, final int quantity, final Price price, final TaxRate taxRate,
-                                  final Reference<Channel> supplyChannel) {
-        return new LineItem(id, productId, productName, variant, quantity, price, taxRate, supplyChannel);
+                                  final Variant variant, final int quantity, final Price price, final Optional<DiscountedLineItemPrice> discountedPrice,
+                                  final TaxRate taxRate, final Reference<Channel> supplyChannel) {
+        return new LineItem(id, productId, productName, variant, quantity, price, discountedPrice, taxRate, supplyChannel);
+    }
+
+    public static LineItem create(final String id, final String productId, final LocalizedString productName,
+                                  final Variant variant, final int quantity, final Price price,
+                                  final TaxRate taxRate, final Reference<Channel> supplyChannel) {
+        return create(id, productId, productName, variant, quantity, price, Optional.<DiscountedLineItemPrice>absent(), taxRate, supplyChannel);
     }
 
     /** Unique id of this line item. */
@@ -49,7 +70,7 @@ public class LineItem {
     @Nonnull public String getProductId() { return productId; }
 
     /** Name of the product. If there is only one translation it will return this. Otherwise,
-        it will return a random one. If there are no translations will return the empty string. */
+     it will return a random one. If there are no translations will return the empty string. */
     @Nonnull public String getProductName() { return productName.get(); }
 
     /**
@@ -97,6 +118,11 @@ public class LineItem {
     /** The price. */
     @Nonnull public Price getPrice() { return price; }
 
+    /* The discounted price, if applied */
+    public Optional<DiscountedLineItemPrice> getDiscountedPrice() {
+        return discountedPrice;
+    }
+
     /** The tax rate of this line item. Optional.
      *
      *  <p>The tax rate is selected based on the cart's shipping address and is only set when the
@@ -119,6 +145,7 @@ public class LineItem {
                 ", variant=" + variant +
                 ", quantity=" + quantity +
                 ", price=" + price +
+                ", discountedPrice=" + discountedPrice +
                 ", taxRate=" + taxRate +
                 ", supplyChannel=" + supplyChannel +
                 '}';

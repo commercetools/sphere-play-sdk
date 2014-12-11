@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import com.neovisionaries.i18n.CountryCode;
 import io.sphere.client.model.LocalizedString;
 import io.sphere.client.model.Money;
+import io.sphere.client.model.Reference;
 import io.sphere.client.model.ReferenceId;
 import io.sphere.client.shop.model.*;
 import net.jcip.annotations.Immutable;
@@ -368,7 +369,7 @@ public class CartCommands {
     @Immutable
     public static class RemoveCustomLineItem extends CartUpdateAction {
         private String customLineItemId;
-        
+
         public RemoveCustomLineItem(String lineItemId) {
             super("removeCustomLineItem");
             this.customLineItemId = lineItemId;
@@ -665,7 +666,7 @@ public class CartCommands {
                     '}';
         }
     }
-    
+
     @Immutable
     public static final class SetCustomShippingMethod extends CartUpdateAction {
         private final String shippingMethodName;
@@ -715,6 +716,85 @@ public class CartCommands {
                     "shippingMethodName='" + shippingMethodName + '\'' +
                     ", shippingRate=" + shippingRate +
                     ", taxCategory=" + taxCategory +
+                    '}';
+        }
+    }
+
+
+    @Immutable
+    public static final class AddDiscountCode extends CartUpdateAction {
+        private final String discountCode;
+
+        public AddDiscountCode(String discountCode) {
+            super("addDiscountCode");
+            this.discountCode = discountCode;
+        }
+
+        public String getDiscountCode() {
+            return discountCode;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            AddDiscountCode that = (AddDiscountCode) o;
+
+            if (discountCode != null ? !discountCode.equals(that.discountCode) : that.discountCode != null)
+                return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return discountCode != null ? discountCode.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "AddDiscountCode{" +
+                    "discountCode=" + discountCode +
+                    '}';
+        }
+    }
+
+    @Immutable
+    public static final class RemoveDiscountCode extends CartUpdateAction {
+        private final Reference<DiscountCode> discountCode;
+
+        public RemoveDiscountCode(Reference<DiscountCode> discountCode) {
+            super("removeDiscountCode");
+            this.discountCode = discountCode;
+        }
+
+        public Reference<DiscountCode> getDiscountCode() {
+            return discountCode;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            RemoveDiscountCode that = (RemoveDiscountCode) o;
+
+            if (discountCode != null ? !discountCode.equals(that.discountCode) : that.discountCode != null)
+                return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return discountCode != null ? discountCode.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "RemoveDiscountCode{" +
+                    "discountCode=" + discountCode +
                     '}';
         }
     }
