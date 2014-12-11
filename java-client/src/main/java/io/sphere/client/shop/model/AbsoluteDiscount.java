@@ -6,17 +6,17 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.util.List;
 
 /**
- * An absolute discount with corresponding values of price reductions.
+ * An absolute product discount with corresponding values of price reductions.
  */
-public class AbsoluteDiscount extends DiscountValue {
-    private final List<Money> money;
+public class AbsoluteDiscount implements DiscountValue {
+    protected final List<Money> money;
 
     public AbsoluteDiscount(@JsonProperty("money") final List<Money> money) {
         this.money = money;
     }
 
     /**
-     * The array contains money values in different currencies. An absolute discount will only match a price if this array contains a value with the same currency. If it contains 10€ and 15$, the matching € price will be decreased by 10€ and the matching $ price will be decreased by 15$.
+     * The array contains money values in different currencies. An absolute product discount will only match a price if this array contains a value with the same currency. If it contains 10€ and 15$, the matching € price will be decreased by 10€ and the matching $ price will be decreased by 15$.
      * @return list of discount values
      */
     public List<Money> getMoney() {

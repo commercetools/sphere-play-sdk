@@ -369,7 +369,7 @@ public class CartCommands {
     @Immutable
     public static class RemoveCustomLineItem extends CartUpdateAction {
         private String customLineItemId;
-        
+
         public RemoveCustomLineItem(String lineItemId) {
             super("removeCustomLineItem");
             this.customLineItemId = lineItemId;
@@ -666,7 +666,7 @@ public class CartCommands {
                     '}';
         }
     }
-    
+
     @Immutable
     public static final class SetCustomShippingMethod extends CartUpdateAction {
         private final String shippingMethodName;

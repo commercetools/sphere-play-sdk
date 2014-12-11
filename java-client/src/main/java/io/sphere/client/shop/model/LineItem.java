@@ -57,6 +57,12 @@ public class LineItem {
         return new LineItem(id, productId, productName, variant, quantity, price, discountedPrice, taxRate, supplyChannel);
     }
 
+    public static LineItem create(final String id, final String productId, final LocalizedString productName,
+                                  final Variant variant, final int quantity, final Price price,
+                                  final TaxRate taxRate, final Reference<Channel> supplyChannel) {
+        return create(id, productId, productName, variant, quantity, price, Optional.<DiscountedLineItemPrice>absent(), taxRate, supplyChannel);
+    }
+
     /** Unique id of this line item. */
     @Nonnull public String getId() { return id; }
 
@@ -64,7 +70,7 @@ public class LineItem {
     @Nonnull public String getProductId() { return productId; }
 
     /** Name of the product. If there is only one translation it will return this. Otherwise,
-        it will return a random one. If there are no translations will return the empty string. */
+     it will return a random one. If there are no translations will return the empty string. */
     @Nonnull public String getProductName() { return productName.get(); }
 
     /**
