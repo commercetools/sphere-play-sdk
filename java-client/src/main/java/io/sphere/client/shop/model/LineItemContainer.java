@@ -37,7 +37,8 @@ public abstract class LineItemContainer {
     private CountryCode country;
     @Nonnull private Reference<CustomerGroup> customerGroup = EmptyReference.create("customerGroup");
     private ShippingInfo shippingInfo;
-    
+    private List<DiscountCodeWithState> discountCodes = new ArrayList<DiscountCodeWithState>();
+
     protected LineItemContainer() {}
 
     /** The sum of quantities of line items. */
@@ -56,12 +57,12 @@ public abstract class LineItemContainer {
     }
 
     /** Calculates the total of all line items (without the custom line items). */
-    @Nonnull public Money getLineItemTotalPrice() { 
+    @Nonnull public Money getLineItemTotalPrice() {
         Money total = new Money(new BigDecimal(0), totalPrice.getCurrencyCode());
         for (LineItem lineItem: this.getLineItems()) {
             total = total.plus(lineItem.getTotalPrice());
         }
-        return total; 
+        return total;
     }
 
     public Optional<LineItem> getLineItemById(final String id) {
@@ -98,7 +99,7 @@ public abstract class LineItemContainer {
 
     /** The custom items in this cart or order. Does not fire a query to the backend. */
     @Nonnull public List<CustomLineItem> getCustomLineItems() { return customLineItems; }
-    
+
     /** The date and time when this object was last modified. */
     @Nonnull public DateTime getLastModifiedAt() { return lastModifiedAt; }
 
@@ -107,7 +108,7 @@ public abstract class LineItemContainer {
 
     /** The shipping address. Optional. */
     public Address getShippingAddress() { return shippingAddress; }
-    
+
     /** The billing address. Optional. */
     public Address getBillingAddress() { return billingAddress; }
 
@@ -137,6 +138,13 @@ public abstract class LineItemContainer {
     /** The shipping information. Set once cart the shipping method is set. */
     public ShippingInfo getShippingInfo() { return shippingInfo; }
 
+    /**
+     * The references to the discount codes applied to this cart.
+     */
+    public List<DiscountCodeWithState> getDiscountCodes() {
+        return discountCodes;
+    }
+
     @Override
     public String toString() {
         return "LineItemContainer{" +
@@ -155,6 +163,7 @@ public abstract class LineItemContainer {
                 ", country=" + country +
                 ", customerGroup=" + customerGroup +
                 ", shippingInfo=" + shippingInfo +
+                ", discountCodes=" + discountCodes +
                 '}';
     }
 }

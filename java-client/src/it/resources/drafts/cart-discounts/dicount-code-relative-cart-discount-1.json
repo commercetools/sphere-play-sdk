@@ -1,0 +1,9 @@
+{
+    "code": "relative discount code",
+    "cartDiscounts": [
+        {
+            "id": "27737207-63e1-4d96-bae9-72f68e906766",
+            "typeId": "cart-discount"
+        }
+    ]
+}

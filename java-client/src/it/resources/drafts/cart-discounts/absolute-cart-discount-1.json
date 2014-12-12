@@ -1,0 +1,25 @@
+{
+    "name": {
+        "en": "test absolute cart discount"
+    },
+    "description" : {
+        "en": "a test cart discount description"
+    },
+    "value": {
+        "type": "absolute",
+        "money": [
+            {
+                "currencyCode" : "EUR",
+                "centAmount" : 200
+            }
+        ]
+    },
+    "cartPredicate" : "1 = 1",
+    "target": {
+        "type": "lineItems",
+        "predicate": "1 = 1"
+    },
+    "sortOrder": "0.399",
+    "isActive": true,
+    "requiresDiscountCode": true
+}
