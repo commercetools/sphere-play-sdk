@@ -20,7 +20,7 @@ class CartDiscountIntegrationSpec extends WordSpec with MustMatchers {
 
        val cartUpdate = new CartUpdate().addDiscountCode("relative discount code")
        val updatedCart = client.carts.updateCart(cart.getIdAndVersion, cartUpdate).execute()
-       updatedCart.getTotalPrice.getAmount.doubleValue must be((cart.getTotalPrice.getAmount.doubleValue * 0.9) +- 0.1)
+       updatedCart.getTotalPrice.getCentAmount must be((cart.getTotalPrice.getCentAmount * 0.9))
        updatedCart.getDiscountCodes must be(asList(new DiscountCodeWithState(Optional.of(DiscountCodeState.MatchesCart),
          Reference.create[DiscountCode]("discount-code", "caf7023c-228f-4a2d-9354-e6e3c15a4898"))))
        cart.getLineItems.get(0).getDiscountedPrice must be(Optional.absent())
