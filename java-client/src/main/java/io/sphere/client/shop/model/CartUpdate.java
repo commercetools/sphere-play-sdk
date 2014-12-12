@@ -2,6 +2,7 @@ package io.sphere.client.shop.model;
 
 import io.sphere.client.model.LocalizedString;
 import io.sphere.client.model.Money;
+import io.sphere.client.model.Reference;
 import io.sphere.client.model.ReferenceId;
 import io.sphere.internal.command.CartCommands;
 import io.sphere.internal.command.Update;
@@ -124,5 +125,15 @@ public class CartUpdate extends Update<CartCommands.CartUpdateAction> {
     @Override
     public List<CartCommands.CartUpdateAction> getActions() {
         return super.getActions();
+    }
+
+    public CartUpdate addDiscountCode(final String discountCode) {
+        add(new CartCommands.AddDiscountCode(discountCode));
+        return this;
+    }
+
+    public CartUpdate removeDiscountCode(final Reference<DiscountCode> discountCode) {
+        add(new CartCommands.RemoveDiscountCode(discountCode));
+        return this;
     }
 }

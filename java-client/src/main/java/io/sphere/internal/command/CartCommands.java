@@ -725,12 +725,12 @@ public class CartCommands {
     public static final class AddDiscountCode extends CartUpdateAction {
         private final String discountCode;
 
-        public AddDiscountCode(String discountCode) {
+        public AddDiscountCode(final String discountCode) {
             super("addDiscountCode");
             this.discountCode = discountCode;
         }
 
-        public String getDiscountCode() {
+        public String getCode() {
             return discountCode;
         }
 
@@ -764,7 +764,7 @@ public class CartCommands {
     public static final class RemoveDiscountCode extends CartUpdateAction {
         private final Reference<DiscountCode> discountCode;
 
-        public RemoveDiscountCode(Reference<DiscountCode> discountCode) {
+        public RemoveDiscountCode(final Reference<DiscountCode> discountCode) {
             super("removeDiscountCode");
             this.discountCode = discountCode;
         }

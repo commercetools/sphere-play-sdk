@@ -8,26 +8,26 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 public class DiscountCodeWithState {
     private final Optional<DiscountCodeState> state;
-    private final Reference<DiscountCode> reference;
+    private final Reference<DiscountCode> discountCode;
 
     @JsonCreator
     DiscountCodeWithState(@JsonProperty("state") DiscountCodeState state,
-                          @JsonProperty("discountCode") Reference<DiscountCode> reference) {
-        this(Optional.fromNullable(state), reference);
+                          @JsonProperty("discountCode") Reference<DiscountCode> discountCode) {
+        this(Optional.fromNullable(state), discountCode);
     }
 
     @JsonIgnore
-    public DiscountCodeWithState(final Optional<DiscountCodeState> state, final Reference<DiscountCode> reference) {
+    public DiscountCodeWithState(final Optional<DiscountCodeState> state, final Reference<DiscountCode> discountCode) {
         this.state = state;
-        this.reference = reference;
+        this.discountCode = discountCode;
     }
 
     public Optional<DiscountCodeState> getState() {
         return state;
     }
 
-    public Reference<DiscountCode> getReference() {
-        return reference;
+    public Reference<DiscountCode> getDiscountCode() {
+        return discountCode;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DiscountCodeWithState {
 
         DiscountCodeWithState that = (DiscountCodeWithState) o;
 
-        if (reference != null ? !reference.equals(that.reference) : that.reference != null) return false;
+        if (discountCode != null ? !discountCode.equals(that.discountCode) : that.discountCode != null) return false;
         if (state != null ? !state.equals(that.state) : that.state != null) return false;
 
         return true;
@@ -46,7 +46,7 @@ public class DiscountCodeWithState {
     @Override
     public int hashCode() {
         int result = state != null ? state.hashCode() : 0;
-        result = 31 * result + (reference != null ? reference.hashCode() : 0);
+        result = 31 * result + (discountCode != null ? discountCode.hashCode() : 0);
         return result;
     }
 
@@ -54,7 +54,7 @@ public class DiscountCodeWithState {
     public String toString() {
         return "DiscountCodeWithState{" +
                 "state=" + state +
-                ", reference=" + reference +
+                ", reference=" + discountCode +
                 '}';
     }
 }

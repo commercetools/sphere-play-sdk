@@ -1,0 +1,20 @@
+{
+    "name": {
+        "en": "test relative cart discount"
+    },
+    "description" : {
+        "en": "a test cart discount description"
+    },
+    "value": {
+        "type": "relative",
+        "permyriad": 1000
+    },
+    "cartPredicate" : "1 = 1",
+    "target": {
+        "type": "lineItems",
+        "predicate": "1 = 1"
+    },
+    "sortOrder": "0.142",
+    "isActive": true,
+    "requiresDiscountCode": true
+}
