@@ -133,7 +133,7 @@ public class CartUpdate extends Update<CartCommands.CartUpdateAction> {
     }
 
     public CartUpdate removeDiscountCode(final Reference<DiscountCode> discountCode) {
-        add(new CartCommands.RemoveDiscountCode(discountCode));
+        add(new CartCommands.RemoveDiscountCode(discountCode.toUnexpandedReference()));
         return this;
     }
 }

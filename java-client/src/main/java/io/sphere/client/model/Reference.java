@@ -70,6 +70,10 @@ public class Reference<T> {
         return ReferenceId.create(getTypeId(), getId());
     }
 
+    public Reference<T> toUnexpandedReference() {
+        return Reference.<T>create(getTypeId(), getId());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
