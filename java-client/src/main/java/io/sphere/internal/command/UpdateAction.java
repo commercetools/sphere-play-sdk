@@ -7,6 +7,9 @@ public abstract class UpdateAction {
     /** @param action The name of the action. */
     public UpdateAction(String action) { this.action = action; }
 
-    /** The name of the action. */
+    /**
+     * The name of the action.
+     * @return name
+     */
     public String getAction() { return action; }
 }

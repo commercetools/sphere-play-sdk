@@ -9,7 +9,9 @@ import java.util.List;
 public abstract class Update<A extends UpdateAction> {
     private List<A> actions = new ArrayList<A>();
 
-    /** Adds an {@link UpdateAction} to the update. */
+    /** Adds an {@link UpdateAction} to the update.
+     * @param action the action to add
+     */
     protected void add(A action) {
         this.actions.add(action);
     }
