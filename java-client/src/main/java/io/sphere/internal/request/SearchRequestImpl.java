@@ -93,7 +93,16 @@ public class SearchRequestImpl<T> implements SearchRequest<T>, TestableRequest {
     }
 
     @Override public SearchRequest<T> sort(ProductSort sort) {
-        addQueryParam(SearchUtil.createSortParam(sort));
+        return fluidAddQueryParam(SearchUtil.createSortParam(sort));
+    }
+
+    @Override
+    public SearchRequest<T> sort(final String sort) {
+        return fluidAddQueryParam(new QueryParam("sort", sort));
+    }
+
+    protected final SearchRequest<T> fluidAddQueryParam(final QueryParam queryParam) {
+        addQueryParam(queryParam);
         return this;
     }
 

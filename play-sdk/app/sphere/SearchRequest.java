@@ -39,4 +39,6 @@ public interface SearchRequest<T> {
      *
      * @param sort Specifies how products should be sorted.. */
     SearchRequest<T> sort(ProductSort sort);
+
+    SearchRequest<T> sort(String sort);
 }

@@ -1,3 +1,7 @@
+## 0.70.0
+
+* The product search allows String parameters for the sort configuration. This way product attributes are supported.
+
 ## v0.68.0
 
 * expose methods to better test the update actions for a cart.
