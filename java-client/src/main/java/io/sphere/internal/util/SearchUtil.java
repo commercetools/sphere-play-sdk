@@ -2,12 +2,11 @@ package io.sphere.internal.util;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
-import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Range;
 import com.google.common.collect.Ranges;
+import io.sphere.client.AttributeProductSort;
 import io.sphere.client.ProductSort;
 import io.sphere.client.filters.expressions.FilterType;
 import io.sphere.client.QueryParam;
@@ -15,7 +14,6 @@ import io.sphere.client.model.Money;
 import io.sphere.client.shop.model.Category;
 import static io.sphere.internal.util.ListUtil.*;
 
-import io.sphere.client.shop.model.Variant;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.Duration;
@@ -154,6 +152,10 @@ public class SearchUtil {
         if (sort == ProductSort.price.desc) return qpPriceDesc;
         if (sort == ProductSort.name.asc) return qpNameAsc;
         if (sort == ProductSort.name.desc) return qpNameDesc;
+        if (sort instanceof AttributeProductSort) {
+            final String sortExpression = ((AttributeProductSort) sort).toSphereSort();
+            return new QueryParam("sort", sortExpression);
+        }
         throw new IllegalArgumentException("Unknown sort: " + sort);
     }
 
