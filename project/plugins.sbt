@@ -11,3 +11,5 @@ addSbtPlugin("com.typesafe.sbt"  % "sbt-pgp"     % "0.8")
 addSbtPlugin("de.johoop"         % "jacoco4sbt"  % "2.1.5")
 
 addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.3.1")
+
+addSbtPlugin("io.sphere" % "git-publisher" % "0.2")
