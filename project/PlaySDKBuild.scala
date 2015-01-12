@@ -87,7 +87,13 @@ public final class Version {
     sources in JavaDoc <<=
       (target, compile in Compile, sources in Compile) map ((t, c, s) =>
         (t / "java" ** "*.java").get ++ s.filter(_.getName.endsWith(".java"))),
-    javacOptions in JavaDoc := Seq(),
+    javacOptions in (Compile, doc) :=
+      "-quiet" ::
+      "-notimestamp" ::
+      "-encoding" :: "UTF-8" ::
+      "-charset" :: "UTF-8" ::
+      "-docencoding" :: "UTF-8" ::
+      Nil,
     artifactName in packageDoc in JavaDoc :=
       ((sv, mod, art) =>
         "" + mod.name + "_" + sv.binary + "-" + mod.revision + "-javadoc.jar")
@@ -125,9 +131,7 @@ public final class Version {
   // Compile the SDK for Java 6, for developers who're still on Java 6
   lazy val java6Settings = Seq[Setting[_]](
     // Emit warnings for deprecated APIs, emit erasure warnings
-    javacOptions ++= Seq("-deprecation", "-Xlint:unchecked", "-source", "1.6", "-target", "1.6"),
-    // javadoc options
-    javacOptions in doc := Seq("-source", "1.6")
+    javacOptions ++= Seq("-deprecation", "-Xlint:unchecked", "-source", "1.6", "-target", "1.6")
   )
 
   def testSettings(testLibs: ModuleID*): Seq[Setting[_]] = {
