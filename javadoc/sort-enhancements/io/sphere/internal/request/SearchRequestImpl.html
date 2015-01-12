@@ -177,28 +177,36 @@ implements <a href="../../../../io/sphere/client/SearchRequest.html" title="inte
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/SearchRequestImpl.html#fluidAddQueryParam(io.sphere.client.QueryParam)">fluidAddQueryParam</a></strong>(<a href="../../../../io/sphere/client/QueryParam.html" title="class in io.sphere.client">QueryParam</a>&nbsp;queryParam)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../io/sphere/internal/request/TestableRequestHolder.html" title="interface in io.sphere.internal.request">TestableRequestHolder</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/SearchRequestImpl.html#getRequestHolder()">getRequestHolder</a></strong>()</code>
 <div class="block">Returns the internal request holder, for testing purposes.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/SearchRequestImpl.html#page(int)">page</a></strong>(int&nbsp;page)</code>
 <div class="block">Sets the page number for paging through results.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/SearchRequestImpl.html#pageSize(int)">pageSize</a></strong>(int&nbsp;pageSize)</code>
 <div class="block">Sets the size of a page for paging through results.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/SearchRequestImpl.html#sort(io.sphere.client.ProductSort)">sort</a></strong>(<a href="../../../../io/sphere/client/ProductSort.html" title="class in io.sphere.client">ProductSort</a>&nbsp;sort)</code>
 <div class="block">Sorts products.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/SearchRequestImpl.html#sort(java.lang.String)">sort</a></strong>(java.lang.String&nbsp;sort)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
@@ -352,6 +360,28 @@ implements <a href="../../../../io/sphere/client/SearchRequest.html" title="inte
 <dt><strong>Specified by:</strong></dt>
 <dd><code><a href="../../../../io/sphere/client/SearchRequest.html#sort(io.sphere.client.ProductSort)">sort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></dd>
 <dt><span class="strong">Parameters:</span></dt><dd><code>sort</code> - Specifies how products should be sorted.</dd></dl>
+</li>
+</ul>
+<a name="sort(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sort</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;&nbsp;sort(java.lang.String&nbsp;sort)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#sort(java.lang.String)">sort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="fluidAddQueryParam(io.sphere.client.QueryParam)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fluidAddQueryParam</h4>
+<pre>protected final&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/internal/request/SearchRequestImpl.html" title="type parameter in SearchRequestImpl">T</a>&gt;&nbsp;fluidAddQueryParam(<a href="../../../../io/sphere/client/QueryParam.html" title="class in io.sphere.client">QueryParam</a>&nbsp;queryParam)</pre>
 </li>
 </ul>
 <a name="fetch()">
