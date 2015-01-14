@@ -1,6 +1,6 @@
 ## 0.70.0
 
-* The product search allows String parameters for the sort configuration. This way product attributes are supported.
+* The product search allows String parameters and product attributes for the sort configuration. 
 
 ## v0.68.0
 
