@@ -123,11 +123,7 @@ public abstract class ProductSort {
         }
 
         public AttributeSortsPreDirection enumLabel(final String fieldName) {
-            return new AttributeSortsPreDirection(fieldName + ".key");
-        }
-
-        public AttributeSortsPreDirection localizableEnumLabel(final String fieldName) {
-            return new AttributeSortsPreDirection(fieldName + ".key");
+            return new AttributeSortsPreDirection(fieldName + ".label");
         }
 
         public AttributeSortsPreDirection localizableEnumLabel(final String fieldName, final String lang) {
