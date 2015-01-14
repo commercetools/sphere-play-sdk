@@ -1,0 +1,491 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>ProductSearchRequest</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ProductSearchRequest";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../io/sphere/internal/request/ProductRequestFactoryImpl.html" title="class in io.sphere.internal.request"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../io/sphere/internal/request/QueryRequestImpl.html" title="class in io.sphere.internal.request"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?io/sphere/internal/request/ProductSearchRequest.html" target="_top">Frames</a></li>
+<li><a href="ProductSearchRequest.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">io.sphere.internal.request</div>
+<h2 title="Class ProductSearchRequest" class="title">Class ProductSearchRequest</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>io.sphere.internal.request.ProductSearchRequest</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">ProductSearchRequest</span>
+extends java.lang.Object
+implements <a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</pre>
+<div class="block">Transforms results from <a href="../../../../io/sphere/client/model/products/BackendProductProjection.html" title="class in io.sphere.client.model.products"><code>BackendProductProjection</code></a> to <a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model"><code>Product</code></a>.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#ProductSearchRequest(io.sphere.client.SearchRequest,%20io.sphere.client.shop.CategoryTree)">ProductSearchRequest</a></strong>(<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/model/products/BackendProductProjection.html" title="class in io.sphere.client.model.products">BackendProductProjection</a>&gt;&nbsp;underlyingRequest,
+                    <a href="../../../../io/sphere/client/shop/CategoryTree.html" title="interface in io.sphere.client.shop">CategoryTree</a>&nbsp;categoryTree)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#facet(io.sphere.client.facets.expressions.FacetExpression,%20io.sphere.client.facets.expressions.FacetExpression...)">facet</a></strong>(<a href="../../../../io/sphere/client/facets/expressions/FacetExpression.html" title="interface in io.sphere.client.facets.expressions">FacetExpression</a>&nbsp;facet,
+     <a href="../../../../io/sphere/client/facets/expressions/FacetExpression.html" title="interface in io.sphere.client.facets.expressions">FacetExpression</a>...&nbsp;facets)</code>
+<div class="block">Requests aggregated counts to be calculated for given facet expressions.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#facet(java.lang.Iterable)">facet</a></strong>(java.lang.Iterable&lt;<a href="../../../../io/sphere/client/facets/expressions/FacetExpression.html" title="interface in io.sphere.client.facets.expressions">FacetExpression</a>&gt;&nbsp;facets)</code>
+<div class="block">Requests aggregated counts to be calculated for given facet expressions.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/model/SearchResult.html" title="class in io.sphere.client.model">SearchResult</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#fetch()">fetch</a></strong>()</code>
+<div class="block">Executes the request and returns the result.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>com.google.common.util.concurrent.ListenableFuture&lt;<a href="../../../../io/sphere/client/model/SearchResult.html" title="class in io.sphere.client.model">SearchResult</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#fetchAsync()">fetchAsync</a></strong>()</code>
+<div class="block">Executes the request asynchronously and returns a future providing the result.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#filter(io.sphere.client.filters.expressions.FilterExpression,%20io.sphere.client.filters.expressions.FilterExpression...)">filter</a></strong>(<a href="../../../../io/sphere/client/filters/expressions/FilterExpression.html" title="interface in io.sphere.client.filters.expressions">FilterExpression</a>&nbsp;filter,
+      <a href="../../../../io/sphere/client/filters/expressions/FilterExpression.html" title="interface in io.sphere.client.filters.expressions">FilterExpression</a>...&nbsp;filters)</code>
+<div class="block">Filters products by given constraints.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#filter(java.lang.Iterable)">filter</a></strong>(java.lang.Iterable&lt;<a href="../../../../io/sphere/client/filters/expressions/FilterExpression.html" title="interface in io.sphere.client.filters.expressions">FilterExpression</a>&gt;&nbsp;filters)</code>
+<div class="block">Filters products by given constraints.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/model/products/BackendProductProjection.html" title="class in io.sphere.client.model.products">BackendProductProjection</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#getUnderlyingRequest()">getUnderlyingRequest</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#page(int)">page</a></strong>(int&nbsp;page)</code>
+<div class="block">Sets the page number for paging through results.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#pageSize(int)">pageSize</a></strong>(int&nbsp;pageSize)</code>
+<div class="block">Sets the size of a page for paging through results.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#sort(io.sphere.client.ProductSort)">sort</a></strong>(<a href="../../../../io/sphere/client/ProductSort.html" title="class in io.sphere.client">ProductSort</a>&nbsp;sort)</code>
+<div class="block">Sorts products.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#sort(java.lang.String)">sort</a></strong>(java.lang.String&nbsp;sort)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../io/sphere/internal/request/ProductSearchRequest.html#toString()">toString</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="ProductSearchRequest(io.sphere.client.SearchRequest, io.sphere.client.shop.CategoryTree)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>ProductSearchRequest</h4>
+<pre>public&nbsp;ProductSearchRequest(@Nonnull
+                    <a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/model/products/BackendProductProjection.html" title="class in io.sphere.client.model.products">BackendProductProjection</a>&gt;&nbsp;underlyingRequest,
+                    <a href="../../../../io/sphere/client/shop/CategoryTree.html" title="interface in io.sphere.client.shop">CategoryTree</a>&nbsp;categoryTree)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="fetch()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetch</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/model/SearchResult.html" title="class in io.sphere.client.model">SearchResult</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;fetch()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#fetch()">SearchRequest</a></code></strong></div>
+<div class="block">Executes the request and returns the result.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#fetch()">fetch</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="fetchAsync()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetchAsync</h4>
+<pre>public&nbsp;com.google.common.util.concurrent.ListenableFuture&lt;<a href="../../../../io/sphere/client/model/SearchResult.html" title="class in io.sphere.client.model">SearchResult</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&gt;&nbsp;fetchAsync()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#fetchAsync()">SearchRequest</a></code></strong></div>
+<div class="block">Executes the request asynchronously and returns a future providing the result.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#fetchAsync()">fetchAsync</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="page(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>page</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;page(int&nbsp;page)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#page(int)">SearchRequest</a></code></strong></div>
+<div class="block">Sets the page number for paging through results. Page numbers start at zero.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#page(int)">page</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="pageSize(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pageSize</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;pageSize(int&nbsp;pageSize)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#pageSize(int)">SearchRequest</a></code></strong></div>
+<div class="block">Sets the size of a page for paging through results. When page size is not set, the default of 25 is used.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#pageSize(int)">pageSize</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="filter(io.sphere.client.filters.expressions.FilterExpression, io.sphere.client.filters.expressions.FilterExpression...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filter</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;filter(<a href="../../../../io/sphere/client/filters/expressions/FilterExpression.html" title="interface in io.sphere.client.filters.expressions">FilterExpression</a>&nbsp;filter,
+                            <a href="../../../../io/sphere/client/filters/expressions/FilterExpression.html" title="interface in io.sphere.client.filters.expressions">FilterExpression</a>...&nbsp;filters)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#filter(io.sphere.client.filters.expressions.FilterExpression,%20io.sphere.client.filters.expressions.FilterExpression...)">SearchRequest</a></code></strong></div>
+<div class="block">Filters products by given constraints.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#filter(io.sphere.client.filters.expressions.FilterExpression,%20io.sphere.client.filters.expressions.FilterExpression...)">filter</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="filter(java.lang.Iterable)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filter</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;filter(java.lang.Iterable&lt;<a href="../../../../io/sphere/client/filters/expressions/FilterExpression.html" title="interface in io.sphere.client.filters.expressions">FilterExpression</a>&gt;&nbsp;filters)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#filter(java.lang.Iterable)">SearchRequest</a></code></strong></div>
+<div class="block">Filters products by given constraints.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#filter(java.lang.Iterable)">filter</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="facet(io.sphere.client.facets.expressions.FacetExpression, io.sphere.client.facets.expressions.FacetExpression...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>facet</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;facet(<a href="../../../../io/sphere/client/facets/expressions/FacetExpression.html" title="interface in io.sphere.client.facets.expressions">FacetExpression</a>&nbsp;facet,
+                           <a href="../../../../io/sphere/client/facets/expressions/FacetExpression.html" title="interface in io.sphere.client.facets.expressions">FacetExpression</a>...&nbsp;facets)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#facet(io.sphere.client.facets.expressions.FacetExpression,%20io.sphere.client.facets.expressions.FacetExpression...)">SearchRequest</a></code></strong></div>
+<div class="block">Requests aggregated counts to be calculated for given facet expressions.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#facet(io.sphere.client.facets.expressions.FacetExpression,%20io.sphere.client.facets.expressions.FacetExpression...)">facet</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="facet(java.lang.Iterable)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>facet</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;facet(java.lang.Iterable&lt;<a href="../../../../io/sphere/client/facets/expressions/FacetExpression.html" title="interface in io.sphere.client.facets.expressions">FacetExpression</a>&gt;&nbsp;facets)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#facet(java.lang.Iterable)">SearchRequest</a></code></strong></div>
+<div class="block">Requests aggregated counts to be calculated for given facet expressions.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#facet(java.lang.Iterable)">facet</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="sort(io.sphere.client.ProductSort)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sort</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;sort(<a href="../../../../io/sphere/client/ProductSort.html" title="class in io.sphere.client">ProductSort</a>&nbsp;sort)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html#sort(io.sphere.client.ProductSort)">SearchRequest</a></code></strong></div>
+<div class="block">Sorts products. When this method is not used, products are implicitly sorted by relevance.
+
+ <p>Example: <code>sort(ProductSort.price.asc)</code>.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#sort(io.sphere.client.ProductSort)">sort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>sort</code> - Specifies how products should be sorted.</dd></dl>
+</li>
+</ul>
+<a name="sort(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sort</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;&nbsp;sort(java.lang.String&nbsp;sort)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../io/sphere/client/SearchRequest.html#sort(java.lang.String)">sort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/shop/model/Product.html" title="class in io.sphere.client.shop.model">Product</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getUnderlyingRequest()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUnderlyingRequest</h4>
+<pre>public&nbsp;<a href="../../../../io/sphere/client/SearchRequest.html" title="interface in io.sphere.client">SearchRequest</a>&lt;<a href="../../../../io/sphere/client/model/products/BackendProductProjection.html" title="class in io.sphere.client.model.products">BackendProductProjection</a>&gt;&nbsp;getUnderlyingRequest()</pre>
+</li>
+</ul>
+<a name="toString()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../io/sphere/internal/request/ProductRequestFactoryImpl.html" title="class in io.sphere.internal.request"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../io/sphere/internal/request/QueryRequestImpl.html" title="class in io.sphere.internal.request"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?io/sphere/internal/request/ProductSearchRequest.html" target="_top">Frames</a></li>
+<li><a href="ProductSearchRequest.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+</body>
+</html>
