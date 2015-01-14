@@ -78,6 +78,13 @@ public final class Version {
 
   val JavaDoc = config("genjavadoc") extend Compile
 
+  private val JavaDocOptions =
+    "-quiet" ::
+    "-notimestamp" ::
+    "-encoding" :: "UTF-8" ::
+    "-charset" :: "UTF-8" ::
+    "-docencoding" :: "UTF-8" ::
+    Nil
   //from https://github.com/typesafehub/genjavadoc
   lazy val javadocSettings = inConfig(JavaDoc)(Defaults.configSettings) ++ Seq(
     libraryDependencies += compilerPlugin("com.typesafe.genjavadoc" %%
@@ -87,13 +94,7 @@ public final class Version {
     sources in JavaDoc <<=
       (target, compile in Compile, sources in Compile) map ((t, c, s) =>
         (t / "java" ** "*.java").get ++ s.filter(_.getName.endsWith(".java"))),
-    javacOptions in (Compile, doc) :=
-      "-quiet" ::
-      "-notimestamp" ::
-      "-encoding" :: "UTF-8" ::
-      "-charset" :: "UTF-8" ::
-      "-docencoding" :: "UTF-8" ::
-      Nil,
+    javacOptions in (Compile, doc) := JavaDocOptions,
     artifactName in packageDoc in JavaDoc :=
       ((sv, mod, art) =>
         "" + mod.name + "_" + sv.binary + "-" + mod.revision + "-javadoc.jar")
@@ -131,7 +132,8 @@ public final class Version {
   // Compile the SDK for Java 6, for developers who're still on Java 6
   lazy val java6Settings = Seq[Setting[_]](
     // Emit warnings for deprecated APIs, emit erasure warnings
-    javacOptions ++= Seq("-deprecation", "-Xlint:unchecked", "-source", "1.6", "-target", "1.6")
+    javacOptions ++= Seq("-deprecation", "-Xlint:unchecked", "-source", "1.6", "-target", "1.6"),
+    javacOptions in doc := JavaDocOptions
   )
 
   def testSettings(testLibs: ModuleID*): Seq[Setting[_]] = {
