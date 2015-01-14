@@ -81,6 +81,12 @@ public class ProductSearchRequest implements SearchRequest<Product> {
         return this;
     }
 
+    @Override
+    public SearchRequest<Product> sort(final String sort) {
+        underlyingRequest = underlyingRequest.sort(sort);
+        return this;
+    }
+
     // testing purposes
     public SearchRequest<BackendProductProjection> getUnderlyingRequest() {
         return underlyingRequest;

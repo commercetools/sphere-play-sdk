@@ -12,7 +12,10 @@ import play.libs.F.Promise;
  * see {@link Sphere#currentCustomer()}. */
 public interface CustomerService {
     /** Finds a customer associated to given token.
-     *  If the token is invalid or has expired, no customer will be found. */
+     *  If the token is invalid or has expired, no customer will be found.
+     *  @param token the token
+     *  @return request to be executed
+     */
     FetchRequest<Customer> byToken(String token);
 
     /** Creates a password reset token for a customer.

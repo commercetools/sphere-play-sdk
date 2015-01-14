@@ -2,6 +2,8 @@ package io.sphere.client.model;
 
 import javax.annotation.Nonnull;
 import io.sphere.client.ReferenceException;
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -11,20 +13,34 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class Reference<T> {
     @Nonnull private String id;
     @Nonnull private String typeId;
-    @JsonProperty("obj")
     private T obj;
 
-    // for JSON deserializer
-    protected Reference() { }
-
+    @JsonIgnore
     private Reference(@Nonnull String typeId, @Nonnull String id) {
         this.id = id;
         this.typeId = typeId;
     }
 
-    /** Creates a reference. */
+    @JsonCreator
+    private Reference(@Nonnull @JsonProperty("typeId") final String typeId, @Nonnull @JsonProperty("id") final String id,
+                      @JsonProperty("obj") final T obj) {
+        this.id = id;
+        this.typeId = typeId;
+        this.obj = obj;
+    }
+
+    protected Reference() {
+    }
+
+    @JsonIgnore
     public static <T> Reference<T> create(String typeId, String id) {
         return new Reference<T>(typeId, id);
+    }
+
+    /** Creates a reference. */
+    @JsonIgnore
+    static <T> Reference<T> create(final String typeId, final String id, final T obj) {
+        return new Reference<T>(typeId, id, obj);
     }
 
     /** Returns the object represented by this reference.
@@ -43,12 +59,15 @@ public class Reference<T> {
      *
      * If {@link #isExpanded} returns true, {@link #get} is guaranteed to return a non-null object.
      * User code should always check for {@link #isExpanded} before calling {@link #get}. */
+    @JsonIgnore
     public boolean isExpanded() { return obj != null; }
 
     /** True if this reference has no value in the parent object.
      *
      * If {@link #isEmpty} returns true, there's not much to do with this reference - {@link #isExpanded}
      * will return false and all other methods will throw a {@link ReferenceException}. */
+
+    @JsonIgnore
     public boolean isEmpty() { return false; }
 
     /** Id of the object this reference represents. */

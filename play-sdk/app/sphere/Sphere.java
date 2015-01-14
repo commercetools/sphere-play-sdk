@@ -206,9 +206,8 @@ public class Sphere {
      *  (you don't have to to call {@link #login(String, String) login} explicitly).
      *
      *  @return A result which can fail with the following exceptions:
-     *  <ul>
-     *      <li>{@link EmailAlreadyInUseException} if the email is already taken.
-     *  </>*/
+     *  <ul><li>{@link EmailAlreadyInUseException} if the email is already taken. </li></ul>
+     */
     public Promise<SphereResult<SignInResult>> signupAsync(String email, String password, CustomerName customerName) {
         return signupAsync(new SignUpBuilder(email, password, customerName));
     }

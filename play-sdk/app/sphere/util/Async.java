@@ -19,7 +19,12 @@ import sphere.internal.SearchRequestAdapter;
 public final class Async {
     private Async() {}
 
-    /** Creates Play's AsyncResult based on Guava's ListenableFuture. */
+    /**
+     * Creates Play's AsyncResult based on Guava's ListenableFuture.
+     *
+     * @param resultFuture the future to transform
+     * @return the Play future
+     */
     public static F.Promise<Result> asyncResult(ListenableFuture<Result> resultFuture) {
         return asPlayPromise(resultFuture);
     }
@@ -43,7 +48,12 @@ public final class Async {
         return promise.future();
     }
 
-    /** Blocks on a promise. */
+    /**
+     * Blocks on a promise.
+     * @param promise the promise to block
+     *
+     * @return the result of the future if present
+     */
     public static <T> T await(F.Promise<T> promise) {
         try {
             return promise.get(30L, java.util.concurrent.TimeUnit.SECONDS);

@@ -60,4 +60,10 @@ public class SearchRequestAdapter<T> implements SearchRequest<T> {
         request.sort(sort);
         return this;
     }
+
+    @Override
+    public SearchRequest<T> sort(final String sort) {
+        request.sort(sort);
+        return this;
+    }
 }

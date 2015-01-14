@@ -69,4 +69,73 @@ public abstract class ProductSort {
             super(direction);
         }
     }
+
+    // ---------------------------
+    // attributes
+    // ---------------------------
+    public static final AttributeSorts attributes = new AttributeSorts();
+
+    public static class AttributeSortsPreDirection {
+        public final AttributeProductSort asc;
+        public final AttributeProductSort desc;
+
+        AttributeSortsPreDirection(final String fieldSortWithoutDirection) {
+            asc = new AttributeProductSort(fieldSortWithoutDirection + " asc");
+            desc = new AttributeProductSort(fieldSortWithoutDirection + " desc");
+        }
+    }
+
+    public static class AttributeSorts {
+        public AttributeSortsPreDirection text(final String fieldName) {
+            return new AttributeSortsPreDirection(fieldName);
+        }
+
+        public AttributeSortsPreDirection date(final String fieldName) {
+            return text(fieldName);
+        }
+
+        public AttributeSortsPreDirection time(final String fieldName) {
+            return text(fieldName);
+        }
+
+        public AttributeSortsPreDirection datetime(final String fieldName) {
+            return text(fieldName);
+        }
+
+        public AttributeSortsPreDirection bool(final String fieldName) {
+            return text(fieldName);
+        }
+
+        public AttributeSortsPreDirection number(final String fieldName) {
+            return text(fieldName);
+        }
+
+        public AttributeSortsPreDirection localizedString(final String fieldName, final String lang) {
+            return new AttributeSortsPreDirection(fieldName + "." + lang.toLowerCase());
+        }
+
+        public AttributeSortsPreDirection enumKey(final String fieldName) {
+            return new AttributeSortsPreDirection(fieldName + ".key");
+        }
+
+        public AttributeSortsPreDirection localizableEnumKey(final String fieldName) {
+            return new AttributeSortsPreDirection(fieldName + ".key");
+        }
+
+        public AttributeSortsPreDirection enumLabel(final String fieldName) {
+            return new AttributeSortsPreDirection(fieldName + ".label");
+        }
+
+        public AttributeSortsPreDirection localizableEnumLabel(final String fieldName, final String lang) {
+            return new AttributeSortsPreDirection(fieldName + ".label." + lang.toLowerCase());
+        }
+
+        public AttributeSortsPreDirection moneyCentAmount(final String fieldName) {
+            return new AttributeSortsPreDirection(fieldName + ".centAmount");
+        }
+
+        public AttributeSortsPreDirection moneyCurrencyCode(final String fieldName) {
+            return new AttributeSortsPreDirection(fieldName + ".currencyCode");
+        }
+    }
 }

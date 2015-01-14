@@ -58,9 +58,12 @@ public class CurrentCart {
 
     /** Fetches the cart object for the current session asynchronously.
      *
-     * <p><i>Note:<i> As an optimization, the cart is only created in the backend when user adds a first product in the cart.
+     * <p><i>Note:</i> As an optimization, the cart is only created in the backend when user adds a first product in the cart.
      * For users who haven't put anything in their cart yet, this method returns an empty dummy cart object without going to
-     * the backend. */
+     * the backend.</p>
+     *
+     * @return a cart
+     */
     public Cart fetch() {
         return Async.await(fetchAsync());
     }
