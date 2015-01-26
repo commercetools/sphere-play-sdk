@@ -276,12 +276,22 @@ public class CurrentCart {
     }
 
     /** Sets an existing customer ID. The cart total is updated according to the new customer group */
-    public Promise<SphereResult<Cart>> setCustomerId(String customerId) {
+    public Cart setCustomerId(String customerId) {
+        return Async.awaitResult(setCustomerIdAsync(customerId));
+    }
+
+    /** Sets an existing customer ID. The cart total is updated according to the new customer group */
+    public Promise<SphereResult<Cart>> setCustomerIdAsync(String customerId) {
         return updateAsync(new CartUpdate().setCustomerId(customerId));
     }
 
     /** Clears the customer ID. The cart total is updated */
-    public Promise<SphereResult<Cart>> clearCustomerId() {
+    public Cart clearCustomerId() {
+        return Async.awaitResult(clearCustomerIdAsync());
+    }
+
+    /** Clears the customer ID. The cart total is updated */
+    public Promise<SphereResult<Cart>> clearCustomerIdAsync() {
         return updateAsync(new CartUpdate().setCustomerId(null));
     }
 
