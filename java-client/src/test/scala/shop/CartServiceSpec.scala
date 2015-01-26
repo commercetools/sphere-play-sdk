@@ -83,13 +83,14 @@ class CartServiceSpec extends WordSpec with MustMatchers  {
     update.setCustomShippingMethod("DHL", shippingRate, taxCategory)
     update.addCustomLineItem(localized("sconto"), EUR10, "slug1", taxCategory, 2)
     update.removeCustomLineItem("sconto123")
+    update.setCustomerId("newCustomerId")
 
     val req = asImpl(sphere.carts.updateCart(v1(cartId), update))
     req.getRequestHolder.getUrl must be(s"/carts/$cartId")
     val cmd = req.getCommand.asInstanceOf[UpdateCommand[CartUpdateAction]]
     cmd.getVersion must be (1)
     val actions = scala.collection.JavaConversions.asScalaBuffer((cmd.getActions)).toList
-    actions.length must be (14)
+    actions must have length 15
     val a0 = actions(0).asInstanceOf[AddLineItem]
     a0.getProductId must be ("product1")
     a0.getVariantId must be (1)
@@ -122,6 +123,8 @@ class CartServiceSpec extends WordSpec with MustMatchers  {
     a12.getTaxCategory must be (taxCategory)
     val a13 = actions(13).asInstanceOf[RemoveCustomLineItem]
     a13.getCustomLineItemId must be ("sconto123")
+    val a14 = actions(14).asInstanceOf[SetCustomerId]
+    a14.getCustomerId must be ("newCustomerId")
 
     val cart: Cart = req.execute()
     cart.getId must be(cartId)

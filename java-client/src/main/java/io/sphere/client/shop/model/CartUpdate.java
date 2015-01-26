@@ -112,6 +112,12 @@ public class CartUpdate extends Update<CartCommands.CartUpdateAction> {
         return this;
     }
 
+    /** Sets an existing customer ID. According to the new customer group, the backend will update the cart total. */
+    public CartUpdate setCustomerId(String customerId) {
+        add(new CartCommands.SetCustomerId(customerId));
+        return this;
+    }
+
     /** Updates line item prices and tax rates. */
     public CartUpdate recalculate() {
         add(new CartCommands.RecalculateCartPrices());

@@ -722,6 +722,45 @@ public class CartCommands {
 
 
     @Immutable
+    public static final class SetCustomerId extends CartUpdateAction {
+        private final String customerId;
+
+        public SetCustomerId(String customerId) {
+            super("setCustomerId");
+            this.customerId = customerId;
+        }
+
+        public String getCustomerId() {
+            return customerId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SetCustomerId that = (SetCustomerId) o;
+
+            if (customerId != null ? !customerId.equals(that.customerId) : that.customerId != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return customerId != null ? customerId.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "SetCustomerId{" +
+                    "customerId='" + customerId + '\'' +
+                    '}';
+        }
+    }
+
+
+    @Immutable
     public static final class AddDiscountCode extends CartUpdateAction {
         private final String discountCode;
 

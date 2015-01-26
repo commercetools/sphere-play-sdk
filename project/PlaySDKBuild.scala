@@ -165,7 +165,7 @@ public final class Version {
     lazy val nvI18n          = "com.neovisionaries" % "nv-i18n" % "1.4"
     lazy val typesafeConfig  = "com.typesafe" % "config" % "1.2.0"
 
-    lazy val scalaTest       = "org.scalatest" %% "scalatest" % "2.0" % "test;it"
+    lazy val scalaTest       = "org.scalatest" %% "scalatest" % "2.2.3" % "test;it"
     lazy val logbackClassic  = "ch.qos.logback" % "logback-classic" % "1.0.13" % "it"
     lazy val logbackCore     = "ch.qos.logback" % "logback-core" % "1.0.13" % "it"
     lazy val junitDep        = "junit" % "junit-dep" % "4.11" % "test"

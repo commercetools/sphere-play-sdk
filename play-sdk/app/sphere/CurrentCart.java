@@ -275,6 +275,26 @@ public class CurrentCart {
         return updateAsync(new CartUpdate().setCustomShippingMethod(shippingMethodName, shippingRate, taxCategory));
     }
 
+    /** Sets an existing customer ID. The cart total is updated according to the new customer group */
+    public Cart setCustomerId(String customerId) {
+        return Async.awaitResult(setCustomerIdAsync(customerId));
+    }
+
+    /** Sets an existing customer ID. The cart total is updated according to the new customer group */
+    public Promise<SphereResult<Cart>> setCustomerIdAsync(String customerId) {
+        return updateAsync(new CartUpdate().setCustomerId(customerId));
+    }
+
+    /** Clears the customer ID. The cart total is updated */
+    public Cart clearCustomerId() {
+        return Async.awaitResult(clearCustomerIdAsync());
+    }
+
+    /** Clears the customer ID. The cart total is updated */
+    public Promise<SphereResult<Cart>> clearCustomerIdAsync() {
+        return updateAsync(new CartUpdate().setCustomerId(null));
+    }
+
     /** Updates line item prices and tax rates. This is in case that product prices, project tax settings,
      *  or project shipping settings changed since the items were added to the cart. */
     public Cart recalculate() {
