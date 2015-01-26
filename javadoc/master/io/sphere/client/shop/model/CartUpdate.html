@@ -236,26 +236,32 @@ extends <a href="../../../../../io/sphere/internal/command/Update.html" title="c
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html#setCustomerId(java.lang.String)">setCustomerId</a></strong>(java.lang.String&nbsp;customerId)</code>
+<div class="block">Sets an existing customer ID.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html#setCustomShippingMethod(java.lang.String,%20io.sphere.client.shop.model.ShippingRate,%20io.sphere.client.model.ReferenceId)">setCustomShippingMethod</a></strong>(java.lang.String&nbsp;shippingMethodName,
                        <a href="../../../../../io/sphere/client/shop/model/ShippingRate.html" title="class in io.sphere.client.shop.model">ShippingRate</a>&nbsp;shippingRate,
                        <a href="../../../../../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../../../../../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</code>
 <div class="block">Sets the custom shipping method (not using project shipping methods).</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html#setLineItemQuantity(java.lang.String,%20int)">setLineItemQuantity</a></strong>(java.lang.String&nbsp;lineItemId,
                    int&nbsp;quantity)</code>
 <div class="block">Sets the quantity of the given line item.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html#setShippingAddress(io.sphere.client.shop.model.Address)">setShippingAddress</a></strong>(<a href="../../../../../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</code>
 <div class="block">Sets the shipping address of the cart.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/CartUpdate.html#setShippingMethod(io.sphere.client.model.ReferenceId)">setShippingMethod</a></strong>(<a href="../../../../../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../../../../../io/sphere/client/shop/model/ShippingMethod.html" title="class in io.sphere.client.shop.model">ShippingMethod</a>&gt;&nbsp;shippingMethod)</code>
 <div class="block">Sets the shipping method of the cart.</div>
@@ -475,6 +481,16 @@ extends <a href="../../../../../io/sphere/internal/command/Update.html" title="c
                                  <a href="../../../../../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../../../../../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</pre>
 <div class="block">Sets the custom shipping method (not using project shipping methods). When the shipping method is set, 
  the backend will set the cart shippingInfo and updates the cart total.</div>
+</li>
+</ul>
+<a name="setCustomerId(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomerId</h4>
+<pre>public&nbsp;<a href="../../../../../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a>&nbsp;setCustomerId(java.lang.String&nbsp;customerId)</pre>
+<div class="block">Sets an existing customer ID. According to the new customer group, the backend will update the cart total.</div>
 </li>
 </ul>
 <a name="recalculate()">
