@@ -1,3 +1,7 @@
+## 0.71.0
+
+* The customer ID for a cart can be modified or removed.
+
 ## 0.70.0
 
 * The product search allows String parameters and product attributes for the sort configuration. 
