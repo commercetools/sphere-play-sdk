@@ -1,0 +1,517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LineItem</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="LineItem";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../io/sphere/client/shop/model/InventoryEntryUpdate.html" title="class in io.sphere.client.shop.model"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../io/sphere/client/shop/model/LineItemContainer.html" title="class in io.sphere.client.shop.model"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?io/sphere/client/shop/model/LineItem.html" target="_top">Frames</a></li>
+<li><a href="LineItem.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">io.sphere.client.shop.model</div>
+<h2 title="Class LineItem" class="title">Class LineItem</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>io.sphere.client.shop.model.LineItem</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="strong">LineItem</span>
+extends java.lang.Object</pre>
+<div class="block">Single product variant in a <a href="../../../../../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model"><code>Cart</code></a> or <a href="../../../../../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model"><code>Order</code></a>, with a quantity.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../io/sphere/client/shop/model/LineItem.html" title="class in io.sphere.client.shop.model">LineItem</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#create(java.lang.String,%20java.lang.String,%20io.sphere.client.model.LocalizedString,%20io.sphere.client.shop.model.Variant,%20int,%20io.sphere.client.shop.model.Price,%20com.google.common.base.Optional,%20io.sphere.client.shop.model.TaxRate,%20io.sphere.client.model.Reference)">create</a></strong>(java.lang.String&nbsp;id,
+      java.lang.String&nbsp;productId,
+      <a href="../../../../../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;productName,
+      <a href="../../../../../io/sphere/client/shop/model/Variant.html" title="class in io.sphere.client.shop.model">Variant</a>&nbsp;variant,
+      int&nbsp;quantity,
+      <a href="../../../../../io/sphere/client/shop/model/Price.html" title="class in io.sphere.client.shop.model">Price</a>&nbsp;price,
+      com.google.common.base.Optional&lt;<a href="../../../../../io/sphere/client/shop/model/DiscountedLineItemPrice.html" title="class in io.sphere.client.shop.model">DiscountedLineItemPrice</a>&gt;&nbsp;discountedPrice,
+      <a href="../../../../../io/sphere/client/shop/model/TaxRate.html" title="class in io.sphere.client.shop.model">TaxRate</a>&nbsp;taxRate,
+      <a href="../../../../../io/sphere/client/model/Reference.html" title="class in io.sphere.client.model">Reference</a>&lt;<a href="../../../../../io/sphere/client/shop/model/Channel.html" title="class in io.sphere.client.shop.model">Channel</a>&gt;&nbsp;supplyChannel)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../../io/sphere/client/shop/model/LineItem.html" title="class in io.sphere.client.shop.model">LineItem</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#create(java.lang.String,%20java.lang.String,%20io.sphere.client.model.LocalizedString,%20io.sphere.client.shop.model.Variant,%20int,%20io.sphere.client.shop.model.Price,%20io.sphere.client.shop.model.TaxRate,%20io.sphere.client.model.Reference)">create</a></strong>(java.lang.String&nbsp;id,
+      java.lang.String&nbsp;productId,
+      <a href="../../../../../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;productName,
+      <a href="../../../../../io/sphere/client/shop/model/Variant.html" title="class in io.sphere.client.shop.model">Variant</a>&nbsp;variant,
+      int&nbsp;quantity,
+      <a href="../../../../../io/sphere/client/shop/model/Price.html" title="class in io.sphere.client.shop.model">Price</a>&nbsp;price,
+      <a href="../../../../../io/sphere/client/shop/model/TaxRate.html" title="class in io.sphere.client.shop.model">TaxRate</a>&nbsp;taxRate,
+      <a href="../../../../../io/sphere/client/model/Reference.html" title="class in io.sphere.client.model">Reference</a>&lt;<a href="../../../../../io/sphere/client/shop/model/Channel.html" title="class in io.sphere.client.shop.model">Channel</a>&gt;&nbsp;supplyChannel)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>com.google.common.base.Optional&lt;<a href="../../../../../io/sphere/client/shop/model/DiscountedLineItemPrice.html" title="class in io.sphere.client.shop.model">DiscountedLineItemPrice</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getDiscountedPrice()">getDiscountedPrice</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getId()">getId</a></strong>()</code>
+<div class="block">Unique id of this line item.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/Price.html" title="class in io.sphere.client.shop.model">Price</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getPrice()">getPrice</a></strong>()</code>
+<div class="block">The price.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getProductId()">getProductId</a></strong>()</code>
+<div class="block">Unique id of the product.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getProductName()">getProductName</a></strong>()</code>
+<div class="block">Name of the product.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getProductName(java.util.Locale)">getProductName</a></strong>(java.util.Locale&nbsp;locale)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getQuantity()">getQuantity</a></strong>()</code>
+<div class="block">Number of items ordered.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/model/Reference.html" title="class in io.sphere.client.model">Reference</a>&lt;<a href="../../../../../io/sphere/client/shop/model/Channel.html" title="class in io.sphere.client.shop.model">Channel</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getSupplyChannel()">getSupplyChannel</a></strong>()</code>
+<div class="block">The optional assigned Channel for this LineItem.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/TaxRate.html" title="class in io.sphere.client.shop.model">TaxRate</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getTaxRate()">getTaxRate</a></strong>()</code>
+<div class="block">The tax rate of this line item.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getTotalPrice()">getTotalPrice</a></strong>()</code>
+<div class="block">The total price of this line item, that is price value times quantity.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getTotalPriceBeforeDiscount()">getTotalPriceBeforeDiscount</a></strong>()</code>
+<div class="block">The total price of this line item before discount, that is price value times quantity.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getUnitPrice()">getUnitPrice</a></strong>()</code>
+<div class="block">The base price of this line item, for single unit.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getUnitPriceBeforeDiscount()">getUnitPriceBeforeDiscount</a></strong>()</code>
+<div class="block">The base price of this line item before discount, for single unit.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../io/sphere/client/shop/model/Variant.html" title="class in io.sphere.client.shop.model">Variant</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#getVariant()">getVariant</a></strong>()</code>
+<div class="block">Copy of the product variant from the time when time line item was created.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../../../../io/sphere/client/shop/model/LineItem.html#toString()">toString</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="create(java.lang.String, java.lang.String, io.sphere.client.model.LocalizedString, io.sphere.client.shop.model.Variant, int, io.sphere.client.shop.model.Price, com.google.common.base.Optional, io.sphere.client.shop.model.TaxRate, io.sphere.client.model.Reference)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>create</h4>
+<pre>public static&nbsp;<a href="../../../../../io/sphere/client/shop/model/LineItem.html" title="class in io.sphere.client.shop.model">LineItem</a>&nbsp;create(java.lang.String&nbsp;id,
+              java.lang.String&nbsp;productId,
+              <a href="../../../../../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;productName,
+              <a href="../../../../../io/sphere/client/shop/model/Variant.html" title="class in io.sphere.client.shop.model">Variant</a>&nbsp;variant,
+              int&nbsp;quantity,
+              <a href="../../../../../io/sphere/client/shop/model/Price.html" title="class in io.sphere.client.shop.model">Price</a>&nbsp;price,
+              com.google.common.base.Optional&lt;<a href="../../../../../io/sphere/client/shop/model/DiscountedLineItemPrice.html" title="class in io.sphere.client.shop.model">DiscountedLineItemPrice</a>&gt;&nbsp;discountedPrice,
+              <a href="../../../../../io/sphere/client/shop/model/TaxRate.html" title="class in io.sphere.client.shop.model">TaxRate</a>&nbsp;taxRate,
+              <a href="../../../../../io/sphere/client/model/Reference.html" title="class in io.sphere.client.model">Reference</a>&lt;<a href="../../../../../io/sphere/client/shop/model/Channel.html" title="class in io.sphere.client.shop.model">Channel</a>&gt;&nbsp;supplyChannel)</pre>
+</li>
+</ul>
+<a name="create(java.lang.String, java.lang.String, io.sphere.client.model.LocalizedString, io.sphere.client.shop.model.Variant, int, io.sphere.client.shop.model.Price, io.sphere.client.shop.model.TaxRate, io.sphere.client.model.Reference)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>create</h4>
+<pre>public static&nbsp;<a href="../../../../../io/sphere/client/shop/model/LineItem.html" title="class in io.sphere.client.shop.model">LineItem</a>&nbsp;create(java.lang.String&nbsp;id,
+              java.lang.String&nbsp;productId,
+              <a href="../../../../../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;productName,
+              <a href="../../../../../io/sphere/client/shop/model/Variant.html" title="class in io.sphere.client.shop.model">Variant</a>&nbsp;variant,
+              int&nbsp;quantity,
+              <a href="../../../../../io/sphere/client/shop/model/Price.html" title="class in io.sphere.client.shop.model">Price</a>&nbsp;price,
+              <a href="../../../../../io/sphere/client/shop/model/TaxRate.html" title="class in io.sphere.client.shop.model">TaxRate</a>&nbsp;taxRate,
+              <a href="../../../../../io/sphere/client/model/Reference.html" title="class in io.sphere.client.model">Reference</a>&lt;<a href="../../../../../io/sphere/client/shop/model/Channel.html" title="class in io.sphere.client.shop.model">Channel</a>&gt;&nbsp;supplyChannel)</pre>
+</li>
+</ul>
+<a name="getId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getId</h4>
+<pre>@Nonnull
+public&nbsp;java.lang.String&nbsp;getId()</pre>
+<div class="block">Unique id of this line item.</div>
+</li>
+</ul>
+<a name="getProductId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProductId</h4>
+<pre>@Nonnull
+public&nbsp;java.lang.String&nbsp;getProductId()</pre>
+<div class="block">Unique id of the product.</div>
+</li>
+</ul>
+<a name="getProductName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProductName</h4>
+<pre>@Nonnull
+public&nbsp;java.lang.String&nbsp;getProductName()</pre>
+<div class="block">Name of the product. If there is only one translation it will return this. Otherwise,
+     it will return a random one. If there are no translations will return the empty string.</div>
+</li>
+</ul>
+<a name="getProductName(java.util.Locale)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProductName</h4>
+<pre>@Nonnull
+public&nbsp;java.lang.String&nbsp;getProductName(java.util.Locale&nbsp;locale)</pre>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>locale</code> - </dd>
+<dt><span class="strong">Returns:</span></dt><dd>The product name in the requested locale. It it doesn't exist will return the empty string.</dd></dl>
+</li>
+</ul>
+<a name="getVariant()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getVariant</h4>
+<pre>@Nonnull
+public&nbsp;<a href="../../../../../io/sphere/client/shop/model/Variant.html" title="class in io.sphere.client.shop.model">Variant</a>&nbsp;getVariant()</pre>
+<div class="block">Copy of the product variant from the time when time line item was created.</div>
+</li>
+</ul>
+<a name="getQuantity()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getQuantity</h4>
+<pre>public&nbsp;int&nbsp;getQuantity()</pre>
+<div class="block">Number of items ordered.</div>
+</li>
+</ul>
+<a name="getTotalPrice()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTotalPrice</h4>
+<pre>@Nonnull
+public&nbsp;<a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;getTotalPrice()</pre>
+<div class="block">The total price of this line item, that is price value times quantity.
+  When line item is discounted, the total price is calculated based on this discounted price.</div>
+</li>
+</ul>
+<a name="getUnitPrice()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUnitPrice</h4>
+<pre>@Nonnull
+public&nbsp;<a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;getUnitPrice()</pre>
+<div class="block">The base price of this line item, for single unit.
+ When the line item is discounted, the base price is this discounted price.</div>
+</li>
+</ul>
+<a name="getTotalPriceBeforeDiscount()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTotalPriceBeforeDiscount</h4>
+<pre>@Nonnull
+public&nbsp;<a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;getTotalPriceBeforeDiscount()</pre>
+<div class="block">The total price of this line item before discount, that is price value times quantity.</div>
+</li>
+</ul>
+<a name="getUnitPriceBeforeDiscount()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUnitPriceBeforeDiscount</h4>
+<pre>@Nonnull
+public&nbsp;<a href="../../../../../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;getUnitPriceBeforeDiscount()</pre>
+<div class="block">The base price of this line item before discount, for single unit.</div>
+</li>
+</ul>
+<a name="getPrice()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPrice</h4>
+<pre>@Nonnull
+public&nbsp;<a href="../../../../../io/sphere/client/shop/model/Price.html" title="class in io.sphere.client.shop.model">Price</a>&nbsp;getPrice()</pre>
+<div class="block">The price.</div>
+</li>
+</ul>
+<a name="getDiscountedPrice()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDiscountedPrice</h4>
+<pre>public&nbsp;com.google.common.base.Optional&lt;<a href="../../../../../io/sphere/client/shop/model/DiscountedLineItemPrice.html" title="class in io.sphere.client.shop.model">DiscountedLineItemPrice</a>&gt;&nbsp;getDiscountedPrice()</pre>
+</li>
+</ul>
+<a name="getTaxRate()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTaxRate</h4>
+<pre>@Nullable
+public&nbsp;<a href="../../../../../io/sphere/client/shop/model/TaxRate.html" title="class in io.sphere.client.shop.model">TaxRate</a>&nbsp;getTaxRate()</pre>
+<div class="block">The tax rate of this line item. Optional.
+
+  <p>The tax rate is selected based on the cart's shipping address and is only set when the
+  shipping address is set.</div>
+</li>
+</ul>
+<a name="getSupplyChannel()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSupplyChannel</h4>
+<pre>public&nbsp;<a href="../../../../../io/sphere/client/model/Reference.html" title="class in io.sphere.client.model">Reference</a>&lt;<a href="../../../../../io/sphere/client/shop/model/Channel.html" title="class in io.sphere.client.shop.model">Channel</a>&gt;&nbsp;getSupplyChannel()</pre>
+<div class="block">The optional assigned Channel for this LineItem.</div>
+</li>
+</ul>
+<a name="toString()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../io/sphere/client/shop/model/InventoryEntryUpdate.html" title="class in io.sphere.client.shop.model"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../io/sphere/client/shop/model/LineItemContainer.html" title="class in io.sphere.client.shop.model"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?io/sphere/client/shop/model/LineItem.html" target="_top">Frames</a></li>
+<li><a href="LineItem.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CategoriesImpl</title>
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="CategoriesImpl";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../io/sphere/internal/Categories.html" title="interface in io.sphere.internal"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../io/sphere/internal/CategoryCache.html" title="class in io.sphere.internal"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?io/sphere/internal/CategoriesImpl.html" target="_top">Frames</a></li>
+<li><a href="CategoriesImpl.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">io.sphere.internal</div>
+<h2 title="Class CategoriesImpl" class="title">Class CategoriesImpl</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>io.sphere.internal.CategoriesImpl</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../io/sphere/internal/Categories.html" title="interface in io.sphere.internal">Categories</a></dd>
+</dl>
+<hr>
+<br>
+<pre>@Immutable
+public final class <span class="strong">CategoriesImpl</span>
+extends java.lang.Object
+implements <a href="../../../io/sphere/internal/Categories.html" title="interface in io.sphere.internal">Categories</a></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../io/sphere/client/ProjectEndpoints.html" title="class in io.sphere.client">ProjectEndpoints</a></code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#endpoints">endpoints</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected org.codehaus.jackson.type.TypeReference&lt;<a href="../../../io/sphere/client/model/QueryResult.html" title="class in io.sphere.client.model">QueryResult</a>&lt;T&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#queryResultTypeReference">queryResultTypeReference</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../io/sphere/internal/request/RequestFactory.html" title="interface in io.sphere.internal.request">RequestFactory</a></code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#requestFactory">requestFactory</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected org.codehaus.jackson.type.TypeReference&lt;T&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#typeReference">typeReference</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#CategoriesImpl(io.sphere.internal.request.RequestFactory,%20io.sphere.client.ProjectEndpoints)">CategoriesImpl</a></strong>(<a href="../../../io/sphere/internal/request/RequestFactory.html" title="interface in io.sphere.internal.request">RequestFactory</a>&nbsp;requestFactory,
+              <a href="../../../io/sphere/client/ProjectEndpoints.html" title="class in io.sphere.client">ProjectEndpoints</a>&nbsp;endpoints)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../io/sphere/client/QueryRequest.html" title="interface in io.sphere.client">QueryRequest</a>&lt;<a href="../../../io/sphere/client/model/products/BackendCategory.html" title="class in io.sphere.client.model.products">BackendCategory</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#all()">all</a></strong>()</code>
+<div class="block">Queries categories.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../io/sphere/client/CommandRequest.html" title="interface in io.sphere.client">CommandRequest</a>&lt;T&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#createCommandRequest(java.lang.String,%20io.sphere.internal.command.Command)">createCommandRequest</a></strong>(java.lang.String&nbsp;url,
+                    <a href="../../../io/sphere/internal/command/Command.html" title="interface in io.sphere.internal.command">Command</a>&nbsp;command)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../io/sphere/client/QueryRequest.html" title="interface in io.sphere.client">QueryRequest</a>&lt;<a href="../../../io/sphere/client/model/products/BackendCategory.html" title="class in io.sphere.client.model.products">BackendCategory</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#query()">query</a></strong>()</code>
+<div class="block">Queries categories.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../io/sphere/client/QueryRequest.html" title="interface in io.sphere.client">QueryRequest</a>&lt;T&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../io/sphere/internal/CategoriesImpl.html#queryImpl(java.lang.String)">queryImpl</a></strong>(java.lang.String&nbsp;url)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="endpoints">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>endpoints</h4>
+<pre>protected&nbsp;<a href="../../../io/sphere/client/ProjectEndpoints.html" title="class in io.sphere.client">ProjectEndpoints</a> endpoints</pre>
+</li>
+</ul>
+<a name="requestFactory">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>requestFactory</h4>
+<pre>protected&nbsp;<a href="../../../io/sphere/internal/request/RequestFactory.html" title="interface in io.sphere.internal.request">RequestFactory</a> requestFactory</pre>
+</li>
+</ul>
+<a name="typeReference">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>typeReference</h4>
+<pre>protected&nbsp;org.codehaus.jackson.type.TypeReference&lt;T&gt; typeReference</pre>
+</li>
+</ul>
+<a name="queryResultTypeReference">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>queryResultTypeReference</h4>
+<pre>protected&nbsp;org.codehaus.jackson.type.TypeReference&lt;<a href="../../../io/sphere/client/model/QueryResult.html" title="class in io.sphere.client.model">QueryResult</a>&lt;T&gt;&gt; queryResultTypeReference</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="CategoriesImpl(io.sphere.internal.request.RequestFactory, io.sphere.client.ProjectEndpoints)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>CategoriesImpl</h4>
+<pre>public&nbsp;CategoriesImpl(<a href="../../../io/sphere/internal/request/RequestFactory.html" title="interface in io.sphere.internal.request">RequestFactory</a>&nbsp;requestFactory,
+              <a href="../../../io/sphere/client/ProjectEndpoints.html" title="class in io.sphere.client">ProjectEndpoints</a>&nbsp;endpoints)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="query()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>query</h4>
+<pre>public&nbsp;<a href="../../../io/sphere/client/QueryRequest.html" title="interface in io.sphere.client">QueryRequest</a>&lt;<a href="../../../io/sphere/client/model/products/BackendCategory.html" title="class in io.sphere.client.model.products">BackendCategory</a>&gt;&nbsp;query()</pre>
+<div class="block">Queries categories.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../io/sphere/internal/Categories.html#query()">query</a></code>&nbsp;in interface&nbsp;<code><a href="../../../io/sphere/internal/Categories.html" title="interface in io.sphere.internal">Categories</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="all()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>all</h4>
+<pre>public&nbsp;<a href="../../../io/sphere/client/QueryRequest.html" title="interface in io.sphere.client">QueryRequest</a>&lt;<a href="../../../io/sphere/client/model/products/BackendCategory.html" title="class in io.sphere.client.model.products">BackendCategory</a>&gt;&nbsp;all()</pre>
+<div class="block">Queries categories.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../io/sphere/internal/Categories.html#all()">all</a></code>&nbsp;in interface&nbsp;<code><a href="../../../io/sphere/internal/Categories.html" title="interface in io.sphere.internal">Categories</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="createCommandRequest(java.lang.String, io.sphere.internal.command.Command)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createCommandRequest</h4>
+<pre>protected&nbsp;<a href="../../../io/sphere/client/CommandRequest.html" title="interface in io.sphere.client">CommandRequest</a>&lt;T&gt;&nbsp;createCommandRequest(java.lang.String&nbsp;url,
+                                     <a href="../../../io/sphere/internal/command/Command.html" title="interface in io.sphere.internal.command">Command</a>&nbsp;command)</pre>
+</li>
+</ul>
+<a name="queryImpl(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>queryImpl</h4>
+<pre>protected&nbsp;<a href="../../../io/sphere/client/QueryRequest.html" title="interface in io.sphere.client">QueryRequest</a>&lt;T&gt;&nbsp;queryImpl(java.lang.String&nbsp;url)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../io/sphere/internal/Categories.html" title="interface in io.sphere.internal"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../io/sphere/internal/CategoryCache.html" title="class in io.sphere.internal"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?io/sphere/internal/CategoriesImpl.html" target="_top">Frames</a></li>
+<li><a href="CategoriesImpl.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+</body>
+</html>

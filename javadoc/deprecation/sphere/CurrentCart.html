@@ -1,0 +1,1156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CurrentCart</title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="CurrentCart";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+<li><a href="../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../sphere/Config.html" title="interface in sphere"><span class="strong">Prev Class</span></a></li>
+<li><a href="../sphere/CurrentCustomer.html" title="class in sphere"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../index.html?sphere/CurrentCart.html" target="_top">Frames</a></li>
+<li><a href="CurrentCart.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">sphere</div>
+<h2 title="Class CurrentCart" class="title">Class CurrentCart</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>sphere.CurrentCart</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>@ThreadSafe
+public class <span class="strong">CurrentCart</span>
+extends java.lang.Object</pre>
+<div class="block">Shopping cart service that automatically accesses the cart associated to the current HTTP session.
+
+ <p>A shopping cart stores most of the information that an <a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model"><code>Order</code></a> does,
+ e.g. a shipping address, and it is essentially an Order in progress.
+ This means the CurrentCart is typically also used to implement checkout process.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../sphere/CurrentCart.html#CurrentCart(io.sphere.client.shop.CartService,%20io.sphere.client.shop.OrderService,%20java.util.Currency,%20io.sphere.client.shop.model.Cart.InventoryMode)">CurrentCart</a></strong>(<a href="../io/sphere/client/shop/CartService.html" title="interface in io.sphere.client.shop">CartService</a>&nbsp;cartService,
+           <a href="../io/sphere/client/shop/OrderService.html" title="interface in io.sphere.client.shop">OrderService</a>&nbsp;orderService,
+           java.util.Currency&nbsp;cartCurrency,
+           <a href="../io/sphere/client/shop/model/Cart.InventoryMode.html" title="enum in io.sphere.client.shop.model">Cart.InventoryMode</a>&nbsp;inventoryMode)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addCustomLineItem(io.sphere.client.model.LocalizedString,%20io.sphere.client.model.Money,%20java.lang.String,%20io.sphere.client.model.ReferenceId)">addCustomLineItem</a></strong>(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                 <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                 java.lang.String&nbsp;slug,
+                 <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</code>
+<div class="block">Adds a custom line item to the cart.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addCustomLineItem(io.sphere.client.model.LocalizedString,%20io.sphere.client.model.Money,%20java.lang.String,%20io.sphere.client.model.ReferenceId,%20int)">addCustomLineItem</a></strong>(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                 <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                 java.lang.String&nbsp;slug,
+                 <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory,
+                 int&nbsp;quantity)</code>
+<div class="block">Adds a custom line item with a specific quantity to the cart.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addCustomLineItemAsync(io.sphere.client.model.LocalizedString,%20io.sphere.client.model.Money,%20java.lang.String,%20io.sphere.client.model.ReferenceId)">addCustomLineItemAsync</a></strong>(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                      <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                      java.lang.String&nbsp;slug,
+                      <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</code>
+<div class="block">Adds a custom line item to the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addCustomLineItemAsync(io.sphere.client.model.LocalizedString,%20io.sphere.client.model.Money,%20java.lang.String,%20io.sphere.client.model.ReferenceId,%20int)">addCustomLineItemAsync</a></strong>(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                      <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                      java.lang.String&nbsp;slug,
+                      <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory,
+                      int&nbsp;quantity)</code>
+<div class="block">Adds a custom line item with a specific quantity to the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addLineItem(java.lang.String,%20int)">addLineItem</a></strong>(java.lang.String&nbsp;productId,
+           int&nbsp;quantity)</code>
+<div class="block">Adds product's master variant in given quantity to the cart.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addLineItem(java.lang.String,%20int,%20int)">addLineItem</a></strong>(java.lang.String&nbsp;productId,
+           int&nbsp;variantId,
+           int&nbsp;quantity)</code>
+<div class="block">Adds a product variant in given quantity to the cart.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addLineItemAsync(java.lang.String,%20int)">addLineItemAsync</a></strong>(java.lang.String&nbsp;productId,
+                int&nbsp;quantity)</code>
+<div class="block">Adds product's master variant in the given quantity to the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#addLineItemAsync(java.lang.String,%20int,%20int)">addLineItemAsync</a></strong>(java.lang.String&nbsp;productId,
+                int&nbsp;variantId,
+                int&nbsp;quantity)</code>
+<div class="block">Adds a product variant in given quantity to the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#clearCustomerId()">clearCustomerId</a></strong>()</code>
+<div class="block">Clears the customer ID.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#clearCustomerIdAsync()">clearCustomerIdAsync</a></strong>()</code>
+<div class="block">Clears the customer ID.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#clearShippingAddress()">clearShippingAddress</a></strong>()</code>
+<div class="block">Clears the shipping address.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#clearShippingAddressAsync()">clearShippingAddressAsync</a></strong>()</code>
+<div class="block">Clears the shipping address asynchronously.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createCartSnapshotId()">createCartSnapshotId</a></strong>()</code>
+<div class="block">Creates an cart snapshot identifier for the final page of a checkout process.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createOrder(io.sphere.client.shop.CreateOrderBuilder)">createOrder</a></strong>(<a href="../io/sphere/client/shop/CreateOrderBuilder.html" title="class in io.sphere.client.shop">CreateOrderBuilder</a>&nbsp;createOrderBuilder)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createOrder(io.sphere.client.shop.model.PaymentState)">createOrder</a></strong>(<a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</code>
+<div class="block">Transforms the cart into an order.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createOrder(java.lang.String,%20io.sphere.client.shop.model.PaymentState)">createOrder</a></strong>(java.lang.String&nbsp;cartSnapshotId,
+           <a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</code>
+<div class="block">Transforms the cart into an order.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createOrderAsync(io.sphere.client.shop.CreateOrderBuilder)">createOrderAsync</a></strong>(<a href="../io/sphere/client/shop/CreateOrderBuilder.html" title="class in io.sphere.client.shop">CreateOrderBuilder</a>&nbsp;createOrderBuilder)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createOrderAsync(io.sphere.client.shop.model.PaymentState)">createOrderAsync</a></strong>(<a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</code>
+<div class="block">Transforms the cart into an order asynchronously.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#createOrderAsync(java.lang.String,%20io.sphere.client.shop.model.PaymentState)">createOrderAsync</a></strong>(java.lang.String&nbsp;cartSnapshotId,
+                <a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</code>
+<div class="block">Transforms the cart into an order asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#decreaseLineItemQuantity(java.lang.String,%20int)">decreaseLineItemQuantity</a></strong>(java.lang.String&nbsp;lineItemId,
+                        int&nbsp;quantity)</code>
+<div class="block">Decreases the quantity of given line item.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#decreaseLineItemQuantityAsync(java.lang.String,%20int)">decreaseLineItemQuantityAsync</a></strong>(java.lang.String&nbsp;lineItemId,
+                             int&nbsp;quantity)</code>
+<div class="block">Decreases the quantity of the given line item asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#fetch()">fetch</a></strong>()</code>
+<div class="block">Fetches the cart object for the current session asynchronously.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#fetchAsync()">fetchAsync</a></strong>()</code>
+<div class="block">Fetches the cart object for the current session asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#getQuantity()">getQuantity</a></strong>()</code>
+<div class="block">Returns the number of items in the cart.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#isSafeToCreateOrder(java.lang.String)">isSafeToCreateOrder</a></strong>(java.lang.String&nbsp;cartSnapshotId)</code>
+<div class="block">Returns true if the <code>cartSnapshotId</code> matches the current cart id and version,
+  and therefore it is certain that the cart was not modified in a different browser tab during checkout.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#recalculate()">recalculate</a></strong>()</code>
+<div class="block">Updates line item prices and tax rates.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#recalculateAsync()">recalculateAsync</a></strong>()</code>
+<div class="block">Updates line item prices and tax rates asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#removeLineItem(java.lang.String)">removeLineItem</a></strong>(java.lang.String&nbsp;lineItemId)</code>
+<div class="block">Removes a line item from the cart.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#removeLineItemAsync(java.lang.String)">removeLineItemAsync</a></strong>(java.lang.String&nbsp;lineItemId)</code>
+<div class="block">Removes a line item from the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setBillingAddress(io.sphere.client.shop.model.Address)">setBillingAddress</a></strong>(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</code>
+<div class="block">Sets the billing address.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setBillingAddressAsync(io.sphere.client.shop.model.Address)">setBillingAddressAsync</a></strong>(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</code>
+<div class="block">Sets the billing address asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCountry(com.neovisionaries.i18n.CountryCode)">setCountry</a></strong>(com.neovisionaries.i18n.CountryCode&nbsp;country)</code>
+<div class="block">Sets the country of the cart and updates line item prices.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCountryAsync(com.neovisionaries.i18n.CountryCode)">setCountryAsync</a></strong>(com.neovisionaries.i18n.CountryCode&nbsp;country)</code>
+<div class="block">Sets the country of the cart asynchronously and updates line item prices.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCustomerEmail(java.lang.String)">setCustomerEmail</a></strong>(java.lang.String&nbsp;email)</code>
+<div class="block">Sets the customer email for the cart.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCustomerEmailAsync(java.lang.String)">setCustomerEmailAsync</a></strong>(java.lang.String&nbsp;email)</code>
+<div class="block">Sets the customer email for the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCustomerId(java.lang.String)">setCustomerId</a></strong>(java.lang.String&nbsp;customerId)</code>
+<div class="block">Sets an existing customer ID.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCustomerIdAsync(java.lang.String)">setCustomerIdAsync</a></strong>(java.lang.String&nbsp;customerId)</code>
+<div class="block">Sets an existing customer ID.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCustomShippingMethod(java.lang.String,%20io.sphere.client.shop.model.ShippingRate,%20io.sphere.client.model.ReferenceId)">setCustomShippingMethod</a></strong>(java.lang.String&nbsp;shippingMethodName,
+                       <a href="../io/sphere/client/shop/model/ShippingRate.html" title="class in io.sphere.client.shop.model">ShippingRate</a>&nbsp;shippingRate,
+                       <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</code>
+<div class="block">Sets a custom shipping method.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setCustomShippingMethodAsync(java.lang.String,%20io.sphere.client.shop.model.ShippingRate,%20io.sphere.client.model.ReferenceId)">setCustomShippingMethodAsync</a></strong>(java.lang.String&nbsp;shippingMethodName,
+                            <a href="../io/sphere/client/shop/model/ShippingRate.html" title="class in io.sphere.client.shop.model">ShippingRate</a>&nbsp;shippingRate,
+                            <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</code>
+<div class="block">Sets a custom shipping method of the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setLineItemQuantity(java.lang.String,%20int)">setLineItemQuantity</a></strong>(java.lang.String&nbsp;lineItemId,
+                   int&nbsp;quantity)</code>
+<div class="block">Sets the quantity of given line item.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setLineItemQuantityAsync(java.lang.String,%20int)">setLineItemQuantityAsync</a></strong>(java.lang.String&nbsp;lineItemId,
+                        int&nbsp;quantity)</code>
+<div class="block">Sets the quantity of the given line item asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setShippingAddress(io.sphere.client.shop.model.Address)">setShippingAddress</a></strong>(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</code>
+<div class="block">Sets the shipping address.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setShippingAddressAsync(io.sphere.client.shop.model.Address)">setShippingAddressAsync</a></strong>(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</code>
+<div class="block">Sets the shipping address asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setShippingMethod(io.sphere.client.model.ReferenceId)">setShippingMethod</a></strong>(<a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/ShippingMethod.html" title="class in io.sphere.client.shop.model">ShippingMethod</a>&gt;&nbsp;shippingMethod)</code>
+<div class="block">Sets the shipping method of the cart.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#setShippingMethodAsync(io.sphere.client.model.ReferenceId)">setShippingMethodAsync</a></strong>(<a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/ShippingMethod.html" title="class in io.sphere.client.shop.model">ShippingMethod</a>&gt;&nbsp;shippingMethod)</code>
+<div class="block">Sets the shipping method of the cart asynchronously.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a></code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#update(io.sphere.client.shop.model.CartUpdate)">update</a></strong>(<a href="../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a>&nbsp;update)</code>
+<div class="block">Updates the cart, doing several modifications using one request, described by the <code>update</code> object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../sphere/CurrentCart.html#updateAsync(io.sphere.client.shop.model.CartUpdate)">updateAsync</a></strong>(<a href="../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a>&nbsp;update)</code>
+<div class="block">Updates the cart asynchronously.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="CurrentCart(io.sphere.client.shop.CartService, io.sphere.client.shop.OrderService, java.util.Currency, io.sphere.client.shop.model.Cart.InventoryMode)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>CurrentCart</h4>
+<pre>public&nbsp;CurrentCart(<a href="../io/sphere/client/shop/CartService.html" title="interface in io.sphere.client.shop">CartService</a>&nbsp;cartService,
+           <a href="../io/sphere/client/shop/OrderService.html" title="interface in io.sphere.client.shop">OrderService</a>&nbsp;orderService,
+           java.util.Currency&nbsp;cartCurrency,
+           <a href="../io/sphere/client/shop/model/Cart.InventoryMode.html" title="enum in io.sphere.client.shop.model">Cart.InventoryMode</a>&nbsp;inventoryMode)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="fetch()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetch</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;fetch()</pre>
+<div class="block">Fetches the cart object for the current session asynchronously.
+
+ <p><i>Note:</i> As an optimization, the cart is only created in the backend when user adds a first product in the cart.
+ For users who haven't put anything in their cart yet, this method returns an empty dummy cart object without going to
+ the backend.</p></div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>a cart</dd></dl>
+</li>
+</ul>
+<a name="fetchAsync()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetchAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&nbsp;fetchAsync()</pre>
+<div class="block">Fetches the cart object for the current session asynchronously.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../sphere/CurrentCart.html#fetch()"><code>fetch.</code></a></dd></dl>
+</li>
+</ul>
+<a name="getQuantity()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getQuantity</h4>
+<pre>public&nbsp;int&nbsp;getQuantity()</pre>
+<div class="block">Returns the number of items in the cart.
+
+  <p>This method exists purely as an optimization that lets you avoid calling <a href="../sphere/CurrentCart.html#fetch()"><code>fetch</code></a> and then
+  <a href="../io/sphere/client/shop/model/LineItemContainer.html#getTotalQuantity()"><code>cart.getTotalQuantity</code></a>, if you only need to display the number of items in the cart.
+  The quantity stored in Play's session and updated automatically on all cart modifications.</div>
+</li>
+</ul>
+<a name="addLineItem(java.lang.String, int, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addLineItem</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;addLineItem(java.lang.String&nbsp;productId,
+               int&nbsp;variantId,
+               int&nbsp;quantity)</pre>
+<div class="block">Adds a product variant in given quantity to the cart.</div>
+</li>
+</ul>
+<a name="addLineItemAsync(java.lang.String, int, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addLineItemAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;addLineItemAsync(java.lang.String&nbsp;productId,
+                                                       int&nbsp;variantId,
+                                                       int&nbsp;quantity)</pre>
+<div class="block">Adds a product variant in given quantity to the cart asynchronously.</div>
+</li>
+</ul>
+<a name="addLineItem(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addLineItem</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;addLineItem(java.lang.String&nbsp;productId,
+               int&nbsp;quantity)</pre>
+<div class="block">Adds product's master variant in given quantity to the cart.</div>
+</li>
+</ul>
+<a name="addLineItemAsync(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addLineItemAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;addLineItemAsync(java.lang.String&nbsp;productId,
+                                                       int&nbsp;quantity)</pre>
+<div class="block">Adds product's master variant in the given quantity to the cart asynchronously.</div>
+</li>
+</ul>
+<a name="addCustomLineItem(io.sphere.client.model.LocalizedString, io.sphere.client.model.Money, java.lang.String, io.sphere.client.model.ReferenceId)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addCustomLineItem</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;addCustomLineItem(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                     <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                     java.lang.String&nbsp;slug,
+                     <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</pre>
+<div class="block">Adds a custom line item to the cart.</div>
+</li>
+</ul>
+<a name="addCustomLineItem(io.sphere.client.model.LocalizedString, io.sphere.client.model.Money, java.lang.String, io.sphere.client.model.ReferenceId, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addCustomLineItem</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;addCustomLineItem(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                     <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                     java.lang.String&nbsp;slug,
+                     <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory,
+                     int&nbsp;quantity)</pre>
+<div class="block">Adds a custom line item with a specific quantity to the cart.</div>
+</li>
+</ul>
+<a name="addCustomLineItemAsync(io.sphere.client.model.LocalizedString, io.sphere.client.model.Money, java.lang.String, io.sphere.client.model.ReferenceId)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addCustomLineItemAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;addCustomLineItemAsync(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                                                             <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                                                             java.lang.String&nbsp;slug,
+                                                             <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</pre>
+<div class="block">Adds a custom line item to the cart asynchronously.</div>
+</li>
+</ul>
+<a name="addCustomLineItemAsync(io.sphere.client.model.LocalizedString, io.sphere.client.model.Money, java.lang.String, io.sphere.client.model.ReferenceId, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addCustomLineItemAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;addCustomLineItemAsync(<a href="../io/sphere/client/model/LocalizedString.html" title="class in io.sphere.client.model">LocalizedString</a>&nbsp;name,
+                                                             <a href="../io/sphere/client/model/Money.html" title="class in io.sphere.client.model">Money</a>&nbsp;money,
+                                                             java.lang.String&nbsp;slug,
+                                                             <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory,
+                                                             int&nbsp;quantity)</pre>
+<div class="block">Adds a custom line item with a specific quantity to the cart asynchronously.</div>
+</li>
+</ul>
+<a name="removeLineItem(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeLineItem</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;removeLineItem(java.lang.String&nbsp;lineItemId)</pre>
+<div class="block">Removes a line item from the cart.</div>
+</li>
+</ul>
+<a name="removeLineItemAsync(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeLineItemAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;removeLineItemAsync(java.lang.String&nbsp;lineItemId)</pre>
+<div class="block">Removes a line item from the cart asynchronously.</div>
+</li>
+</ul>
+<a name="decreaseLineItemQuantity(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>decreaseLineItemQuantity</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;decreaseLineItemQuantity(java.lang.String&nbsp;lineItemId,
+                            int&nbsp;quantity)</pre>
+<div class="block">Decreases the quantity of given line item. If after the update the quantity
+  of the line item is not greater than 0 the line item is removed from the cart.</div>
+</li>
+</ul>
+<a name="decreaseLineItemQuantityAsync(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>decreaseLineItemQuantityAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;decreaseLineItemQuantityAsync(java.lang.String&nbsp;lineItemId,
+                                                                    int&nbsp;quantity)</pre>
+<div class="block">Decreases the quantity of the given line item asynchronously. If after the update the quantity
+  of the line item is not greater than 0 the line item is removed from the cart.</div>
+</li>
+</ul>
+<a name="setLineItemQuantity(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLineItemQuantity</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setLineItemQuantity(java.lang.String&nbsp;lineItemId,
+                       int&nbsp;quantity)</pre>
+<div class="block">Sets the quantity of given line item. If the quantity is 0 the line item is removed from the cart.</div>
+</li>
+</ul>
+<a name="setLineItemQuantityAsync(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLineItemQuantityAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setLineItemQuantityAsync(java.lang.String&nbsp;lineItemId,
+                                                               int&nbsp;quantity)</pre>
+<div class="block">Sets the quantity of the given line item asynchronously. If the quantity is 0, line item is removed from the cart.</div>
+</li>
+</ul>
+<a name="setCustomerEmail(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomerEmail</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setCustomerEmail(java.lang.String&nbsp;email)</pre>
+<div class="block">Sets the customer email for the cart.
+  Use this method if you want to create an order for an unregistered customer.</div>
+</li>
+</ul>
+<a name="setCustomerEmailAsync(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomerEmailAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setCustomerEmailAsync(java.lang.String&nbsp;email)</pre>
+<div class="block">Sets the customer email for the cart asynchronously.
+  Use this method if you want to create an order for an unregistered customer.</div>
+</li>
+</ul>
+<a name="setShippingAddress(io.sphere.client.shop.model.Address)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setShippingAddress</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setShippingAddress(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</pre>
+<div class="block">Sets the shipping address. Setting the shipping address also sets the tax rates of the line items
+  and calculates the taxed price. If <code>null</code> is passed, the shipping address is cleared
+  (see <a href="../sphere/CurrentCart.html#clearShippingAddress()"><code>clearShippingAddress</code></a>).</div>
+</li>
+</ul>
+<a name="setShippingAddressAsync(io.sphere.client.shop.model.Address)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setShippingAddressAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setShippingAddressAsync(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</pre>
+<div class="block">Sets the shipping address asynchronously. Setting the shipping address also sets the tax rates of
+  the line items and calculates the taxed price. If <code>null</code> is passed, the shipping address is cleared
+  (see <a href="../sphere/CurrentCart.html#clearShippingAddressAsync()"><code>clearShippingAddressAsync</code></a>).</div>
+</li>
+</ul>
+<a name="clearShippingAddress()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearShippingAddress</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;clearShippingAddress()</pre>
+<div class="block">Clears the shipping address.
+  Removes the shipping address, the taxed price and the tax rates of all line items.</div>
+</li>
+</ul>
+<a name="clearShippingAddressAsync()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearShippingAddressAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;clearShippingAddressAsync()</pre>
+<div class="block">Clears the shipping address asynchronously.
+  Removes the shipping address, taxed price and tax rates of all line items.</div>
+</li>
+</ul>
+<a name="setBillingAddress(io.sphere.client.shop.model.Address)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBillingAddress</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setBillingAddress(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</pre>
+<div class="block">Sets the billing address.</div>
+</li>
+</ul>
+<a name="setBillingAddressAsync(io.sphere.client.shop.model.Address)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBillingAddressAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setBillingAddressAsync(<a href="../io/sphere/client/shop/model/Address.html" title="class in io.sphere.client.shop.model">Address</a>&nbsp;address)</pre>
+<div class="block">Sets the billing address asynchronously.</div>
+</li>
+</ul>
+<a name="setCountry(com.neovisionaries.i18n.CountryCode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCountry</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setCountry(com.neovisionaries.i18n.CountryCode&nbsp;country)</pre>
+<div class="block">Sets the country of the cart and updates line item prices.</div>
+</li>
+</ul>
+<a name="setCountryAsync(com.neovisionaries.i18n.CountryCode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCountryAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setCountryAsync(com.neovisionaries.i18n.CountryCode&nbsp;country)</pre>
+<div class="block">Sets the country of the cart asynchronously and updates line item prices.</div>
+</li>
+</ul>
+<a name="setShippingMethod(io.sphere.client.model.ReferenceId)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setShippingMethod</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setShippingMethod(<a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/ShippingMethod.html" title="class in io.sphere.client.shop.model">ShippingMethod</a>&gt;&nbsp;shippingMethod)</pre>
+<div class="block">Sets the shipping method of the cart. The cart shipping info is set and the cart total is updated.</div>
+</li>
+</ul>
+<a name="setShippingMethodAsync(io.sphere.client.model.ReferenceId)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setShippingMethodAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setShippingMethodAsync(<a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/ShippingMethod.html" title="class in io.sphere.client.shop.model">ShippingMethod</a>&gt;&nbsp;shippingMethod)</pre>
+<div class="block">Sets the shipping method of the cart asynchronously. The cart shipping info is set and the cart total is updated.</div>
+</li>
+</ul>
+<a name="setCustomShippingMethod(java.lang.String, io.sphere.client.shop.model.ShippingRate, io.sphere.client.model.ReferenceId)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomShippingMethod</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setCustomShippingMethod(java.lang.String&nbsp;shippingMethodName,
+                           <a href="../io/sphere/client/shop/model/ShippingRate.html" title="class in io.sphere.client.shop.model">ShippingRate</a>&nbsp;shippingRate,
+                           <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</pre>
+<div class="block">Sets a custom shipping method. The cart shipping info is set and the cart total is updated.</div>
+</li>
+</ul>
+<a name="setCustomShippingMethodAsync(java.lang.String, io.sphere.client.shop.model.ShippingRate, io.sphere.client.model.ReferenceId)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomShippingMethodAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setCustomShippingMethodAsync(java.lang.String&nbsp;shippingMethodName,
+                                                                   <a href="../io/sphere/client/shop/model/ShippingRate.html" title="class in io.sphere.client.shop.model">ShippingRate</a>&nbsp;shippingRate,
+                                                                   <a href="../io/sphere/client/model/ReferenceId.html" title="class in io.sphere.client.model">ReferenceId</a>&lt;<a href="../io/sphere/client/shop/model/TaxCategory.html" title="class in io.sphere.client.shop.model">TaxCategory</a>&gt;&nbsp;taxCategory)</pre>
+<div class="block">Sets a custom shipping method of the cart asynchronously. The cart shipping info is set and the cart total is updated.</div>
+</li>
+</ul>
+<a name="setCustomerId(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomerId</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;setCustomerId(java.lang.String&nbsp;customerId)</pre>
+<div class="block">Sets an existing customer ID. The cart total is updated according to the new customer group</div>
+</li>
+</ul>
+<a name="setCustomerIdAsync(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomerIdAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;setCustomerIdAsync(java.lang.String&nbsp;customerId)</pre>
+<div class="block">Sets an existing customer ID. The cart total is updated according to the new customer group</div>
+</li>
+</ul>
+<a name="clearCustomerId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearCustomerId</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;clearCustomerId()</pre>
+<div class="block">Clears the customer ID. The cart total is updated</div>
+</li>
+</ul>
+<a name="clearCustomerIdAsync()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearCustomerIdAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;clearCustomerIdAsync()</pre>
+<div class="block">Clears the customer ID. The cart total is updated</div>
+</li>
+</ul>
+<a name="recalculate()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recalculate</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;recalculate()</pre>
+<div class="block">Updates line item prices and tax rates. This is in case that product prices, project tax settings,
+  or project shipping settings changed since the items were added to the cart.</div>
+</li>
+</ul>
+<a name="recalculateAsync()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recalculateAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;recalculateAsync()</pre>
+<div class="block">Updates line item prices and tax rates asynchronously. This is in case that product prices, project tax settings,
+  and project shipping settings changed since the items were added to the cart.</div>
+</li>
+</ul>
+<a name="createCartSnapshotId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createCartSnapshotId</h4>
+<pre>public&nbsp;java.lang.String&nbsp;createCartSnapshotId()</pre>
+<div class="block">Creates an cart snapshot identifier for the final page of a checkout process.
+  A final page of a checkout process is the page where the customer has the option to create an order.
+
+ <p>See the documentation of <a href="../sphere/CurrentCart.html#createOrder(java.lang.String,%20io.sphere.client.shop.model.PaymentState)"><code>createOrder</code></a>
+ for the rationale behind this method.</div>
+</li>
+</ul>
+<a name="isSafeToCreateOrder(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSafeToCreateOrder</h4>
+<pre>public&nbsp;boolean&nbsp;isSafeToCreateOrder(java.lang.String&nbsp;cartSnapshotId)</pre>
+<div class="block">Returns true if the <code>cartSnapshotId</code> matches the current cart id and version,
+  and therefore it is certain that the cart was not modified in a different browser tab during checkout.
+
+ <p>You should always call this method before calling
+ <a href="../sphere/CurrentCart.html#createOrder(java.lang.String,%20io.sphere.client.shop.model.PaymentState)"><code>createOrder</code></a>.
+ <p>If this method returns false, the cart was most likely modified in a different browser tab.
+ You should notify the customer and refresh the checkout page.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>cartSnapshotId</code> - The identifier of the current checkout summary page.</dd></dl>
+</li>
+</ul>
+<a name="createOrder(java.lang.String, io.sphere.client.shop.model.PaymentState)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createOrder</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&nbsp;createOrder(java.lang.String&nbsp;cartSnapshotId,
+                <a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</pre>
+<div class="block">Transforms the cart into an order.
+
+ <p>This method should be called when the customer decides to finalize the checkout.
+
+ <p>Before this method is called, a checkout summary page will typically display contents
+ of the current cart. There needs to be a mechanism to make sure the customer didn't add an
+ item to the cart from a different browser tab right before ordering. In other words, we
+ have to make sure that what the cart contains is exactly what is displayed.
+
+ <p>The solution is to create a hidden HTML form input field storing an
+ <a href="../sphere/CurrentCart.html#createCartSnapshotId()"><code>id of a cart snapshot</code></a>, and providing the id to this
+ method when creating the order. If the cart doesn't match the provided snapshot id, this method
+ throws a <a href="../sphere/CartModifiedException.html" title="class in sphere"><code>CartModifiedException</code></a>.
+
+ <p><i>Note on implementing payments</i>:
+ This method can also be used in a server-to-server callback invoked by a payment
+ gateway. You should pass the a <code>cartSnapshotId</code> to the payment gateway,
+ receive it back in the callback and pass it to this method.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>cartSnapshotId</code> - A snapshot identifier of the cart from the time it was displayed to the customer</dd><dd><code>paymentState</code> - The payment state of the new order</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../sphere/CartModifiedException.html" title="class in sphere">CartModifiedException</a></code> - if the <code>cartSnapshotId</code> doesn't match the state of the current cart anymore.</dd>
+<dd><code><a href="../io/sphere/client/exceptions/OutOfStockException.html" title="class in io.sphere.client.exceptions">OutOfStockException</a></code> - if some of the products in the cart are not available anymore.
+                             This can only happen if the cart is in the
+                             <a href="../io/sphere/client/shop/model/Cart.InventoryMode.html#ReserveOnOrder"><code>ReserveOnOrder</code></a> mode.</dd>
+<dd><code><a href="../io/sphere/client/exceptions/PriceChangedException.html" title="class in io.sphere.client.exceptions">PriceChangedException</a></code> - if the price, tax or shipping of some line items changed since the items
+                               were added to the cart.</dd></dl>
+</li>
+</ul>
+<a name="createOrderAsync(java.lang.String, io.sphere.client.shop.model.PaymentState)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createOrderAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&gt;&gt;&nbsp;createOrderAsync(java.lang.String&nbsp;cartSnapshotId,
+                                                        <a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</pre>
+<div class="block">Transforms the cart into an order asynchronously.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>cartSnapshotId</code> - A snapshot identifier of the cart from the time it was displayed to the customer</dd><dd><code>paymentState</code> - The payment state of the new order
+
+ A result which can fail with the following exceptions:
+ <ul>
+  <li><a href="../sphere/CartModifiedException.html" title="class in sphere"><code>CartModifiedException</code></a> if the <code>cartSnapshotId</code> doesn't match the state of the current cart anymore.
+  <li><a href="../io/sphere/client/exceptions/OutOfStockException.html" title="class in io.sphere.client.exceptions"><code>OutOfStockException</code></a> if some of the products in the cart are not available anymore.
+      This can only happen if the cart is in the
+      <a href="../io/sphere/client/shop/model/Cart.InventoryMode.html#ReserveOnOrder"><code>ReserveOnOrder</code></a> mode.
+  <li><a href="../io/sphere/client/exceptions/PriceChangedException.html" title="class in io.sphere.client.exceptions"><code>PriceChangedException</code></a> if the price, tax or shipping of some line items changed since the items
+       were added to the cart.
+ </ul></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../sphere/CurrentCart.html#createOrder(java.lang.String,%20io.sphere.client.shop.model.PaymentState)"><code>createOrder</code></a></dd></dl>
+</li>
+</ul>
+<a name="createOrder(io.sphere.client.shop.model.PaymentState)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createOrder</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&nbsp;createOrder(<a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</pre>
+<div class="block">Transforms the cart into an order.
+ 
+ WARNING! In a web application that can have several windows or tabs with the same session, use
+ <a href="../sphere/CurrentCart.html#createOrder(java.lang.String,%20io.sphere.client.shop.model.PaymentState)"><code>createOrder(String cartSnapshotId, PaymentState paymentState)</code></a> with the snapshot id.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>paymentState</code> - The payment state of the new order
+                     
+  * A result which can fail with the following exceptions:
+ <ul>
+  <li><a href="../sphere/CartModifiedException.html" title="class in sphere"><code>CartModifiedException</code></a> if the <code>cartSnapshotId</code> doesn't match the state of the current cart anymore.
+  <li><a href="../io/sphere/client/exceptions/OutOfStockException.html" title="class in io.sphere.client.exceptions"><code>OutOfStockException</code></a> if some of the products in the cart are not available anymore.
+      This can only happen if the cart is in the
+      <a href="../io/sphere/client/shop/model/Cart.InventoryMode.html#ReserveOnOrder"><code>ReserveOnOrder</code></a> mode.
+  <li><a href="../io/sphere/client/exceptions/PriceChangedException.html" title="class in io.sphere.client.exceptions"><code>PriceChangedException</code></a> if the price, tax or shipping of some line items changed since the items
+       were added to the cart.
+ </ul></dd></dl>
+</li>
+</ul>
+<a name="createOrder(io.sphere.client.shop.CreateOrderBuilder)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createOrder</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&nbsp;createOrder(<a href="../io/sphere/client/shop/CreateOrderBuilder.html" title="class in io.sphere.client.shop">CreateOrderBuilder</a>&nbsp;createOrderBuilder)</pre>
+</li>
+</ul>
+<a name="createOrderAsync(io.sphere.client.shop.model.PaymentState)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createOrderAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&gt;&gt;&nbsp;createOrderAsync(<a href="../io/sphere/client/shop/model/PaymentState.html" title="enum in io.sphere.client.shop.model">PaymentState</a>&nbsp;paymentState)</pre>
+<div class="block">Transforms the cart into an order asynchronously. 
+
+ WARNING! In a web application that can have several windows or tabs with the same session, use
+ <a href="../sphere/CurrentCart.html#createOrder(java.lang.String,%20io.sphere.client.shop.model.PaymentState)"><code>createOrder(String cartSnapshotId, PaymentState paymentState)</code></a> with the snapshot id.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>paymentState</code> - The payment state of the new order
+
+  * A result which can fail with the following exceptions:
+ <ul>
+  <li><a href="../sphere/CartModifiedException.html" title="class in sphere"><code>CartModifiedException</code></a> if the <code>cartSnapshotId</code> doesn't match the state of the current cart anymore.
+  <li><a href="../io/sphere/client/exceptions/OutOfStockException.html" title="class in io.sphere.client.exceptions"><code>OutOfStockException</code></a> if some of the products in the cart are not available anymore.
+      This can only happen if the cart is in the
+      <a href="../io/sphere/client/shop/model/Cart.InventoryMode.html#ReserveOnOrder"><code>ReserveOnOrder</code></a> mode.
+  <li><a href="../io/sphere/client/exceptions/PriceChangedException.html" title="class in io.sphere.client.exceptions"><code>PriceChangedException</code></a> if the price, tax or shipping of some line items changed since the items
+       were added to the cart.
+ </ul></dd></dl>
+</li>
+</ul>
+<a name="createOrderAsync(io.sphere.client.shop.CreateOrderBuilder)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createOrderAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Order.html" title="class in io.sphere.client.shop.model">Order</a>&gt;&gt;&nbsp;createOrderAsync(<a href="../io/sphere/client/shop/CreateOrderBuilder.html" title="class in io.sphere.client.shop">CreateOrderBuilder</a>&nbsp;createOrderBuilder)</pre>
+</li>
+</ul>
+<a name="update(io.sphere.client.shop.model.CartUpdate)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>update</h4>
+<pre>public&nbsp;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&nbsp;update(<a href="../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a>&nbsp;update)</pre>
+<div class="block">Updates the cart, doing several modifications using one request, described by the <code>update</code> object.</div>
+</li>
+</ul>
+<a name="updateAsync(io.sphere.client.shop.model.CartUpdate)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>updateAsync</h4>
+<pre>public&nbsp;play.libs.F.Promise&lt;<a href="../io/sphere/client/SphereResult.html" title="class in io.sphere.client">SphereResult</a>&lt;<a href="../io/sphere/client/shop/model/Cart.html" title="class in io.sphere.client.shop.model">Cart</a>&gt;&gt;&nbsp;updateAsync(<a href="../io/sphere/client/shop/model/CartUpdate.html" title="class in io.sphere.client.shop.model">CartUpdate</a>&nbsp;update)</pre>
+<div class="block">Updates the cart asynchronously.</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+<li><a href="../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../sphere/Config.html" title="interface in sphere"><span class="strong">Prev Class</span></a></li>
+<li><a href="../sphere/CurrentCustomer.html" title="class in sphere"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../index.html?sphere/CurrentCart.html" target="_top">Frames</a></li>
+<li><a href="CurrentCart.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+</body>
+</html>
