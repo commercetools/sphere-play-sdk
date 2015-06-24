@@ -17,6 +17,8 @@ The team put a lot of effort to address those and the result can be found in our
 
 Nevertheless, we will provide critical bug fixes for this SDK as long as we have customers using it.
 
+Further, we will come up with a migration guide and provide you also examples as we will update our demo stores to the new SDK too.
+
 ## Introdution
 
 The Sphere Play SDK comprises of two Java libraries designed for building shopping applications on top of SPHERE.IO:
