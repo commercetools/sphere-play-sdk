@@ -49,7 +49,7 @@ public class Order extends LineItemContainer {
     public String toString() {
         return "Order{" +
                 "completedAt=" + completedAt +
-                ", orderNumber='" + orderNumber + '\'' +
+                ", orderNumber=" + orderNumber +
                 ", orderState=" + orderState +
                 ", shipmentState=" + shipmentState +
                 ", paymentState=" + paymentState +
