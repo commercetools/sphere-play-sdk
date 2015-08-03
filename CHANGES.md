@@ -1,3 +1,7 @@
+## 0.72.0
+
+* The cart reference in order is accessible.
+
 ## 0.71.0
 
 * The customer ID for a cart can be modified or removed.
