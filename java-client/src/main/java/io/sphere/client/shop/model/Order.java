@@ -1,5 +1,6 @@
 package io.sphere.client.shop.model;
 
+import io.sphere.client.model.Reference;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.DateTime;
 
@@ -14,6 +15,7 @@ public class Order extends LineItemContainer {
     private ShipmentState shipmentState;
     private PaymentState paymentState;
     private Set<SyncInfo> syncInfo;
+    private Reference<Cart> cart;
 
     // for JSON deserializer
     protected Order() {}
@@ -39,14 +41,20 @@ public class Order extends LineItemContainer {
         return syncInfo;
     }
 
+    public Reference<Cart> getCart() {
+        return cart;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "completedAt=" + completedAt +
-                ", orderNumber=" + orderNumber +
+                ", orderNumber='" + orderNumber + '\'' +
                 ", orderState=" + orderState +
                 ", shipmentState=" + shipmentState +
                 ", paymentState=" + paymentState +
+                ", syncInfo=" + syncInfo +
+                ", cart=" + cart +
                 '}';
     }
 }
