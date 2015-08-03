@@ -21,7 +21,7 @@ class OrderIntegrationSpec extends WordSpec with MustMatchers {
   "sphere client" must {
     def testCreateOrder(builder: CreateOrderBuilder) = {
       val createOrderResult = client.orders.createOrder(builder).execute()
-      createOrderResult.getId must be (builder.getCartId.getId)
+      createOrderResult.getCart.getId must be (builder.getCartId.getId)
       createOrderResult.getPaymentState must be (builder.getPaymentState)
       createOrderResult
     }
