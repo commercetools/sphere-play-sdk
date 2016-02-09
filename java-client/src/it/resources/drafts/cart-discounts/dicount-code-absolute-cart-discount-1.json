@@ -1,9 +1,0 @@
-{
-    "code": "absolute discount code",
-    "cartDiscounts": [
-        {
-            "id": "cb276fe2-0100-492a-a410-52fc54fd2404",
-            "typeId": "cart-discount"
-        }
-    ]
-}
