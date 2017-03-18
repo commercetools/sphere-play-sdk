@@ -2,7 +2,7 @@ language: scala
 scala:
 - 2.10.4
 script:
-- sbt clean unidoc test it:test
+- sbt clean unidoc test
 jdk:
 - oraclejdk7
 env:
