@@ -38,6 +38,7 @@ public class OAuthClient {
             final AsyncHttpClient.BoundRequestBuilder requestBuilder = httpClient.preparePost(tokenEndpoint)
                     .setRealm(basicAuthRealm)
                     .setHeader("Content-Type", "application/x-www-form-urlencoded")
+                    .setHeader("Content-Length", "0")
                     .addQueryParameter("grant_type", "client_credentials")
                     .addQueryParameter("scope", scope);
             return Futures.transform(new ListenableFutureAdapter<Response>(requestBuilder.execute()), new Function<Response, Tokens>() {
